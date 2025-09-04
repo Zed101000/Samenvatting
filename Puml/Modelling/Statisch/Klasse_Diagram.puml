@@ -1,0 +1,77 @@
+
+@startuml MMO_ClassDiagram
+title MMO Class Diagram (Expanded)
+
+class Player {
+  +username: string
+  +level: int
+  +login()
+  +logout()
+  +selectCharacter()
+}
+
+class Character {
+  +name: string
+  +classType: string
+  +hp: int
+  +xp: int
+  +attack()
+  +defend()
+  +useSkill(skill: Skill)
+}
+
+class Archer extends Character {
+  +arrowCount: int
+  +specialShot()
+}
+
+class Bard extends Character {
+  +playSong()
+}
+
+class Inventory {
+  +items: List<Item>
+  +addItem(item: Item)
+  +removeItem(item: Item)
+}
+
+class Item {
+  +itemId: int
+  +name: string
+  +type: string
+}
+
+class Skill {
+  +skillName: string
+  +cooldown: int
+  +activate()
+}
+
+class Guild {
+  +guildName: string
+  +members: List<Player>
+  +addMember(player: Player)
+  +removeMember(player: Player)
+}
+
+class Quest {
+  +questId: int
+  +description: string
+  +isCompleted: bool
+  +start()
+  +complete()
+}
+
+Player "1" -- "*" Character : owns >
+Character "1" -- "1" Inventory : has >
+Inventory "*" -- "*" Item : contains >
+Character "*" -- "*" Skill : can use >
+Player "*" -- "*" Guild : member of >
+Player "1" -- "*" Quest : active >
+
+note right of Player
+Players can own multiple characters,
+join guilds, and accept quests.
+end note
+
+@enduml

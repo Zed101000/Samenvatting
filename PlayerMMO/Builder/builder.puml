@@ -1,0 +1,34 @@
+@startuml BuilderPattern
+skinparam legendFontSize 12
+
+class Product
+
+interface ICharacterAppearanceBuilder {
+  +BuildNose()
+  +BuildEyes()
+  +BuildMouth()
+  +GetResult(): CharacterAppearance
+}
+
+class ConcreteBuilder {
+  +BuildPartA()
+  +BuildPartB()
+  +GetResult(): CharacterAppearance
+}
+ICharacterAppearance    Builder <|.. ConcreteBuilder
+
+class Director {
+  +Construct(): Product
+}
+class Client {
+  +DoSomething()
+}
+Director --> ICharacterAppearanceBuilder
+ConcreteBuilder --> CharacterAppearance
+Client --> Director : uses
+
+legend left
+  <|.. = interface realization
+  -->  = usage
+end legend
+@enduml

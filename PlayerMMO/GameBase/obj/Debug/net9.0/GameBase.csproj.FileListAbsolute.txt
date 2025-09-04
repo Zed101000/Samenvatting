@@ -40,3 +40,4 @@ C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\GameBase\obj\Debug\net9.0\refint\G
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\GameBase\obj\Debug\net9.0\GameBase.pdb
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\GameBase\obj\Debug\net9.0\GameBase.genruntimeconfig.cache
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\GameBase\obj\Debug\net9.0\ref\GameBase.dll
+C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\GameBase\obj\Debug\net9.0\GameBase.sourcelink.json

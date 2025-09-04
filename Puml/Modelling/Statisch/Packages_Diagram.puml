@@ -1,0 +1,44 @@
+
+@startuml MMO_PackagesDiagram
+title MMO Packages Diagram (Expanded)
+
+package "UI" {
+  class LoginScreen
+  class CharacterSelect
+  class GameHUD
+}
+
+package "Logic" {
+  class PlayerManager
+  class CombatManager
+  class QuestManager
+}
+
+package "Network" {
+  class NetworkManager
+  class PacketHandler
+}
+
+package "Data" {
+  class UserDB
+  class WorldDB
+  class ItemDB
+}
+
+package "Services" {
+  class AuthService
+  class PaymentService
+  class InventoryService
+}
+
+LoginScreen --> AuthService : login
+CharacterSelect --> PlayerManager : select
+GameHUD --> CombatManager : combat
+PlayerManager --> NetworkManager : sync
+NetworkManager --> PacketHandler : handle
+AuthService --> UserDB : query
+InventoryService --> ItemDB : fetch
+CombatManager --> WorldDB : update
+QuestManager --> WorldDB : update
+
+@enduml

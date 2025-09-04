@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{75E73C4D-2069-4E0A-98F2-2FE8D135C0E3}|Composite\\Composite.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\composite\\compositepattern\\partycomposite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75E73C4D-2069-4E0A-98F2-2FE8D135C0E3}|Composite\\Composite.csproj|solutionrelative:composite\\compositepattern\\partycomposite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PartyComposite.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Composite\\CompositePattern\\PartyComposite.cs",
-              "RelativeDocumentMoniker": "Composite\\CompositePattern\\PartyComposite.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Composite\\CompositePattern\\PartyComposite.cs",
-              "RelativeToolTip": "Composite\\CompositePattern\\PartyComposite.cs",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
+              "RelativeDocumentMoniker": "AbstractFactory\\Program.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
+              "RelativeToolTip": "AbstractFactory\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T20:06:35.544Z",
+              "WhenOpened": "2025-09-04T22:00:17.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConcreteLevel.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
+              "RelativeDocumentMoniker": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
+              "RelativeToolTip": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-04T21:59:55.733Z",
               "EditorCaption": ""
             }
           ]

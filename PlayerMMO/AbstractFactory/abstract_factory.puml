@@ -1,34 +1,36 @@
-@startuml AbstractFactory_PlayerMMO
-skinparam legendFontSize 12
+@startuml AbstractFactoryPattern
 
-interface IGameFactory {
-  +CreatePlayer(name: string): IPlayer
-  +CreateMonster(name: string): IMonster
+title Abstract Factory Pattern for Levels and Enemies
+
+interface LevelFactory {
+    + CreateCave(GameMapFactory mapFactory, GameEnemyMapFactory enemyFactory): ICave
+    + CreateDungeon(GameMapFactory mapFactory, GameEnemyMapFactory enemyFactory): IDungeon
 }
 
-class CasualGameFactory {
-  +CreatePlayer(name: string): IPlayer
-  +CreateMonster(name: string): IMonster
-}
-class HardcoreGameFactory {
-  +CreatePlayer(name: string): IPlayer
-  +CreateMonster(name: string): IMonster
+class GameMapFactory {
+    + CreateCaveMap(int rows, int cols): string[,]
+    + CreateDungeonMap(int rows, int cols): string[,]
 }
 
-IGameFactory <|.. CasualGameFactory
-IGameFactory <|.. HardcoreGameFactory
+class GameEnemyMapFactory {
+    + CreateCaveEnemies(int rows, int cols): IMonster[,]
+    + CreateDungeonEnemies(int rows, int cols): IMonster[,]
+}
 
-interface IPlayer
-interface IMonster
+interface ICave {
+    + string[,] CaveMap { get; }
+    + IMonster[,] CaveEnemiesMap { get; }
+}
 
-CasualGameFactory ..> IPlayer : creates
-CasualGameFactory ..> IMonster : creates
-HardcoreGameFactory ..> IPlayer : creates
-HardcoreGameFactory ..> IMonster : creates
+interface IDungeon {
+    + string[,] DungeonMap { get; }
+    + IMonster[,] DungeonEnemiesMap { get; }
+}
 
-legend left
-  «AbstractFactory» = creates families of related objects (Player, Monster)
-  <|..              = interface realization (implements)
-  ..>               = creates
-end legend
+GameMapFactory ..> CaveMap : creates
+GameMapFactory ..> DungeonMap : creates
+GameEnemyMapFactory ..> CaveEnemies : creates
+GameEnemyMapFactory ..> DungeonEnemies : creates
+
+
 @enduml

@@ -1,0 +1,48 @@
+@startuml
+robust "Archer" as A
+
+@0
+A is Idle
+
+@20
+A is Exploring
+
+@35
+A is Encountering
+
+@45
+A is Attacking
+
+@60
+A is Fighting
+
+@80
+A is Exploring
+
+@110
+A is City
+
+@125
+A is Trading
+
+@135
+A is Resting
+
+@155
+A is Trading
+
+@170
+A is Exploring
+
+@195
+A is Down
+
+@210
+A is Idle
+
+@250
+A is Exploring
+
+@280
+A is QuestCompleted
+@enduml

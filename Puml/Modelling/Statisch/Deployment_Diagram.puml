@@ -1,0 +1,48 @@
+
+@startuml MMO_DeploymentDiagram
+title MMO Deployment Diagram (Expanded)
+
+node "Player Client" {
+	[Game UI]
+	[Updater]
+}
+
+node "Load Balancer" {
+}
+
+node "Web Server" {
+	[Auth Service]
+	[Payment Gateway]
+}
+
+node "Game Server Cluster" {
+	node "Game Server 1" {
+		[World Service]
+		[Combat Service]
+		[Inventory Service]
+	}
+	node "Game Server 2" {
+		[World Service]
+		[Combat Service]
+		[Inventory Service]
+	}
+}
+
+node "Database" {
+	[UserDB]
+	[WorldDB]
+	[ItemDB]
+}
+
+[Game UI] --> "Load Balancer"
+"Load Balancer" --> [Auth Service]
+[Auth Service] --> [UserDB]
+[Auth Service] --> [Payment Gateway]
+[Payment Gateway] --> [UserDB]
+[Auth Service] --> "Game Server Cluster"
+[Game Server 1] --> [WorldDB]
+[Game Server 1] --> [ItemDB]
+[Game Server 2] --> [WorldDB]
+[Game Server 2] --> [ItemDB]
+
+@enduml

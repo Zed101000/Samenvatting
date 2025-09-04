@@ -1,0 +1,52 @@
+
+@startuml MMO_ObjectDiagram
+title MMO Object Diagram (Expanded)
+
+object player1 as "Player: Zed101" {
+  username = "Zed101"
+  level = 42
+}
+object archer1 as "Archer: Elora" {
+  name = "Elora"
+  classType = "Archer"
+  hp = 120
+  xp = 5000
+}
+object bard1 as "Bard: Lyra" {
+  name = "Lyra"
+  classType = "Bard"
+  hp = 100
+  xp = 4200
+}
+object inv1 as "Inventory: Elora" {
+  items = 3
+}
+object bow as "Item: Longbow" {
+  itemId = 101
+  name = "Longbow"
+  type = "Weapon"
+}
+object potion as "Item: Health Potion" {
+  itemId = 202
+  name = "Health Potion"
+  type = "Consumable"
+}
+object skill1 as "Skill: Power Shot" {
+  skillName = "Power Shot"
+  cooldown = 10
+}
+object guild1 as "Guild: Night Owls" {
+  guildName = "Night Owls"
+  members = 2
+}
+
+player1 --> archer1 : owns
+player1 --> bard1 : owns
+archer1 --> inv1 : has
+inv1 --> bow : contains
+inv1 --> potion : contains
+archer1 --> skill1 : can use
+player1 --> guild1 : member of
+bard1 --> guild1 : member of
+
+@enduml

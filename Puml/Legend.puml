@@ -1,25 +1,28 @@
-@startuml LegendExample
+@startuml 
 skinparam legendFontSize 12
 
-class A
-class B
-class C
-interface I
+' Define actual roles
+class SuperClass
+class SubClass
+class Part
+interface IService
 class Client
 
-A <|-- B : inheritance
-A <|.. I : interface realization
-B o-- C : aggregation
-B *-- C : composition
-B -- C : association
-Client --> A : uses
+' Relationships
+SuperClass <|-- SubClass : inheritance
+SubClass <|.. IService : interface realization
+SubClass o-- Part : aggregation
+SubClass *-- Part : composition
+SubClass -- Part : association
+Client --> SuperClass : uses
 
+' Legend
 legend left
-  <|--   = inheritance (B extends A)
-  <|..   = interface realization (A implements I)
-  o--    = aggregation (B contains C, shared lifetime)
-  *--    = composition (B contains C, owned lifetime)
-  --     = association (B references C)
-  -->    = usage/dependency (Client uses A)
+  <|--   = inheritance (SubClass extends SuperClass)
+  <|..   = interface realization (SubClass implements IService)
+  o--    = aggregation (SubClass contains Part, shared lifetime)
+  *--    = composition (SubClass contains Part, owned lifetime)
+  --     = association (SubClass references Part)
+  -->    = usage/dependency (Client uses SuperClass)
 end legend
 @enduml
