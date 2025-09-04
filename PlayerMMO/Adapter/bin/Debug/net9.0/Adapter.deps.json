@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Adapter/1.0.0": {
+        "dependencies": {
+          "Decorator": "1.0.0",
+          "GameBase": "1.0.0"
+        },
+        "runtime": {
+          "Adapter.dll": {}
+        }
+      },
+      "Decorator/1.0.0": {
+        "dependencies": {
+          "GameBase": "1.0.0"
+        },
+        "runtime": {
+          "Decorator.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "GameBase/1.0.0": {
+        "runtime": {
+          "GameBase.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Adapter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Decorator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GameBase/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

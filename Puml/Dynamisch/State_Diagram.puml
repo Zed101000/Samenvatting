@@ -1,0 +1,33 @@
+@startuml Archer_State_Diagram
+[*] --> Idle : spawn
+
+' Core Loop
+Idle --> Exploring : start exploring
+Exploring --> Encountering : encounter monster
+Encountering --> Attacking : choose to attack
+Encountering --> Defending : gets attacked
+
+' Combat resolution
+Attacking --> Fighting : attack successful
+Defending --> Fighting : defense successful
+Fighting --> Exploring : victory
+Fighting --> Down : defeated
+
+' Healing
+Down --> Idle : Bard heals
+Down --> [*] : perma-death
+
+' City-related states
+Exploring --> City : enter city
+state City {
+  [*] --> Trading : enter city
+  Trading --> Resting : done trading
+  Resting --> Trading : start trading
+  Trading --> [*] : leave city
+}
+
+' Quest & logout
+Exploring --> [*] : quest completed
+City --> [*] : player logout
+
+@enduml

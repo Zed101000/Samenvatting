@@ -1,0 +1,10 @@
+@startuml
+interface Iterator {
+  +HasNext()
+  +Next()
+}
+class Aggregate {
+  +GetIterator()
+}
+Aggregate --> Iterator
+@enduml

@@ -1,0 +1,10 @@
+@startuml CommandPattern
+interface Command {
+  +Execute()
+}
+class ConcreteCommand
+class Invoker {
+  +SetCommand(Command)
+}
+Invoker --> Command
+@enduml

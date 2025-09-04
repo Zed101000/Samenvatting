@@ -1,0 +1,47 @@
+@startuml Party_Composite
+skinparam legendFontSize 12
+
+' ===== Composite Pattern: Party contains only Players =====
+
+interface IPartyMember {
+  +Name: string
+  +Attack(): void
+  +Play(): void
+}
+
+class Player {
+  +Player(name: string, health: int, attackPower: int)
+  +Name: string
+  +Attack(): void
+  +Play(): void
+}
+Player ..|> IPartyMember
+
+class Monster {
+  +Monster(name: string, health: int, attackPower: int)
+  +Name: string
+  +Attack(): void
+  +Play(): void
+}
+Monster ..|> IPartyMember
+
+class Party {
+  +Party(name: string)
+  +Members: List<IPartyMember>
+  +AddMember(member: IPartyMember): void
+  +RemoveMember(member: IPartyMember): void
+  +Attack(): void
+  +Play(): void
+}
+Party ..|> IPartyMember
+Party o-- IPartyMember : contains
+
+legend left
+  «Composite» = Party implements IPartyMember and contains IPartyMember objects (Players, Monsters, or other Parties)
+  ..|>        = interface realization (implements)
+  o--         = aggregation (contains)
+end legend
+@enduml
+
+' Example usage:
+' Party can contain Players, Monsters, or other Parties (nested groups)

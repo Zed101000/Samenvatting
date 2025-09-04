@@ -1,0 +1,45 @@
+
+@startuml Simple_MMO_Component_Diagram
+title Simple MMO Component Diagram (C#)
+
+package "Client Application" {
+	[UI]
+	[InputHandler]
+	[NetworkManager]
+}
+
+package "Game Server" {
+	[AuthService]
+	[WorldService]
+	[InventoryService]
+	[CombatService]
+	[GuildService]
+}
+
+package "Database" {
+	[UserDB]
+	[WorldDB]
+	[ItemDB]
+}
+
+[PaymentGateway]
+
+' Connections
+[UI] --> [InputHandler]
+[InputHandler] --> [NetworkManager]
+[NetworkManager] ..> [AuthService] : login/auth
+[NetworkManager] ..> [WorldService] : world data
+[NetworkManager] ..> [InventoryService] : inventory
+[NetworkManager] ..> [CombatService] : combat
+[NetworkManager] ..> [GuildService] : guilds
+
+[AuthService] --> [UserDB]
+[WorldService] --> [WorldDB]
+[InventoryService] --> [ItemDB]
+[CombatService] --> [UserDB]
+[GuildService] --> [UserDB]
+
+[NetworkManager] ..> [PaymentGateway] : purchase
+[PaymentGateway] ..> [InventoryService] : item delivery
+
+@enduml

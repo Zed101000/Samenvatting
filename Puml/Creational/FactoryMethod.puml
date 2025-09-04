@@ -1,0 +1,26 @@
+@startuml FactoryMethodPattern
+class Client {
+  +doSomething()
+}
+
+Abstract class Factory {
+  +FactoryMethod(): Product
+  +SomeOperation(): void
+}  
+class ConcreteFactory {
+  +FactoryMethod(): Product
+}
+class concreteProduct1
+class concreteProduct2
+Abstract class Product
+
+Factory <|-- ConcreteFactory
+concreteProduct1 <.. ConcreteFactory
+concreteProduct2 <.. ConcreteFactory
+concreteProduct1 --|> Product
+concreteProduct2 --|> Product
+
+Client ..> ConcreteFactory : uses
+Client ..> Product : uses   
+@enduml
+    

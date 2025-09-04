@@ -1,0 +1,78 @@
+@startuml MMO_UC_Diagram
+left to right direction
+
+' ===== Styling =====
+skinparam package {
+  RoundCorner 15
+  BackgroundColor #f9f9f9
+  BorderColor #333
+  Shadowing true
+}
+skinparam usecase {
+  BackgroundColor #ddeeff
+  BorderColor #225588
+}
+skinparam actorStyle awesome
+
+' ===== Actors =====
+actor Player
+actor Archer
+actor Bard
+
+' Keep actors stacked vertically
+Player -[hidden]-> Archer
+Archer -[hidden]-> Bard
+
+' Inheritance
+Player <|-- Archer
+Player <|-- Bard
+
+' ===== MMO System =====
+package "MMO System" {
+  
+  package "Access" {
+    usecase "Authenticate Player" as UC_Auth
+    usecase "Log In" as UC_Login
+    usecase "Select Character" as UC_SelectChar
+  }
+
+  package "Core Gameplay" {
+    usecase "Explore World" as UC_Explore
+    usecase "Encounter Monster" as UC_Encounter
+    usecase "Attack Monster" as UC_Attack
+    usecase "Heal" as UC_Heal
+    usecase "Play Music" as UC_Music
+  }
+
+  package "Social" {
+    usecase "Trade Items" as UC_Trade
+    usecase "Confirm Transaction" as UC_Confirm
+    usecase "Join Guild" as UC_Guild
+  }
+
+  ' ===== Relationships =====
+  UC_Login ..> UC_Auth : <<include>>
+  UC_Login --> UC_SelectChar
+  UC_SelectChar --> UC_Explore
+
+  UC_Explore <.. UC_Encounter : <<extend>>
+  UC_Explore <.. UC_Trade : <<extend>>
+  UC_Explore <.. UC_Guild : <<extend>>
+  UC_Explore <.. UC_Music : <<extend>>
+
+  UC_Trade ..> UC_Confirm : <<include>>
+
+  UC_Encounter <.. UC_Attack : <<extend>>
+  UC_Encounter <.. UC_Heal : <<extend>>
+}
+
+' ===== Actor Connections =====
+Player --> UC_Login
+Player --> UC_Trade
+Player --> UC_Guild
+Player --> UC_Explore
+
+Archer --> UC_Attack
+Bard --> UC_Heal
+Bard --> UC_Music
+@enduml

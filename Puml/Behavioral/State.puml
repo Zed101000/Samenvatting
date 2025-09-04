@@ -1,0 +1,9 @@
+@startuml StatePattern
+interface State {
+  +Handle()
+}
+class Context {
+  +Request()
+}
+Context --> State
+@enduml

@@ -1,0 +1,25 @@
+@startuml LegendExample
+skinparam legendFontSize 12
+
+class A
+class B
+class C
+interface I
+class Client
+
+A <|-- B : inheritance
+A <|.. I : interface realization
+B o-- C : aggregation
+B *-- C : composition
+B -- C : association
+Client --> A : uses
+
+legend left
+  <|--   = inheritance (B extends A)
+  <|..   = interface realization (A implements I)
+  o--    = aggregation (B contains C, shared lifetime)
+  *--    = composition (B contains C, owned lifetime)
+  --     = association (B references C)
+  -->    = usage/dependency (Client uses A)
+end legend
+@enduml

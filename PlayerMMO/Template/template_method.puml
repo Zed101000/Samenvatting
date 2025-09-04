@@ -1,0 +1,8 @@
+@startuml
+abstract class AbstractClass {
+  +TemplateMethod()
+  +PrimitiveOperation()
+}
+class ConcreteClass
+AbstractClass <|-- ConcreteClass
+@enduml

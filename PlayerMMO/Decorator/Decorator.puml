@@ -1,0 +1,89 @@
+@startuml Decorator_PlayerMMO
+title Decorator Pattern: Player Weapons/Abilities with Attributes
+
+' ---------- Player Interface ----------
+interface IPlayer {
+    +Name { get; }
+    +Health { get; set; }
+    +Mana { get; set; }
+    +AttackPower { get; set; }
+    +Defense { get; set; }
+    +Level { get; set; }
+    +Unequip() : IPlayer
+    +Play() : void
+    +Attack() : void
+    +Defend() : void
+    +Heal() : void
+}
+
+' ---------- Abstract Player ----------
+abstract class APlayer {
+    +Name { get; protected; }
+    +Health { get; set; }
+    +Mana { get; set; }
+    +AttackPower { get; set; }
+    +Defense { get; set; }
+    +Level { get; set; }
+    +Unequip() : IPlayer
+    +Play() : void
+    +Attack() : void
+    +Defend() : void
+    +Heal() : void
+}
+
+' ---------- Concrete Player ----------
+class BasePlayer {
+    +BasePlayer(name, mana, defense, attackPower, health, level)
+    +Play() : void
+    +Attack() : void
+    +Defend() : void
+    +Heal() : void
+    +Unequip() : IPlayer
+}
+
+' ---------- Player Decorator ----------
+abstract class PlayerDecorator {
+    -IPlayer _player
+    +PlayerDecorator(player : IPlayer)
+    +Name { get; }
+    +Health { get; set; }
+    +Mana { get; set; }
+    +AttackPower { get; set; }
+    +Defense { get; set; }
+    +Level { get; set; }
+    +Unequip() : IPlayer
+    +Play() : void
+    +Attack() : void
+    +Defend() : void
+    +Heal() : void
+}
+
+' ---------- Concrete Decorators ----------
+class SwordDecorator {
+    +SwordDecorator(player : IPlayer)
+    +Attack() : void
+    +Unequip() : IPlayer
+}
+
+class StaffDecorator {
+    +StaffDecorator(player : IPlayer)
+    +Heal() : void
+    +Unequip() : IPlayer
+}
+
+class ShieldDecorator {
+    +ShieldDecorator(player : IPlayer)
+    +Defend() : void
+    +Unequip() : IPlayer
+}
+
+' ---------- Relationships ----------
+IPlayer <|.. APlayer
+APlayer <|-- BasePlayer
+IPlayer <|.. PlayerDecorator
+PlayerDecorator <|-- SwordDecorator
+PlayerDecorator <|-- StaffDecorator
+PlayerDecorator <|-- ShieldDecorator
+PlayerDecorator o-- IPlayer : _player
+
+@enduml

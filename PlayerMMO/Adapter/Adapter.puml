@@ -1,0 +1,87 @@
+@startuml Adapter_Bidirectional_Clean
+skinparam legendFontSize 12
+
+' ===== Models =====
+
+class Player {
+  +Player(name: string, health: int, attackPower: int)
+  +Name: string
+  +Health: int
+  +AttackPower: int
+  +Attack(): void
+  +Play(): void
+}
+IPlayer <|.. Player
+
+
+class Monster {
+  +Monster(name: string, hp: int)
+  +Name: string
+  +HP: int
+  +Attack(): void
+  +Roar(): void
+}
+IMonster <|.. Monster
+
+' ===== Interfaces (Targets) =====
+interface IMonster <<Target>> {
+  +Name: string
+  +HP: int
+  +Attack(): void
+  +Roar(): void
+}
+
+interface IPlayer <<Target>> {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Play(): void
+    +Attack(): void
+}
+
+' ===== Adapter: Player to Monster =====
+class PlayerToMonsterAdapter <<Adapter>> {
+  -adaptee: Player
+  +PlayerToMonsterAdapter(player: Player)
+  +Name: string
+  +HP: int
+  +Attack(): void
+  +Roar(): void
+}
+IMonster <|.. PlayerToMonsterAdapter
+PlayerToMonsterAdapter -- Player : adapts
+
+' ===== Adapter: Monster to Player =====
+class MonsterToPlayerAdapter <<Adapter>> {
+  -adaptee: Monster
+  +MonsterToPlayerAdapter(monster: Monster)
+  +Name: string
+  +Health: int
+  +AttackPower: int
+  +Play(): void
+  +Attack(): void
+}
+IPlayer <|.. MonsterToPlayerAdapter
+MonsterToPlayerAdapter -- Monster : adapts
+
+' ===== Conversion helpers (optional) =====
+class PlayerMonsterConverter {
+  +Convert(player: Player) : Monster
+}
+PlayerToMonsterAdapter ..> PlayerMonsterConverter : uses
+PlayerMonsterConverter --|> Monster
+
+class MonsterPlayerConverter {
+  +Convert(monster: Monster) : Player
+}
+MonsterToPlayerAdapter ..> MonsterPlayerConverter : uses
+MonsterPlayerConverter --|> Player
+
+' ===== Legend =====
+legend left
+  «Target»   = interface expected by client
+  «Adapter»  = class that translates between APIs (composition)
+  --          = association (adapter references adaptee)
+  ..>         = uses / dependency
+end legend
+@enduml

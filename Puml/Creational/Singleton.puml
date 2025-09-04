@@ -1,0 +1,18 @@
+@startuml SingletonPattern
+skinparam legendFontSize 12
+
+class Singleton {
+  -instance: Singleton
+  +GetInstance(): Singleton
+}
+class Client {
+  +DoSomething()
+}
+Client --> Singleton : uses
+
+legend left
+  -instance = private static instance
+  +GetInstance() = accessor
+  --> = usage
+end legend
+@enduml

@@ -1,0 +1,66 @@
+@startuml Refined_Archer_Activity_Diagram
+
+|Player|
+start
+:Log In;
+:Select Character;
+
+' -----------------------------
+' Exploration Loop
+' -----------------------------
+partition Exploration {
+    repeat
+        :Explore World;
+
+        if (Encounter Monster?) then (yes)
+            :Combat (Attack / Defend / Flee);
+            if (Victory?) then (yes)
+                :Loot & Gain XP;
+            else (no)
+                :Down;
+                if (Bard heals?) then (yes)
+                    :Recover HP;
+                else (no)
+                    stop
+                endif
+            endif
+        else (no)
+            if (Enter City?) then (yes)
+                fork
+                    :Trade / Rest / Side Quest;
+                end fork
+                :Leave City;
+            endif
+        endif
+
+        :Perform Action;
+
+        if (Error?) then (yes)
+            :Display Error;
+        endif
+
+    repeat while (Quest not completed)
+}
+
+' -----------------------------
+' System & NPC Actions
+' -----------------------------
+partition System_NPC {
+    :Save Progress;
+    :Trigger Time Event;
+    :Offer Side Quest;
+    :Heal Player;
+}
+
+' -----------------------------
+' Interruptible Region: Logout always available
+' -----------------------------
+|Player|
+split
+    :Exploration;
+split again
+    :Logout <<interrupting>>;
+end split
+
+stop
+@enduml

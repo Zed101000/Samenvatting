@@ -1,0 +1,34 @@
+@startuml AbstractFactory_PlayerMMO
+skinparam legendFontSize 12
+
+interface IGameFactory {
+  +CreatePlayer(name: string): IPlayer
+  +CreateMonster(name: string): IMonster
+}
+
+class CasualGameFactory {
+  +CreatePlayer(name: string): IPlayer
+  +CreateMonster(name: string): IMonster
+}
+class HardcoreGameFactory {
+  +CreatePlayer(name: string): IPlayer
+  +CreateMonster(name: string): IMonster
+}
+
+IGameFactory <|.. CasualGameFactory
+IGameFactory <|.. HardcoreGameFactory
+
+interface IPlayer
+interface IMonster
+
+CasualGameFactory ..> IPlayer : creates
+CasualGameFactory ..> IMonster : creates
+HardcoreGameFactory ..> IPlayer : creates
+HardcoreGameFactory ..> IMonster : creates
+
+legend left
+  «AbstractFactory» = creates families of related objects (Player, Monster)
+  <|..              = interface realization (implements)
+  ..>               = creates
+end legend
+@enduml

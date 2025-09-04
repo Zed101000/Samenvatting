@@ -1,0 +1,11 @@
+@startuml FacadePattern
+class Facade {
+  +Operation()
+}
+class Client {
+  +DoSomething()
+}
+Facade --> SubsystemA
+Facade --> SubsystemB
+Client --> Facade : uses
+@enduml

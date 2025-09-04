@@ -1,0 +1,59 @@
+@startuml mmo_purchase
+/'
+ Advanced MMO Purchase Sequence Diagram
+ - Uses notes, activation/deactivation, grouping, alt/opt blocks, return arrows, and styling
+'/
+skinparam participant {
+  BackgroundColor #f9f9f9
+  BorderColor #333
+  FontSize 12
+}
+skinparam sequence {
+  ArrowColor #225588
+  LifeLineBorderColor #225588
+  LifeLineBackgroundColor #ddeeff
+}
+
+actor User
+participant "MMO Website" as MMO
+participant "PayPal" as PayPal
+participant "Game Server" as Server
+
+User -> MMO: Selects currency package
+note right of User: User wants to buy in-game currency
+activate MMO
+MMO -> User: Shows payment options
+User -> MMO: Chooses PayPal
+MMO -> PayPal: Initiates payment request
+activate PayPal
+PayPal -> User: Requests login & confirmation
+User -> PayPal: Logs in & confirms payment
+PayPal <-- User: Confirmation received
+
+alt Payment successful
+    PayPal -> MMO: Sends payment confirmation
+    MMO -> Server: Credits currency to user account
+    activate Server
+    Server -> MMO: Confirmation of credit
+    deactivate Server
+    MMO -> User: Shows success & updated balance
+    note left of User: User sees new balance
+    loop Buy items
+      User -> MMO: Selects item to purchase
+      MMO -> Server: Checks item availability
+      Server --> MMO: Item available
+      MMO -> PayPal: Initiates item payment
+      PayPal -> MMO: Payment confirmation
+      MMO -> Server: Credits item to user account
+      Server -> MMO: Confirmation of item credit
+      MMO -> User: Shows item received
+    end
+else Payment failed
+    PayPal -> MMO: Sends failure notice
+    MMO -> User: Shows error message
+    note left of User: User sees error
+end
+
+deactivate PayPal
+deactivate MMO
+@enduml
