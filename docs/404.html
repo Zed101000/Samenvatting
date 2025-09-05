@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - PlayerMMO Design Patterns</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Immediate redirect for /docs/ URLs -->
+    <script>
+        // Immediate redirect - run before page loads
+        const url = window.location.href;
+        if (url.includes('/docs/')) {
+            const redirectURL = url.replace('/docs/', '/');
+            window.location.href = redirectURL;
+        }
+    </script>
     <style>
         .error-page {
             min-height: 100vh;

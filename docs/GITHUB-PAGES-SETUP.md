@@ -63,13 +63,13 @@ git push origin main
 - UML modeling overview
 - Download section
 
-### 📖 Documentation (`/docs/`)
-- **Project Overview** (`/docs/main.html`)
-- **PlayerMMO System** (`/docs/playermmo.html`) 
-- **UML Modeling Guide** (`/docs/uml-modeling.html`)
+### 📖 Documentation
+- **Project Overview** (`/main.html`)
+- **PlayerMMO System** (`/playermmo.html`) 
+- **UML Modeling Guide** (`/uml-modeling.html`)
 
-### 🎨 Design Patterns (`/docs/patterns/`)
-- **Patterns Overview** (`/docs/patterns/`)
+### 🎨 Design Patterns (`/patterns/`)
+- **Patterns Overview** (`/patterns/`)
 - **Category Overviews**:
   - Creational Patterns (4 patterns)
   - Behavioral Patterns (6 patterns)  
