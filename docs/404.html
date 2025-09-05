@@ -65,8 +65,13 @@
             <div class="error-code">404</div>
             <h1 class="error-title">Page Not Found</h1>
             <p class="error-description">
-                The page you're looking for might have been moved, deleted, or doesn't exist. 
-                Let's get you back to exploring our design patterns documentation.
+                The page you're looking for might have been moved, deleted, or doesn't exist.<br>
+                <strong>Note:</strong> If your URL contains <code>/docs/</code>, try removing it - our site structure has changed!
+            </p>
+            <p class="error-description" style="font-size: 0.9rem; color: #95a5a6;">
+                <strong>Correct URL format:</strong><br>
+                ❌ <code>...github.io/Samenvatting/docs/patterns/observer.html</code><br>
+                ✅ <code>...github.io/Samenvatting/patterns/observer.html</code>
             </p>
             <div class="error-links">
                 <a href="./" class="btn btn-primary">Return Home</a>
@@ -78,13 +83,29 @@
     
     <script>
         // Handle URL redirects, especially old /docs/ paths
+        const currentURL = window.location.href;
         const path = window.location.pathname;
         const hash = window.location.hash;
         
+        console.log('Current URL:', currentURL);
+        console.log('Path:', path);
+        
         // If URL contains /docs/, redirect to the correct path
         if (path.includes('/docs/')) {
-            const newPath = path.replace('/docs/', '/');
-            window.location.href = newPath + hash;
+            let newPath = path.replace('/docs/', '/');
+            // Ensure we don't double up slashes
+            newPath = newPath.replace('//', '/');
+            const newURL = window.location.origin + newPath + hash;
+            console.log('Redirecting to:', newURL);
+            window.location.href = newURL;
+            return;
+        }
+        
+        // Alternative: check if URL has Samenvatting/docs pattern
+        if (currentURL.includes('/Samenvatting/docs/')) {
+            const newURL = currentURL.replace('/Samenvatting/docs/', '/Samenvatting/');
+            console.log('Redirecting docs URL to:', newURL);
+            window.location.href = newURL;
             return;
         }
         
