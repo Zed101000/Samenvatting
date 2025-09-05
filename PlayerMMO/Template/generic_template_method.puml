@@ -1,0 +1,70 @@
+@startuml Generic_Template_Method_Pattern
+
+title Generic Template Method Pattern
+
+abstract class AbstractClass {
+    +TemplateMethod(): void {final}
+    #PrimitiveOperation1(): void {abstract}
+    #PrimitiveOperation2(): void {abstract}
+    #Hook1(): void {virtual}
+    #Hook2(): void {virtual}
+    #ConcreteOperation(): void
+}
+
+class ConcreteClassA {
+    #PrimitiveOperation1(): void
+    #PrimitiveOperation2(): void
+    #Hook1(): void
+}
+
+class ConcreteClassB {
+    #PrimitiveOperation1(): void
+    #PrimitiveOperation2(): void
+    #Hook2(): void
+}
+
+class ConcreteClassC {
+    #PrimitiveOperation1(): void
+    #PrimitiveOperation2(): void
+}
+
+class Client {
+    +UseTemplate(): void
+}
+
+ConcreteClassA --|> AbstractClass
+ConcreteClassB --|> AbstractClass
+ConcreteClassC --|> AbstractClass
+Client --> AbstractClass : uses
+
+note right of AbstractClass
+  Template method defines skeleton
+  of algorithm:
+  
+  TemplateMethod() {
+    ConcreteOperation();
+    PrimitiveOperation1();
+    Hook1();
+    PrimitiveOperation2();
+    Hook2();
+  }
+end note
+
+note bottom of ConcreteClassA
+  Concrete classes implement
+  abstract operations and
+  optionally override hooks:
+  
+  - Required: PrimitiveOperation1/2
+  - Optional: Hook1/2 (have defaults)
+  - Fixed: ConcreteOperation (inherited)
+end note
+
+note left of Client
+  Client calls template method.
+  Algorithm structure is fixed,
+  but specific steps vary by
+  concrete implementation
+end note
+
+@enduml

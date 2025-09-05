@@ -1,0 +1,53 @@
+@startuml Generic_Adapter_Pattern
+
+title Generic Adapter Pattern
+
+interface Target {
+    +Request(): void
+}
+
+class Adaptee {
+    +SpecificRequest(): void
+}
+
+class Adapter {
+    -adaptee: Adaptee
+    +Adapter(adaptee: Adaptee)
+    +Request(): void
+}
+
+class Client {
+    +UseTarget(target: Target): void
+}
+
+Adapter ..|> Target
+Adapter --> Adaptee : adapts
+Client --> Target : uses
+
+note right of Target
+  Target defines interface
+  that client expects to use
+end note
+
+note bottom of Adaptee
+  Adaptee has useful functionality
+  but incompatible interface
+  that needs to be adapted
+end note
+
+note right of Adapter
+  Adapter implements Target interface
+  and translates calls to Adaptee:
+  
+  Request() {
+    adaptee.SpecificRequest();
+  }
+end note
+
+note left of Client
+  Client works with Target interface.
+  Doesn't know about Adaptee or
+  that adaptation is happening
+end note
+
+@enduml

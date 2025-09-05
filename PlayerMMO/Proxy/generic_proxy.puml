@@ -1,0 +1,65 @@
+@startuml Generic_Proxy_Pattern
+
+title Generic Proxy Pattern
+
+interface Subject {
+    +Request(): void
+}
+
+class RealSubject {
+    +Request(): void
+}
+
+class Proxy {
+    -realSubject: RealSubject
+    +Request(): void
+    -CheckAccess(): bool
+    -LogAccess(): void
+}
+
+class Client {
+    +UseSubject(subject: Subject): void
+}
+
+RealSubject ..|> Subject
+Proxy ..|> Subject
+Proxy --> RealSubject : controls access to
+Client --> Subject : uses
+
+note right of Subject
+  Subject defines common interface
+  for RealSubject and Proxy
+  so proxy can be used anywhere
+  RealSubject is expected
+end note
+
+note bottom of RealSubject
+  RealSubject contains the core
+  business logic that proxy
+  controls access to
+end note
+
+note right of Proxy
+  Proxy controls access to RealSubject:
+  
+  Request() {
+    if (CheckAccess()) {
+      LogAccess();
+      realSubject.Request();
+    }
+  }
+  
+  Common proxy types:
+  - Virtual: Lazy loading
+  - Protection: Access control
+  - Remote: Network proxy
+  - Cache: Caching proxy
+end note
+
+note left of Client
+  Client works through Subject
+  interface. Doesn't know if
+  it's using real subject or proxy
+end note
+
+@enduml

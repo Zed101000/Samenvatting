@@ -1,0 +1,69 @@
+@startuml Generic_Builder_Pattern
+
+title Generic Builder Pattern
+
+interface Builder {
+    +SetPartA(): Builder
+    +SetPartB(): Builder
+    +SetPartC(): Builder
+    +Build(): Product
+    +Reset(): void
+}
+
+class ConcreteBuilder {
+    -product: Product
+    +SetPartA(): Builder
+    +SetPartB(): Builder
+    +SetPartC(): Builder
+    +Build(): Product
+    +Reset(): void
+}
+
+class Director {
+    -builder: Builder
+    +Director(builder: Builder)
+    +ConstructMinimalProduct(): Product
+    +ConstructFullProduct(): Product
+}
+
+class Product {
+    -partA: string
+    -partB: string
+    -partC: string
+    +GetParts(): List<string>
+}
+
+class Client {
+    +UseBuilder(): void
+    +UseDirector(): void
+}
+
+ConcreteBuilder ..|> Builder
+Director --> Builder : uses
+Builder --> Product : creates
+ConcreteBuilder --> Product : builds
+Client --> ConcreteBuilder : uses
+Client --> Director : uses
+
+note right of Builder
+  Builder interface defines
+  steps for constructing
+  product with fluent API
+end note
+
+note right of Director
+  Director knows how to
+  construct products using
+  builder interface.
+  Encapsulates construction
+  algorithms
+end note
+
+note bottom of ConcreteBuilder
+  Concrete builder implements
+  construction steps and
+  maintains product being built.
+  Reset() prepares for new product
+end note
+
+@enduml

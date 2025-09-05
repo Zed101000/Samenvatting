@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Command</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>Command Pattern Summary</h1>
+
+<h2>📖 Overview</h2>
+<p>The Command pattern encapsulates a request as an object, allowing you to parameterize clients with different requests, queue operations, and support undo operations.</p>
+
+<h2>🎯 Purpose</h2>
+<ul>
+<li>Encapsulate requests as objects</li>
+<li>Enable undo/redo functionality</li>
+<li>Support queuing and logging of operations</li>
+<li>Decouple invoker from receiver</li>
+</ul>
+
+<h2>📋 Generic Implementation Guidelines</h2>
+
+<h3>Standard Structure</h3>
+<p>1. <strong>Command Interface</strong></p>
+<pre><code>
+   interface ICommand {
+       void Execute();
+       void Undo();
+   }
+</code></pre>
+
+<p>2. <strong>Concrete Commands</strong></p>
+<pre><code>
+   class ConcreteCommand : ICommand {
+       private Receiver receiver;
+       private string state;
+       
+       public ConcreteCommand(Receiver receiver, string state) {
+           this.receiver = receiver;
+           this.state = state;
+       }
+       
+       public void Execute() {
+           receiver.Action(state);
+       }
+       
+       public void Undo() {
+           receiver.UndoAction(state);
+       }
+   }
+</code></pre>
+
+<p>3. <strong>Invoker</strong></p>
+<pre><code>
+   class Invoker {
+       private Stack&lt;ICommand&gt; history = new Stack&lt;ICommand&gt;();
+       
+       public void ExecuteCommand(ICommand command) {
+           command.Execute();
+           history.Push(command);
+       }
+       
+       public void UndoLastCommand() {
+           if (history.Count &gt; 0) {
+               var command = history.Pop();
+               command.Undo();
+           }
+       }
+   }
+</code></pre>
+
+<p>4. <strong>Receiver</strong></p>
+<pre><code>
+   class Receiver {
+       public void Action(string state) {
+           // Perform action
+       }
+       
+       public void UndoAction(string state) {
+           // Reverse action
+       }
+   }
+</code></pre>
+
+<p>5. <strong>Client Usage</strong></p>
+<pre><code>
+   var receiver = new Receiver();
+   var command = new ConcreteCommand(receiver, &quot;data&quot;);
+   var invoker = new Invoker();
+   
+   invoker.ExecuteCommand(command);  // Execute
+   invoker.UndoLastCommand();        // Undo
+</code></pre>
+
+<h3>When to Use</h3>
+<ul>
+<li>Need to parameterize objects with operations</li>
+<li>Want to queue, specify, and execute requests at different times</li>
+<li>Need to support undo operations</li>
+<li>Want to structure system around high-level operations built on primitive operations</li>
+</ul>
+
+<h2>🏗️ Implementation in PlayerMMO</h2>
+
+<h3>Key Components</h3>
+<ul>
+<li><strong>ICommand</strong>: Command interface with Execute/Undo</li>
+<li><strong>AttackCommand, HealCommand, DefendCommand</strong>: Concrete commands</li>
+<li><strong>GameInvoker</strong>: Command invoker with history</li>
+<li><strong>IPlayer, IMonster</strong>: Receivers of the commands</li>
+</ul>
+
+<h3>Code Structure</h3>
+<pre><code>
+PlayerMMO/Command/
+├── Pattern/
+│   ├── ICommand.cs
+│   ├── AttackCommand.cs
+│   ├── HealCommand.cs
+│   ├── DefendCommand.cs
+│   └── GameInvoker.cs
+├── Program.cs
+└── command.puml
+</code></pre>
+
+<h2>🎮 Game Integration</h2>
+<ul>
+<li><strong>BaseGame Classes Used</strong>: IPlayer, IMonster</li>
+<li><strong>Game Context</strong>: Game action system with undo capability for moves</li>
+<li><strong>Demo Features</strong>: Attack/heal/defend commands, undo functionality, command history</li>
+</ul>
+
+<h3>Actual Implementation Mapping</h3>
+<p>| Generic Component | PlayerMMO Implementation | Purpose |</p>
+<p>|------------------|-------------------------|---------|</p>
+<p>| ICommand | ICommand | Command interface |</p>
+<p>| ConcreteCommand | AttackCommand, HealCommand, DefendCommand | Specific game actions |</p>
+<p>| Invoker | GameInvoker | Executes and manages commands |</p>
+<p>| Receiver | IPlayer, IMonster | Objects that receive actions |</p>
+<p>| Execute() | Execute() | Performs the game action |</p>
+<p>| Undo() | Undo() | Reverses the game action |</p>
+<p>| Client | Program.cs demo | Uses invoker to execute commands |</p>
+
+<h3>Real Usage Example</h3>
+<pre><code>
+// Create game objects
+var player = new BasePlayer(&quot;Hero&quot;, 50, 10, 20, 100, 1);
+var monster = new Monster(&quot;Goblin&quot;, 5, 15, 80, 1);
+var invoker = new GameInvoker();
+
+// Create and execute commands
+var attackCommand = new AttackCommand(player, monster);
+var healCommand = new HealCommand(player, 20);
+var defendCommand = new DefendCommand(player, 5);
+
+// Execute actions
+invoker.ExecuteCommand(attackCommand);  // Player attacks monster
+invoker.ExecuteCommand(healCommand);    // Player heals self
+invoker.ExecuteCommand(defendCommand);  // Player raises defense
+
+// Undo actions (Last In, First Out)
+invoker.UndoLastCommand();  // Undo defend (defense restored)
+invoker.UndoLastCommand();  // Undo heal (health restored)
+invoker.UndoLastCommand();  // Undo attack (both health values restored)
+
+// Commands store previous state for perfect undo
+// AttackCommand: stores previous health of both player and target
+// HealCommand: stores previous health before healing
+// DefendCommand: stores previous defense value
+</code></pre>
+
+<h2>✨ Key Benefits</h2>
+<ul>
+<li><strong>Undo/Redo</strong>: Perfect state restoration for any command</li>
+<li><strong>Macro Commands</strong>: Can combine multiple commands</li>
+<li><strong>Queuing</strong>: Commands can be stored and executed later</li>
+<li><strong>Logging</strong>: Command history provides game replay capability</li>
+<li><strong>Decoupling</strong>: Invoker doesn't need to know command details</li>
+</ul>
+
+<h2>🔧 Advanced Features</h2>
+<pre><code>
+// Macro command example
+var macroCommand = new List&lt;ICommand&gt; {
+    new AttackCommand(player, monster1),
+    new AttackCommand(player, monster2),
+    new HealCommand(player, 30)
+};
+
+// Execute all commands in sequence
+foreach(var cmd in macroCommand) {
+    invoker.ExecuteCommand(cmd);
+}
+
+// Undo entire macro
+for(int i = 0; i &lt; macroCommand.Count; i++) {
+    invoker.UndoLastCommand();
+}
+</code></pre>
+
+<h2>🔗 Related Patterns</h2>
+<ul>
+<li><strong>Memento</strong>: Can be used to store command state</li>
+<li><strong>Composite</strong>: For macro commands</li>
+<li><strong>Strategy</strong>: Commands can use different strategies</li>
+</ul>
+
+<h2>📊 UML Diagrams</h2>
+
+<h3>Generic Pattern Structure</h3>
+<p>!<a href="../Command/generic_command.png">Generic Command UML</a></p>
+
+<h3>PlayerMMO Implementation</h3>
+<p>!<a href="../Command/command.png">Command UML</a></p>
+
+<p>---</p>
+<a href="../Summaries/README.md">← Back to Main Pattern Summary</a>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>

@@ -1,10 +1,99 @@
-@startuml
-interface Iterator {
-  +HasNext()
-  +Next()
+@startuml Iterator_Pattern
+
+title Iterator Pattern - Player Party Management
+
+interface IGameIterator<T> {
+    +HasNext(): bool
+    +Next(): T
+    +Reset(): void
+    +Current: T
 }
-class Aggregate {
-  +GetIterator()
+
+interface IGameCollection<T> {
+    +CreateIterator(): IGameIterator<T>
+    +Add(item: T): void
+    +Remove(item: T): void
+    +Count: int
 }
-Aggregate --> Iterator
+
+class PlayerParty {
+    -_players: List<IPlayer>
+    -_partyName: string
+    +PlayerParty(partyName: string)
+    +Add(player: IPlayer): void
+    +Remove(player: IPlayer): void
+    +CreateIterator(): IGameIterator<IPlayer>
+    +CreateReverseIterator(): IGameIterator<IPlayer>
+    +CreateFilteredIterator(filter: Func<IPlayer, bool>): IGameIterator<IPlayer>
+    +ShowPartyInfo(): void
+    +Count: int
+    +PartyName: string
+}
+
+class PlayerPartyIterator {
+    -_players: List<IPlayer>
+    -_currentIndex: int
+    +PlayerPartyIterator(players: List<IPlayer>)
+    +HasNext(): bool
+    +Next(): IPlayer
+    +Reset(): void
+    +Current: IPlayer
+}
+
+class PlayerPartyReverseIterator {
+    -_players: List<IPlayer>
+    -_currentIndex: int
+    +PlayerPartyReverseIterator(players: List<IPlayer>)
+    +HasNext(): bool
+    +Next(): IPlayer
+    +Reset(): void
+    +Current: IPlayer
+}
+
+class FilteredPlayerIterator {
+    -_filteredPlayers: List<IPlayer>
+    -_currentIndex: int
+    +FilteredPlayerIterator(players: List<IPlayer>, filter: Func<IPlayer, bool>)
+    +HasNext(): bool
+    +Next(): IPlayer
+    +Reset(): void
+    +Current: IPlayer
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Level: int
+}
+
+PlayerParty ..|> IGameCollection
+PlayerPartyIterator ..|> IGameIterator
+PlayerPartyReverseIterator ..|> IGameIterator
+FilteredPlayerIterator ..|> IGameIterator
+PlayerParty --> PlayerPartyIterator : creates
+PlayerParty --> PlayerPartyReverseIterator : creates
+PlayerParty --> FilteredPlayerIterator : creates
+PlayerParty --> IPlayer : contains
+PlayerPartyIterator --> IPlayer : iterates
+PlayerPartyReverseIterator --> IPlayer : iterates
+FilteredPlayerIterator --> IPlayer : iterates
+
+note right of PlayerParty
+  Concrete aggregate that
+  provides multiple iterator
+  types for different
+  traversal needs
+end note
+
+note bottom of IGameIterator
+  Multiple iterator implementations:
+  - Forward iteration
+  - Reverse iteration
+  - Filtered iteration (by criteria)
+  All support reset functionality
+end note
+
 @enduml

@@ -3,12 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\command\\pattern\\gameinvoker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|solutionrelative:command\\pattern\\gameinvoker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\command\\pattern\\attackcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|solutionrelative:command\\pattern\\attackcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\command\\pattern\\defendcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABD4F0C5-677F-47FA-9FE1-3EFF5A7F8FDF}|Command\\Command.csproj|solutionrelative:command\\pattern\\defendcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\observer\\pattern\\gameeventsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|solutionrelative:observer\\pattern\\gameeventsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\pattern\\playerparty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\pattern\\playerparty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\pattern\\filteredplayeriterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\pattern\\filteredplayeriterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\pattern\\igamecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\pattern\\igamecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\pattern\\playerpartyiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\pattern\\playerpartyiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\iterator\\pattern\\igameiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2A310AC-59AF-4849-B603-1F15D3F2EE59}|Iterator\\Iterator.csproj|solutionrelative:iterator\\pattern\\igameiterator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +50,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
-              "RelativeDocumentMoniker": "AbstractFactory\\Program.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
-              "RelativeToolTip": "AbstractFactory\\Program.cs",
+              "DocumentIndex": 0,
+              "Title": "GameInvoker.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\GameInvoker.cs",
+              "RelativeDocumentMoniker": "Command\\Pattern\\GameInvoker.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\GameInvoker.cs",
+              "RelativeToolTip": "Command\\Pattern\\GameInvoker.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T22:00:17.101Z"
+              "WhenOpened": "2025-09-05T00:52:59.174Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConcreteLevel.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "RelativeDocumentMoniker": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "RelativeToolTip": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DefendCommand.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\DefendCommand.cs",
+              "RelativeDocumentMoniker": "Command\\Pattern\\DefendCommand.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\DefendCommand.cs",
+              "RelativeToolTip": "Command\\Pattern\\DefendCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T21:59:55.733Z",
+              "WhenOpened": "2025-09-05T00:52:40.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AttackCommand.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\AttackCommand.cs",
+              "RelativeDocumentMoniker": "Command\\Pattern\\AttackCommand.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Command\\Pattern\\AttackCommand.cs",
+              "RelativeToolTip": "Command\\Pattern\\AttackCommand.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:52:18.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameEventSystem.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\Pattern\\GameEventSystem.cs",
+              "RelativeDocumentMoniker": "Observer\\Pattern\\GameEventSystem.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\Pattern\\GameEventSystem.cs",
+              "RelativeToolTip": "Observer\\Pattern\\GameEventSystem.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:52:08.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerParty.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\PlayerParty.cs",
+              "RelativeDocumentMoniker": "Iterator\\Pattern\\PlayerParty.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\PlayerParty.cs",
+              "RelativeToolTip": "Iterator\\Pattern\\PlayerParty.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAwAQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:49:30.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Program.cs",
+              "RelativeDocumentMoniker": "Iterator\\Program.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Program.cs",
+              "RelativeToolTip": "Iterator\\Program.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:47:34.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FilteredPlayerIterator.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\FilteredPlayerIterator.cs",
+              "RelativeDocumentMoniker": "Iterator\\Pattern\\FilteredPlayerIterator.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\FilteredPlayerIterator.cs",
+              "RelativeToolTip": "Iterator\\Pattern\\FilteredPlayerIterator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:46:51.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IGameCollection.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\IGameCollection.cs",
+              "RelativeDocumentMoniker": "Iterator\\Pattern\\IGameCollection.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\IGameCollection.cs",
+              "RelativeToolTip": "Iterator\\Pattern\\IGameCollection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:46:49.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IGameIterator.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\IGameIterator.cs",
+              "RelativeDocumentMoniker": "Iterator\\Pattern\\IGameIterator.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\IGameIterator.cs",
+              "RelativeToolTip": "Iterator\\Pattern\\IGameIterator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:43:25.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlayerPartyIterator.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\PlayerPartyIterator.cs",
+              "RelativeDocumentMoniker": "Iterator\\Pattern\\PlayerPartyIterator.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Iterator\\Pattern\\PlayerPartyIterator.cs",
+              "RelativeToolTip": "Iterator\\Pattern\\PlayerPartyIterator.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T00:42:03.195Z",
               "EditorCaption": ""
             }
           ]

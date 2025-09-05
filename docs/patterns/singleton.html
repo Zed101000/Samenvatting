@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singleton - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Singleton</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>Singleton Pattern Summary</h1>
+
+<h2>📖 Overview</h2>
+<p>The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. It's useful for coordinating actions across the system.</p>
+
+<h2>🎯 Purpose</h2>
+<ul>
+<li>Ensure only one instance of a class exists</li>
+<li>Provide global access to that instance</li>
+<li>Control object creation and access</li>
+<li>Manage shared resources or state</li>
+</ul>
+
+<h2>📋 Generic Implementation Guidelines</h2>
+
+<h3>Standard Structure (Thread-Safe)</h3>
+<p>1. <strong>Basic Singleton</strong></p>
+<pre><code>
+   class Singleton {
+       private static Singleton instance = null;
+       private static readonly object lockObject = new object();
+       
+       private Singleton() { }
+       
+       public static Singleton Instance {
+           get {
+               if (instance == null) {
+                   lock (lockObject) {
+                       if (instance == null) {
+                           instance = new Singleton();
+                       }
+                   }
+               }
+               return instance;
+           }
+       }
+       
+       public void SomeBusinessLogic() {
+           // Implementation
+       }
+   }
+</code></pre>
+
+<p>2. <strong>Lazy Initialization (C# Specific)</strong></p>
+<pre><code>
+   class Singleton {
+       private static readonly Lazy&lt;Singleton&gt; lazy = 
+           new Lazy&lt;Singleton&gt;(() =&gt; new Singleton());
+       
+       private Singleton() { }
+       
+       public static Singleton Instance =&gt; lazy.Value;
+   }
+</code></pre>
+
+<p>3. <strong>Client Usage</strong></p>
+<pre><code>
+   // Always gets the same instance
+   var instance1 = Singleton.Instance;
+   var instance2 = Singleton.Instance;
+   // instance1 == instance2 (true)
+</code></pre>
+
+<h3>When to Use</h3>
+<ul>
+<li>Need exactly one instance of a class</li>
+<li>Instance must be accessible from multiple points</li>
+<li>Instance should be created only when first needed</li>
+<li>Need to control access to shared resources</li>
+</ul>
+
+<h3>⚠️ Considerations</h3>
+<ul>
+<li>Can make unit testing difficult</li>
+<li>May violate Single Responsibility Principle</li>
+<li>Can become a global state (anti-pattern if overused)</li>
+<li>Consider dependency injection as alternative</li>
+</ul>
+
+<h2>🏗️ Implementation in PlayerMMO</h2>
+
+<h3>Key Components</h3>
+<ul>
+<li><strong>GameManager</strong>: Thread-safe singleton managing game state</li>
+<li><strong>Double-checked locking</strong>: Ensures thread safety</li>
+<li><strong>Global game state</strong>: Players, monsters, level, score management</li>
+</ul>
+
+<h3>Code Structure</h3>
+<pre><code>
+PlayerMMO/Singleton/
+├── Pattern/
+│   └── GameManager.cs
+├── Program.cs
+└── singleton.puml
+</code></pre>
+
+<h2>🎮 Game Integration</h2>
+<ul>
+<li><strong>BaseGame Classes Used</strong>: IPlayer, IMonster</li>
+<li><strong>Game Context</strong>: Global game state management across all game systems</li>
+<li><strong>Demo Features</strong>: Player/monster registration, combat processing, score tracking</li>
+</ul>
+
+<h3>Actual Implementation Mapping</h3>
+<p>| Generic Component | PlayerMMO Implementation | Purpose |</p>
+<p>|------------------|-------------------------|---------|</p>
+<p>| Singleton | GameManager | Global game state manager |</p>
+<p>| Instance | Instance property | Access point to game manager |</p>
+<p>| SomeBusinessLogic() | RegisterPlayer(), ProcessCombat(), etc. | Game management operations |</p>
+<p>| Private Constructor | Private GameManager() | Prevents external instantiation |</p>
+<p>| Thread Safety | Double-checked locking | Ensures safe multi-threaded access |</p>
+
+<h3>Real Usage Example</h3>
+<pre><code>
+// Get the singleton instance (same instance always returned)
+var gameManager = GameManager.Instance;
+
+// Register players and monsters
+gameManager.RegisterPlayer(warrior);
+gameManager.RegisterPlayer(mage);
+gameManager.RegisterMonster(goblin);
+gameManager.RegisterMonster(dragon);
+
+// Start game and process combat
+gameManager.StartGame();
+gameManager.ProcessCombat(warrior, goblin);  // Handles battle logic
+gameManager.AddScore(100);                   // Update global score
+gameManager.NextLevel();                     // Progress to next level
+
+// From anywhere in the application
+var sameManager = GameManager.Instance;       // Same instance
+Console.WriteLine($&quot;Current Level: {sameManager.GetCurrentLevel()}&quot;);
+Console.WriteLine($&quot;Total Score: {sameManager.GetTotalScore()}&quot;);
+
+// Game state is shared across all access points
+</code></pre>
+
+<h2>✨ Key Benefits</h2>
+<ul>
+<li><strong>Global Access</strong>: Available from anywhere in the application</li>
+<li><strong>Resource Control</strong>: Manages shared game resources efficiently</li>
+<li><strong>State Consistency</strong>: Single source of truth for game state</li>
+<li><strong>Thread Safety</strong>: Safe for multi-threaded game environments</li>
+</ul>
+
+<h2>🔧 Thread Safety Implementation</h2>
+<pre><code>
+// Double-checked locking pattern
+if (_instance == null) {           // First check (performance)
+    lock (_lock) {                 // Synchronization
+        if (_instance == null) {   // Second check (safety)
+            _instance = new GameManager();
+        }
+    }
+}
+</code></pre>
+
+<h2>🔗 Related Patterns</h2>
+<ul>
+<li><strong>Factory Method</strong>: Factories are often implemented as Singletons</li>
+<li><strong>Facade</strong>: Facades frequently use Singleton for global access</li>
+<li><strong>Observer</strong>: Singleton can serve as the subject in Observer pattern</li>
+</ul>
+
+<h2>📊 UML Diagrams</h2>
+
+<h3>Generic Pattern Structure</h3>
+<p>!<a href="../Singleton/generic_singleton.png">Generic Singleton UML</a></p>
+
+<h3>PlayerMMO Implementation</h3>
+<p>!<a href="../Singleton/singleton.png">Singleton UML</a></p>
+
+<p>---</p>
+<a href="../Summaries/README.md">← Back to Main Pattern Summary</a>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>

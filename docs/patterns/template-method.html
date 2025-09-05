@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templatemethod - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Templatemethod</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>Template Method Pattern Summary</h1>
+
+<h2>📖 Overview</h2>
+<p>The Template Method pattern defines the skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets subclasses redefine certain steps without changing the algorithm's structure.</p>
+
+<h2>🎯 Purpose</h2>
+<ul>
+<li>Define algorithm skeleton with customizable steps</li>
+<li>Avoid code duplication in similar algorithms</li>
+<li>Control which parts of algorithm can be overridden</li>
+<li>Implement the "Hollywood Principle" (Don't call us, we'll call you)</li>
+</ul>
+
+<h2>📋 Generic Implementation Guidelines</h2>
+
+<h3>Standard Structure</h3>
+<p>1. <strong>Abstract Class</strong></p>
+<pre><code>
+   abstract class AbstractClass {
+       // Template method - defines algorithm skeleton
+       public void TemplateMethod() {
+           PrimitiveOperation1();
+           PrimitiveOperation2();
+           ConcreteOperation();
+           Hook1();
+           PrimitiveOperation3();
+           Hook2();
+       }
+       
+       // Abstract operations - must be implemented
+       protected abstract void PrimitiveOperation1();
+       protected abstract void PrimitiveOperation2();
+       protected abstract void PrimitiveOperation3();
+       
+       // Concrete operation - shared implementation
+       protected void ConcreteOperation() {
+           // Common behavior
+       }
+       
+       // Hooks - optional override points
+       protected virtual void Hook1() { }
+       protected virtual void Hook2() { }
+   }
+</code></pre>
+
+<p>2. <strong>Concrete Classes</strong></p>
+<pre><code>
+   class ConcreteClassA : AbstractClass {
+       protected override void PrimitiveOperation1() {
+           // Implementation A for step 1
+       }
+       
+       protected override void PrimitiveOperation2() {
+           // Implementation A for step 2
+       }
+       
+       protected override void PrimitiveOperation3() {
+           // Implementation A for step 3
+       }
+       
+       protected override void Hook1() {
+           // Optional: Override hook for additional behavior
+       }
+   }
+</code></pre>
+
+<p>3. <strong>Client Usage</strong></p>
+<pre><code>
+   AbstractClass algorithm = new ConcreteClassA();
+   algorithm.TemplateMethod(); // Executes algorithm with A&#x27;s implementations
+</code></pre>
+
+<h3>When to Use</h3>
+<ul>
+<li>Multiple classes have similar algorithms with minor differences</li>
+<li>Want to control algorithm structure while allowing customization</li>
+<li>Need to avoid code duplication in related classes</li>
+<li>Want to define extension points in algorithms</li>
+</ul>
+
+<h2>🏗️ Implementation in PlayerMMO</h2>
+
+<h3>Key Components</h3>
+<ul>
+<li><strong>GameLevelTemplate</strong>: Abstract template defining level progression</li>
+<li><strong>DungeonLevel, ForestLevel, CaveLevel</strong>: Concrete level implementations</li>
+<li><strong>IPlayer, IMonster</strong>: Objects used in level progression</li>
+<li><strong>Template Method</strong>: PlayLevel() defines the game flow</li>
+</ul>
+
+<h3>Code Structure</h3>
+<pre><code>
+PlayerMMO/Template/
+├── Pattern/
+│   ├── GameLevelTemplate.cs
+│   ├── DungeonLevel.cs
+│   ├── ForestLevel.cs
+│   └── CaveLevel.cs
+├── Program.cs
+└── template_method.puml
+</code></pre>
+
+<h2>🎮 Game Integration</h2>
+<ul>
+<li><strong>BaseGame Classes Used</strong>: IPlayer, IMonster, Monster</li>
+<li><strong>Game Context</strong>: Level progression system with different level types</li>
+<li><strong>Demo Features</strong>: Sequential level play, different level mechanics, shared progression logic</li>
+</ul>
+
+<h3>Actual Implementation Mapping</h3>
+<p>| Generic Component | PlayerMMO Implementation | Purpose |</p>
+<p>|------------------|-------------------------|---------|</p>
+<p>| AbstractClass | GameLevelTemplate | Level progression template |</p>
+<p>| TemplateMethod() | PlayLevel() | Defines level flow algorithm |</p>
+<p>| PrimitiveOperation1() | InitializeLevel() | Level-specific setup |</p>
+<p>| PrimitiveOperation2() | SpawnEnemies() | Enemy creation logic |</p>
+<p>| PrimitiveOperation3() | ExecuteLevelLoop() | Main level gameplay |</p>
+<p>| ConcreteOperation() | Battle() | Shared combat logic |</p>
+<p>| Hook1() | FinishLevel() | Optional level completion |</p>
+<p>| Hook2() | GiveReward() | Optional reward system |</p>
+<p>| ConcreteClassA | DungeonLevel | Sequential combat level |</p>
+<p>| ConcreteClassB | ForestLevel | Multiple enemy encounters |</p>
+<p>| ConcreteClassC | CaveLevel | Exploration-based level |</p>
+
+<h3>Real Usage Example</h3>
+<pre><code>
+// Create player for level progression
+var player = new BasePlayer(&quot;Hero&quot;, 100, 15, 20, 150, 1);
+
+// Play different level types using same template
+GameLevelTemplate[] levels = {
+    new DungeonLevel(player),   // Sequential enemy battles
+    new ForestLevel(player),    // Multiple simultaneous enemies
+    new CaveLevel(player)       // Exploration with treasure hunting
+};
+
+foreach (var level in levels) {
+    level.PlayLevel();  // Same algorithm, different implementations
+}
+
+// Template Method Algorithm (PlayLevel):
+// 1. GetLevelName()        - Abstract: Each level has unique name
+// 2. InitializeLevel()     - Abstract: Level-specific setup
+// 3. SpawnEnemies()        - Abstract: Different enemy patterns
+// 4. ShowLevelIntro()      - Abstract: Custom introduction
+// 5. ExecuteLevelLoop()    - Abstract: Level-specific gameplay
+// 6. IsLevelComplete()     - Abstract: Different completion criteria
+// 7. FinishLevel()         - Hook: Optional override
+// 8. GiveReward()          - Hook: Optional reward logic
+// 9. Battle()              - Concrete: Shared combat implementation
+
+// DungeonLevel: Fight enemies one by one until all defeated
+// ForestLevel: Fight multiple enemies, restore mana between battles
+// CaveLevel: Explore for limited turns, find treasure, optional combat
+</code></pre>
+
+<h2>✨ Key Benefits</h2>
+<ul>
+<li><strong>Consistent Structure</strong>: All levels follow same progression flow</li>
+<li><strong>Code Reuse</strong>: Shared Battle() method used by all levels</li>
+<li><strong>Customization</strong>: Each level type implements unique mechanics</li>
+<li><strong>Extension Points</strong>: Hooks allow optional behavior without breaking structure</li>
+</ul>
+
+<h2>🔧 Template Method Implementation</h2>
+<pre><code>
+// Template method defines invariant algorithm structure
+public void PlayLevel() {
+    Console.WriteLine($&quot;=== {GetLevelName()} ===&quot;);
+    InitializeLevel();
+    SpawnEnemies();
+    ShowLevelIntro();
+    
+    while (!IsLevelComplete()) {
+        ExecuteLevelLoop();
+        // Battle() method is shared concrete implementation
+    }
+    
+    FinishLevel();    // Hook - can be overridden
+    GiveReward();     // Hook - can be overridden
+    Console.WriteLine(&quot;Level completed!\n&quot;);
+}
+</code></pre>
+
+<h2>🔗 Related Patterns</h2>
+<ul>
+<li><strong>Factory Method</strong>: Template methods often use factory methods</li>
+<li><strong>Strategy</strong>: Template method uses inheritance, Strategy uses composition</li>
+<li><strong>Command</strong>: Steps in template method can be implemented as commands</li>
+</ul>
+
+<h2>📊 UML Diagrams</h2>
+
+<h3>Generic Pattern Structure</h3>
+<p>!<a href="../Template/generic_template_method.png">Generic Template Method UML</a></p>
+
+<h3>PlayerMMO Implementation</h3>
+<p>!<a href="../Template/template_method.png">Template Method UML</a></p>
+
+<p>---</p>
+<a href="../Summaries/README.md">← Back to Main Pattern Summary</a>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+# PlayerMMO Design Patterns - .gitignore
+
+# Build outputs
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+.nuget/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Generated files (keep source, ignore generated)
+PDFs/
+*.pdf
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# PlantUML generated images (optional - uncomment if you want to ignore)
+# *.png
+# *.svg
+
+# Logs
+*.log
+
+# IDE files
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# JetBrains IDEs
+.idea/
+
+# Local development
+node_modules/
+.sass-cache/
+
+# Documentation build cache
+.jekyll-cache/
+_site/

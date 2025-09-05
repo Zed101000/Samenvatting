@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Modelling - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Summary Modelling</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>📊 Comprehensive UML Modeling Guide</h1>
+
+<p>> <strong>Complete guide to software modeling with UML diagrams - From fundamentals to advanced techniques</strong></p>
+
+<p>This comprehensive guide covers all essential UML diagram types with practical examples, best practices, and real-world applications. Each diagram type is demonstrated through a consistent MMO (Massively Multiplayer Online) game context to show practical software modeling scenarios.</p>
+
+<p>---</p>
+
+<h2>🎯 UML Modeling Overview</h2>
+
+<h3>What is UML?</h3>
+<strong>Unified Modeling Language (UML)</strong> is a standardized visual modeling language used to specify, visualize, construct, and document software systems. UML provides a comprehensive set of diagrams for different aspects of system design and behavior.
+
+<h3>Why Use UML?</h3>
+<ul>
+<li><strong>🎨 Visual Communication</strong>: Complex systems become easier to understand through diagrams</li>
+<li><strong>📋 Documentation</strong>: Standardized way to document system architecture and behavior</li>
+<li><strong>🔧 Design Validation</strong>: Identify design issues before implementation</li>
+<li><strong>👥 Team Collaboration</strong>: Common language for developers, architects, and stakeholders</li>
+<li><strong>📈 System Analysis</strong>: Better understanding of requirements and system interactions</li>
+</ul>
+
+<h3>UML Diagram Categories</h3>
+
+<p>| Category | Focus | Diagrams Covered |</p>
+<p>|----------|-------|------------------|</p>
+<p>| <strong>📐 Static (Structural)</strong> | System structure and organization | Class, Object, Component, Deployment, Package |</p>
+<p>| <strong>🔄 Dynamic (Behavioral)</strong> | System behavior and interactions | Use Case, Activity, Sequence, State, Timing |</p>
+
+<p>---</p>
+
+<h2>📐 Static (Structural) Diagrams</h2>
+
+<p>Static diagrams model the structure of a system, showing the static aspects like classes, objects, components, and their relationships.</p>
+
+<h3>1. 🏗️ Class Diagram</h3>
+<strong>Purpose</strong>: Models the static structure of classes, their attributes, methods, and relationships  
+<strong>Primary Use Cases</strong>: 
+<ul>
+<li>Object-oriented design and architecture</li>
+<li>Database schema design</li>
+<li>API interface documentation</li>
+<li>Design pattern implementation</li>
+</ul>
+
+<p>!<a href="Statisch/Klasse_Diagram.png">Class Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Classes</strong>: Rectangles with name, attributes, and methods</li>
+<li><strong>Relationships</strong>: Inheritance, association, aggregation, composition</li>
+<li><strong>Multiplicity</strong>: Cardinality of relationships (1..*, 0..1, etc.)</li>
+<li><strong>Visibility</strong>: Public (+), Private (-), Protected (#), Package (~)</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Keep it focused</strong>: Don't include every class in one diagram</li>
+<li><strong>Show key relationships</strong>: Focus on important associations and inheritance</li>
+<li><strong>Use consistent naming</strong>: Follow naming conventions for clarity</li>
+<li><strong>Group related classes</strong>: Use packages or separate diagrams for cohesion</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_ClassDiagram
+title Enhanced MMO Class Diagram
+
+package &quot;Core Game Objects&quot; {
+    abstract class Character {
+        -id: UUID
+        #name: string
+        #level: int
+        #health: int
+        #maxHealth: int
+        #experience: int
+        #stats: CharacterStats
+        --
+        +getName(): string
+        +getLevel(): int
+        +takeDamage(amount: int): void
+        +heal(amount: int): void
+        +gainExperience(xp: int): void
+        +{abstract} getClassType(): string
+        +{abstract} useSpecialAbility(): void
+    }
+    
+    class Player {
+        -username: string
+        -loginTime: DateTime
+        -guild: Guild
+        --
+        +login(): boolean
+        +logout(): void
+        +joinGuild(guild: Guild): void
+        +sendMessage(message: string): void
+    }
+    
+    class NPC {
+        -questsOffered: List&lt;Quest&gt;
+        -dialogue: DialogueTree
+        --
+        +interact(player: Player): void
+        +offerQuest(quest: Quest): void
+    }
+}
+
+package &quot;Character Classes&quot; {
+    class Warrior extends Character {
+        -armorClass: int
+        -shieldEquipped: boolean
+        --
+        +getClassType(): string
+        +useSpecialAbility(): void
+        +block(): boolean
+        +rage(): void
+    }
+    
+    class Mage extends Character {
+        -mana: int
+        -spellbook: List&lt;Spell&gt;
+        --
+        +getClassType(): string
+        +useSpecialAbility(): void
+        +castSpell(spell: Spell): void
+        +meditate(): void
+    }
+    
+    class Archer extends Character {
+        -arrowCount: int
+        -bowType: BowType
+        --
+        +getClassType(): string
+        +useSpecialAbility(): void
+        +shootArrow(target: Character): void
+        +craftArrows(): void
+    }
+}
+
+package &quot;Game Systems&quot; {
+    class Guild {
+        -name: string
+        -members: List&lt;Player&gt;
+        -level: int
+        --
+        +addMember(player: Player): void
+        +removeMember(player: Player): void
+        +promotePlayer(player: Player): void
+    }
+    
+    class Quest {
+        -title: string
+        -description: string
+        -reward: Reward
+        -status: QuestStatus
+        --
+        +start(): void
+        +complete(): Reward
+        +abandon(): void
+    }
+    
+    class Item {
+        -name: string
+        -rarity: Rarity
+        -stats: ItemStats
+        --
+        +use(character: Character): void
+        +getDescription(): string
+    }
+}
+
+&#x27; Relationships
+Player ||--o{ Character : &quot;owns 1..*&quot;
+Character }o--|| Guild : &quot;belongs to 0..1&quot;
+Player ||--o{ Quest : &quot;has 0..*&quot;
+Character ||--o{ Item : &quot;possesses 0..*&quot;
+
+&#x27; Inheritance shown with different arrow
+Character &lt;|-- Warrior
+Character &lt;|-- Mage  
+Character &lt;|-- Archer
+
+&#x27; Composition (filled diamond)
+Guild *-- Player : contains
+
+&#x27; Aggregation (empty diamond)
+Quest o-- Reward : offers
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>2. 🎯 Object Diagram</h3>
+<strong>Purpose</strong>: Shows instances of classes and their relationships at a specific point in time  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Debugging and testing scenarios</li>
+<li>Example system states</li>
+<li>Configuration documentation</li>
+<li>Runtime system snapshots</li>
+</ul>
+
+<p>!<a href="Statisch/Object_Diagram.png">Object Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Objects</strong>: Instances with actual values</li>
+<li><strong>Links</strong>: Actual relationships between objects</li>
+<li><strong>State Information</strong>: Specific attribute values at a point in time</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Show realistic scenarios</strong>: Use actual data that represents real system states</li>
+<li><strong>Focus on key relationships</strong>: Don't overcomplicate with every possible link</li>
+<li><strong>Document timing</strong>: Specify when this object state exists</li>
+<li><strong>Use for validation</strong>: Verify that class design supports required scenarios</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_ObjectDiagram
+title MMO Object Diagram - Guild War Scenario (Timestamp: 2025-09-05 14:30:00)
+
+object &quot;player1 : Player&quot; as p1 {
+    username = &quot;DragonSlayer&quot;
+    level = 45
+    loginTime = &quot;2025-09-05 12:00:00&quot;
+}
+
+object &quot;warrior1 : Warrior&quot; as w1 {
+    name = &quot;Thorgar&quot;
+    level = 45
+    health = 180
+    maxHealth = 200
+    experience = 95000
+    armorClass = 15
+    shieldEquipped = true
+}
+
+object &quot;guild1 : Guild&quot; as g1 {
+    name = &quot;Knights of Honor&quot;
+    level = 8
+    memberCount = 25
+}
+
+object &quot;quest1 : Quest&quot; as q1 {
+    title = &quot;Defend the Castle&quot;
+    description = &quot;Protect the guild castle from enemy forces&quot;
+    status = &quot;IN_PROGRESS&quot;
+    progress = 75
+}
+
+object &quot;sword1 : Item&quot; as i1 {
+    name = &quot;Flaming Sword of Justice&quot;
+    rarity = &quot;LEGENDARY&quot;
+    durability = 85
+    enchantmentLevel = 3
+}
+
+object &quot;player2 : Player&quot; as p2 {
+    username = &quot;ShadowMage&quot;
+    level = 42
+    loginTime = &quot;2025-09-05 13:15:00&quot;
+}
+
+object &quot;mage1 : Mage&quot; as m1 {
+    name = &quot;Mystral&quot;
+    level = 42
+    health = 120
+    maxHealth = 140
+    mana = 200
+    maxMana = 250
+}
+
+&#x27; Relationships with actual links
+p1 -- w1 : controls
+p2 -- m1 : controls
+p1 -- g1 : member
+p2 -- g1 : member
+w1 -- q1 : participating
+w1 -- i1 : equipped
+g1 -- q1 : guild quest
+
+note top of g1 : Guild currently engaged\nin defensive battle
+note right of q1 : Quest shared by\nmultiple guild members
+note bottom of i1 : Recently enchanted\nby guild mage
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>3. 🧩 Component Diagram</h3>
+<strong>Purpose</strong>: Illustrates the organization and dependencies among software components  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>System architecture design</li>
+<li>Microservices architecture</li>
+<li>Module dependency analysis</li>
+<li>Deployment planning</li>
+</ul>
+
+<p>!<a href="Statisch/Component_Diagram.png">Component Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Components</strong>: Modular parts of the system</li>
+<li><strong>Interfaces</strong>: Provided and required interfaces</li>
+<li><strong>Dependencies</strong>: How components rely on each other</li>
+<li><strong>Ports</strong>: Connection points for communication</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Show logical grouping</strong>: Group related components into packages</li>
+<li><strong>Minimize dependencies</strong>: Reduce coupling between components</li>
+<li><strong>Define clear interfaces</strong>: Specify what each component provides/requires</li>
+<li><strong>Consider scalability</strong>: Design for future growth and changes</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Component_Diagram
+title Enhanced MMO System Architecture
+
+package &quot;Client Tier&quot; {
+    component [Game Client] as Client
+    component [UI Framework] as UI
+    component [Input Manager] as Input
+    component [Graphics Engine] as Graphics
+    component [Audio Manager] as Audio
+    
+    Client ..&gt; UI : uses
+    Client ..&gt; Input : uses
+    Client ..&gt; Graphics : uses
+    Client ..&gt; Audio : uses
+}
+
+package &quot;Web Tier&quot; {
+    component [Web Portal] as Portal
+    component [Authentication Service] as Auth
+    component [Payment Gateway] as Payment
+    component [Forum System] as Forum
+    
+    Portal ..&gt; Auth : authenticates
+    Portal ..&gt; Payment : processes
+    Portal ..&gt; Forum : integrates
+}
+
+package &quot;Application Tier&quot; {
+    component [Game Server] as GameServer
+    component [World Manager] as World
+    component [Combat Engine] as Combat
+    component [Quest System] as Quests
+    component [Guild Manager] as Guilds
+    component [Chat Service] as Chat
+    component [Economy Service] as Economy
+    
+    GameServer ..&gt; World : manages
+    GameServer ..&gt; Combat : handles
+    GameServer ..&gt; Quests : coordinates
+    GameServer ..&gt; Guilds : organizes
+    GameServer ..&gt; Chat : facilitates
+    GameServer ..&gt; Economy : controls
+}
+
+package &quot;Data Tier&quot; {
+    database &quot;User Database&quot; as UserDB
+    database &quot;Game Database&quot; as GameDB
+    database &quot;Analytics Database&quot; as AnalyticsDB
+    component [Cache Layer] as Cache
+    component [File Storage] as FileStore
+}
+
+package &quot;External Services&quot; {
+    component [Payment Provider] as PaymentAPI
+    component [Social Media API] as SocialAPI
+    component [Analytics Service] as Analytics
+}
+
+&#x27; Client-Server connections
+Client --&gt; GameServer : game protocol
+Portal --&gt; Auth : HTTPS
+Portal --&gt; GameServer : REST API
+
+&#x27; Server-Database connections
+Auth --&gt; UserDB : SQL
+GameServer --&gt; GameDB : SQL
+World --&gt; Cache : Redis
+Economy --&gt; AnalyticsDB : NoSQL
+
+&#x27; External integrations
+Payment --&gt; PaymentAPI : API
+Forum --&gt; SocialAPI : OAuth
+GameServer --&gt; Analytics : events
+
+&#x27; Component interfaces
+interface &quot;IGameProtocol&quot; as IGP
+interface &quot;IUserAuth&quot; as IUA
+interface &quot;IPaymentGateway&quot; as IPG
+
+Client -- IGP
+GameServer -- IGP
+Auth -- IUA
+Payment -- IPG
+
+note right of Cache : Redis cluster for\nreal-time data
+note bottom of Analytics : Real-time player\nbehavior tracking
+note top of Client : Unity-based\ngame client
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>4. 🌐 Deployment Diagram</h3>
+<strong>Purpose</strong>: Shows the physical deployment of artifacts on nodes (hardware/software)  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Infrastructure planning</li>
+<li>Cloud architecture design</li>
+<li>Performance optimization</li>
+<li>Security architecture</li>
+</ul>
+
+<p>!<a href="Statisch/Deployment_Diagram.png">Deployment Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Nodes</strong>: Physical or virtual machines</li>
+<li><strong>Artifacts</strong>: Deployable software components</li>
+<li><strong>Communication</strong>: Network connections and protocols</li>
+<li><strong>Execution Environment</strong>: Runtime platforms (OS, containers, etc.)</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Show actual infrastructure</strong>: Represent real deployment scenarios</li>
+<li><strong>Include protocols</strong>: Specify communication methods (HTTP, TCP, etc.)</li>
+<li><strong>Consider scalability</strong>: Show load balancing and clustering</li>
+<li><strong>Document constraints</strong>: Include hardware/software requirements</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Deployment_Diagram
+title Enhanced MMO Production Deployment Architecture
+
+node &quot;Player Devices&quot; {
+    artifact &quot;Game Client.exe&quot; as ClientApp
+    artifact &quot;Launcher.exe&quot; as Launcher
+    node &quot;Windows/Mac/Linux&quot; as PlayerOS
+    
+    PlayerOS : CPU: Various
+    PlayerOS : RAM: 4GB+ 
+    PlayerOS : GPU: DirectX 11+
+    
+    ClientApp ..&gt; PlayerOS : runs on
+    Launcher ..&gt; PlayerOS : runs on
+}
+
+cloud &quot;Content Delivery Network&quot; {
+    artifact &quot;Game Assets&quot; as CDN
+    artifact &quot;Client Updates&quot; as Updates
+    CDN : Provider: CloudFlare
+    CDN : Regions: Global
+}
+
+node &quot;Load Balancer Cluster&quot; {
+    artifact &quot;NGINX&quot; as LB1
+    artifact &quot;NGINX&quot; as LB2
+    LB1 : Mode: Active
+    LB2 : Mode: Standby
+}
+
+cloud &quot;Web Server Cluster&quot; {
+    node &quot;Web Server 1&quot; {
+        artifact &quot;Portal.war&quot; as Portal1
+        artifact &quot;Auth Service&quot; as Auth1
+        node &quot;Apache Tomcat&quot; as Tomcat1
+        
+        Portal1 ..&gt; Tomcat1 : deployed on
+        Auth1 ..&gt; Tomcat1 : deployed on
+    }
+    
+    node &quot;Web Server 2&quot; {
+        artifact &quot;Portal.war&quot; as Portal2
+        artifact &quot;Auth Service&quot; as Auth2
+        node &quot;Apache Tomcat&quot; as Tomcat2
+        
+        Portal2 ..&gt; Tomcat2 : deployed on
+        Auth2 ..&gt; Tomcat2 : deployed on
+    }
+}
+
+cloud &quot;Game Server Cluster&quot; {
+    node &quot;Game Server 1&quot; {
+        artifact &quot;GameServer.jar&quot; as GS1
+        artifact &quot;World Manager&quot; as World1
+        node &quot;JVM 17&quot; as JVM1
+        node &quot;Ubuntu 22.04&quot; as OS1
+        
+        GS1 : Max Players: 1000
+        GS1 : World Region: North
+        OS1 : CPU: 16 cores
+        OS1 : RAM: 32GB
+        
+        GS1 ..&gt; JVM1 : runs on
+        World1 ..&gt; JVM1 : runs on
+        JVM1 ..&gt; OS1 : runs on
+    }
+    
+    node &quot;Game Server 2&quot; {
+        artifact &quot;GameServer.jar&quot; as GS2
+        artifact &quot;World Manager&quot; as World2
+        node &quot;JVM 17&quot; as JVM2
+        node &quot;Ubuntu 22.04&quot; as OS2
+        
+        GS2 : Max Players: 1000
+        GS2 : World Region: South
+        OS2 : CPU: 16 cores
+        OS2 : RAM: 32GB
+        
+        GS2 ..&gt; JVM2 : runs on
+        World2 ..&gt; JVM2 : runs on
+        JVM2 ..&gt; OS2 : runs on
+    }
+}
+
+cloud &quot;Database Cluster&quot; {
+    node &quot;Primary DB Server&quot; {
+        artifact &quot;PostgreSQL 15&quot; as PrimaryDB
+        node &quot;Ubuntu Server&quot; as DBServer1
+        
+        PrimaryDB : Mode: Master
+        PrimaryDB : Storage: 2TB SSD
+        DBServer1 : CPU: 8 cores
+        DBServer1 : RAM: 64GB
+        
+        PrimaryDB ..&gt; DBServer1 : runs on
+    }
+    
+    node &quot;Replica DB Server&quot; {
+        artifact &quot;PostgreSQL 15&quot; as ReplicaDB
+        node &quot;Ubuntu Server&quot; as DBServer2
+        
+        ReplicaDB : Mode: Read Replica
+        ReplicaDB : Storage: 2TB SSD
+        DBServer2 : CPU: 8 cores
+        DBServer2 : RAM: 64GB
+        
+        ReplicaDB ..&gt; DBServer2 : runs on
+    }
+}
+
+node &quot;Cache Cluster&quot; {
+    artifact &quot;Redis Cluster&quot; as Redis
+    Redis : Nodes: 6
+    Redis : Replication: 3x
+    Redis : Memory: 96GB total
+}
+
+node &quot;Monitoring &amp; Analytics&quot; {
+    artifact &quot;Grafana&quot; as Monitor
+    artifact &quot;Elasticsearch&quot; as Logs
+    artifact &quot;Analytics Engine&quot; as Analytics
+}
+
+&#x27; Network connections with protocols
+ClientApp =[#blue]=&gt; CDN : HTTPS/443
+ClientApp =[#green]=&gt; LB1 : TCP/7777\n(Game Protocol)
+Launcher =[#blue]=&gt; CDN : HTTPS/443
+
+LB1 =[#blue]=&gt; Portal1 : HTTP/8080
+LB1 =[#blue]=&gt; Portal2 : HTTP/8080
+LB1 =[#green]=&gt; GS1 : TCP/7777
+LB1 =[#green]=&gt; GS2 : TCP/7777
+
+Portal1 =[#red]=&gt; PrimaryDB : TCP/5432
+Portal2 =[#red]=&gt; ReplicaDB : TCP/5432
+GS1 =[#red]=&gt; PrimaryDB : TCP/5432
+GS2 =[#red]=&gt; PrimaryDB : TCP/5432
+
+GS1 =[#orange]=&gt; Redis : TCP/6379
+GS2 =[#orange]=&gt; Redis : TCP/6379
+
+PrimaryDB =[#purple]=&gt; ReplicaDB : TCP/5432\n(Replication)
+
+GS1 =[#gray]=&gt; Monitor : HTTP/3000
+GS2 =[#gray]=&gt; Monitor : HTTP/3000
+
+note top of CDN : Global asset distribution\nfor fast downloads
+note right of &quot;Game Server Cluster&quot; : Auto-scaling based\non player load
+note bottom of &quot;Database Cluster&quot; : Master-slave replication\nwith automatic failover
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>5. 📦 Package Diagram</h3>
+<strong>Purpose</strong>: Shows how classes and interfaces are grouped into packages and their dependencies  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Modular design visualization</li>
+<li>Dependency management</li>
+<li>Architecture layering</li>
+<li>Code organization</li>
+</ul>
+
+<p>!<a href="Statisch/Packages_Diagram.png">Package Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Packages</strong>: Logical groupings of related classes</li>
+<li><strong>Dependencies</strong>: How packages depend on each other</li>
+<li><strong>Visibility</strong>: Public vs private package elements</li>
+<li><strong>Layering</strong>: Architectural layers and their relationships</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Minimize dependencies</strong>: Reduce coupling between packages</li>
+<li><strong>Avoid circular dependencies</strong>: Design clear dependency hierarchies</li>
+<li><strong>Group by functionality</strong>: Package related classes together</li>
+<li><strong>Define clear interfaces</strong>: Specify package boundaries</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Packages_Diagram
+title Enhanced MMO Package Architecture
+
+package &quot;Presentation Layer&quot; {
+    package &quot;UI Framework&quot; {
+        class LoginScreen
+        class CharacterSelect
+        class GameHUD
+        class InventoryWindow
+        class GuildPanel
+    }
+    
+    package &quot;Input Handling&quot; {
+        class InputManager
+        class KeyboardHandler
+        class MouseHandler
+        class GamepadHandler
+    }
+    
+    package &quot;Rendering&quot; {
+        class SceneRenderer
+        class EffectsRenderer
+        class UIRenderer
+        class ModelLoader
+    }
+}
+
+package &quot;Application Layer&quot; {
+    package &quot;Game Logic&quot; {
+        class GameStateManager
+        class PlayerController
+        class CombatManager
+        class QuestManager
+        class GuildManager
+    }
+    
+    package &quot;Business Rules&quot; {
+        class CharacterRules
+        class CombatRules
+        class EconomyRules
+        class ProgressionRules
+    }
+    
+    package &quot;Services&quot; {
+        class AuthenticationService
+        class ChatService
+        class NotificationService
+        class StatisticsService
+    }
+}
+
+package &quot;Domain Layer&quot; {
+    package &quot;Core Entities&quot; {
+        class Player
+        class Character
+        class Guild
+        class Quest
+        class Item
+    }
+    
+    package &quot;Value Objects&quot; {
+        class CharacterStats
+        class Position
+        class Inventory
+        class Currency
+    }
+    
+    package &quot;Domain Services&quot; {
+        class CombatCalculator
+        class ExperienceCalculator
+        class LootGenerator
+        class QuestValidator
+    }
+}
+
+package &quot;Infrastructure Layer&quot; {
+    package &quot;Data Access&quot; {
+        class PlayerRepository
+        class GuildRepository
+        class QuestRepository
+        class ItemRepository
+    }
+    
+    package &quot;External Services&quot; {
+        class PaymentGateway
+        class EmailService
+        class LoggingService
+        class CacheService
+    }
+    
+    package &quot;Network&quot; {
+        class NetworkManager
+        class PacketHandler
+        class ConnectionPool
+        class MessageQueue
+    }
+}
+
+package &quot;Utility Layer&quot; {
+    package &quot;Common&quot; {
+        class Logger
+        class ConfigManager
+        class DateTimeUtils
+        class StringUtils
+    }
+    
+    package &quot;Security&quot; {
+        class Encryption
+        class Validation
+        class TokenManager
+        class SessionManager
+    }
+}
+
+&#x27; Package dependencies (one-way arrows)
+&quot;Presentation Layer&quot; ..&gt; &quot;Application Layer&quot; : uses
+&quot;Application Layer&quot; ..&gt; &quot;Domain Layer&quot; : uses
+&quot;Application Layer&quot; ..&gt; &quot;Infrastructure Layer&quot; : uses
+&quot;Infrastructure Layer&quot; ..&gt; &quot;Domain Layer&quot; : implements
+&quot;Infrastructure Layer&quot; ..&gt; &quot;Utility Layer&quot; : uses
+&quot;Application Layer&quot; ..&gt; &quot;Utility Layer&quot; : uses
+&quot;Presentation Layer&quot; ..&gt; &quot;Utility Layer&quot; : uses
+
+&#x27; Cross-cutting concerns
+&quot;Infrastructure Layer&quot; ..&gt; &quot;External Services&quot; : integrates
+
+note right of &quot;Domain Layer&quot; : Core business logic\nNo external dependencies
+note bottom of &quot;Infrastructure Layer&quot; : External integrations\nDatabase, APIs, etc.
+note top of &quot;Presentation Layer&quot; : User interface\nand interaction logic
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h2>🔄 Dynamic (Behavioral) Diagrams</h2>
+
+<p>Dynamic diagrams model the behavior of a system, showing how objects interact over time and how the system responds to events.</p>
+
+<h3>1. 👤 Use Case Diagram</h3>
+<strong>Purpose</strong>: Represents the functional requirements of a system from a user's perspective  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Requirements gathering and analysis</li>
+<li>Stakeholder communication</li>
+<li>System scope definition</li>
+<li>Testing scenario identification</li>
+</ul>
+
+<p>!<a href="Dynamisch/UC_Diagram.png">Use Case Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Actors</strong>: Users or external systems</li>
+<li><strong>Use Cases</strong>: System functionality</li>
+<li><strong>Relationships</strong>: Include, extend, generalization</li>
+<li><strong>System Boundary</strong>: What's inside vs outside the system</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Focus on user goals</strong>: Use cases should represent user objectives</li>
+<li><strong>Keep it simple</strong>: Don't include implementation details</li>
+<li><strong>Show key relationships</strong>: Include/extend where meaningful</li>
+<li><strong>Define clear boundaries</strong>: Specify what's in scope</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_UseCase_Diagram
+title Enhanced MMO Game System - Use Cases
+
+left to right direction
+
+&#x27; Actors
+actor &quot;New Player&quot; as NewPlayer
+actor &quot;Registered Player&quot; as Player
+actor &quot;Guild Leader&quot; as Leader
+actor &quot;Game Master&quot; as GM
+actor &quot;System Administrator&quot; as Admin
+actor &quot;Payment System&quot; as PaymentSys
+
+&#x27; System boundary
+rectangle &quot;MMO Game System&quot; {
+    &#x27; Authentication &amp; Account Management
+    usecase &quot;Register Account&quot; as UC1
+    usecase &quot;Login&quot; as UC2
+    usecase &quot;Logout&quot; as UC3
+    usecase &quot;Reset Password&quot; as UC4
+    usecase &quot;Update Profile&quot; as UC5
+    
+    &#x27; Character Management
+    usecase &quot;Create Character&quot; as UC6
+    usecase &quot;Delete Character&quot; as UC7
+    usecase &quot;Select Character&quot; as UC8
+    usecase &quot;Customize Appearance&quot; as UC9
+    
+    &#x27; Core Gameplay
+    usecase &quot;Explore World&quot; as UC10
+    usecase &quot;Combat Monster&quot; as UC11
+    usecase &quot;Complete Quest&quot; as UC12
+    usecase &quot;Level Up&quot; as UC13
+    usecase &quot;Manage Inventory&quot; as UC14
+    usecase &quot;Trade Items&quot; as UC15
+    
+    &#x27; Social Features
+    usecase &quot;Send Chat Message&quot; as UC16
+    usecase &quot;Join Guild&quot; as UC17
+    usecase &quot;Leave Guild&quot; as UC18
+    usecase &quot;Invite Player to Guild&quot; as UC19
+    usecase &quot;Promote Guild Member&quot; as UC20
+    usecase &quot;Create Guild Event&quot; as UC21
+    
+    &#x27; Economic System
+    usecase &quot;Purchase Premium Currency&quot; as UC22
+    usecase &quot;Buy from Shop&quot; as UC23
+    usecase &quot;Sell to Vendor&quot; as UC24
+    usecase &quot;Auction Item&quot; as UC25
+    
+    &#x27; Administration
+    usecase &quot;Monitor Server Performance&quot; as UC26
+    usecase &quot;Ban Player&quot; as UC27
+    usecase &quot;Create Game Event&quot; as UC28
+    usecase &quot;Backup Game Data&quot; as UC29
+    usecase &quot;Update Game Content&quot; as UC30
+}
+
+&#x27; Basic relationships
+NewPlayer --&gt; UC1
+NewPlayer --&gt; UC2
+
+Player --&gt; UC2
+Player --&gt; UC3
+Player --&gt; UC4
+Player --&gt; UC5
+Player --&gt; UC6
+Player --&gt; UC7
+Player --&gt; UC8
+Player --&gt; UC9
+Player --&gt; UC10
+Player --&gt; UC11
+Player --&gt; UC12
+Player --&gt; UC13
+Player --&gt; UC14
+Player --&gt; UC15
+Player --&gt; UC16
+Player --&gt; UC17
+Player --&gt; UC18
+Player --&gt; UC22
+Player --&gt; UC23
+Player --&gt; UC24
+Player --&gt; UC25
+
+Leader --&gt; UC19
+Leader --&gt; UC20
+Leader --&gt; UC21
+
+GM --&gt; UC27
+GM --&gt; UC28
+
+Admin --&gt; UC26
+Admin --&gt; UC29
+Admin --&gt; UC30
+
+PaymentSys --&gt; UC22
+
+&#x27; Include relationships
+UC6 .&gt; UC9 : &lt;&lt;include&gt;&gt;
+UC11 .&gt; UC13 : &lt;&lt;include&gt;&gt;
+UC12 .&gt; UC13 : &lt;&lt;include&gt;&gt;
+UC17 .&gt; UC8 : &lt;&lt;include&gt;&gt;
+UC22 .&gt; UC2 : &lt;&lt;include&gt;&gt;
+
+&#x27; Extend relationships
+UC11 .&gt; UC14 : &lt;&lt;extend&gt;&gt;\n(loot obtained)
+UC12 .&gt; UC14 : &lt;&lt;extend&gt;&gt;\n(quest reward)
+UC15 .&gt; UC16 : &lt;&lt;extend&gt;&gt;\n(negotiate price)
+UC21 .&gt; UC16 : &lt;&lt;extend&gt;&gt;\n(event announcement)
+
+&#x27; Generalization
+Player &lt;|-- Leader
+Player &lt;|-- GM
+
+note right of UC11 : Combat may result in\nloot or experience gain
+note bottom of UC22 : Requires external\npayment processing
+note top of UC28 : Special events for\nholidays or promotions
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>2. 🔄 Activity Diagram</h3>
+<strong>Purpose</strong>: Models the workflow of a system or process, showing the flow of activities  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Business process modeling</li>
+<li>Algorithm design</li>
+<li>Workflow documentation</li>
+<li>System behavior analysis</li>
+</ul>
+
+<p>!<a href="Dynamisch/Activity_Diagram.png">Activity Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Activities</strong>: Steps in the process</li>
+<li><strong>Decisions</strong>: Branch points with conditions</li>
+<li><strong>Parallel Activities</strong>: Concurrent execution</li>
+<li><strong>Swimlanes</strong>: Responsible parties/systems</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Show clear flow</strong>: Use arrows to indicate sequence</li>
+<li><strong>Handle all conditions</strong>: Include all decision branches</li>
+<li><strong>Use swimlanes</strong>: Clarify responsibilities</li>
+<li><strong>Keep it focused</strong>: Don't try to show everything in one diagram</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Activity_Diagram
+title Enhanced MMO Player Journey - Complete Game Session
+
+|#lightblue|Player|
+start
+:Launch Game;
+:Enter Credentials;
+
+if (Authentication Successful?) then (yes)
+    |#lightgreen|Authentication Service|
+    :Validate User;
+    :Load Player Data;
+    
+    |Player|
+    :Select Character;
+    
+    |#lightyellow|Game Server|
+    :Load Character Data;
+    :Initialize World State;
+    
+    |Player|
+    partition &quot;Main Game Loop&quot; {
+        repeat
+            :Choose Activity;
+            
+            switch (Activity Type?)
+            case (Exploration)
+                |#lightcoral|World Manager|
+                :Generate Random Encounter;
+                
+                if (Monster Encountered?) then (yes)
+                    |Player|
+                    :Choose Combat Action;
+                    
+                    switch (Combat Action?)
+                    case (Attack)
+                        |#lightpink|Combat Engine|
+                        :Calculate Damage;
+                        :Apply Damage;
+                        
+                        if (Monster Defeated?) then (yes)
+                            |#lightgreen|Loot System|
+                            :Generate Loot;
+                            :Award Experience;
+                            
+                            |Player|
+                            if (Level Up?) then (yes)
+                                :Allocate Skill Points;
+                                :Update Character Stats;
+                            endif
+                        else (no)
+                            if (Player Defeated?) then (yes)
+                                :Respawn at Safe Location;
+                                :Apply Death Penalty;
+                            endif
+                        endif
+                        
+                    case (Defend)
+                        |Combat Engine|
+                        :Calculate Defense;
+                        :Reduce Damage Taken;
+                        
+                    case (Use Skill)
+                        |Combat Engine|
+                        :Validate Skill Requirements;
+                        :Apply Skill Effects;
+                        :Update Cooldowns;
+                        
+                    case (Flee)
+                        |Combat Engine|
+                        :Calculate Escape Chance;
+                        if (Escape Successful?) then (yes)
+                            :Return to Exploration;
+                        else (no)
+                            :Take Damage;
+                        endif
+                    endswitch
+                    
+                else (no)
+                    |Player|
+                    :Continue Exploring;
+                    :Discover Location/Item;
+                endif
+                
+            case (Quest Management)
+                |#lightsalmon|Quest System|
+                :Display Available Quests;
+                
+                |Player|
+                if (Accept Quest?) then (yes)
+                    |Quest System|
+                    :Add Quest to Journal;
+                    :Set Quest Objectives;
+                    
+                    |Player|
+                    :Work on Quest Objectives;
+                    
+                    if (Quest Completed?) then (yes)
+                        |Quest System|
+                        :Validate Completion;
+                        :Award Rewards;
+                        :Update Quest Status;
+                    endif
+                endif
+                
+            case (Social Interaction)
+                |#lightsteelblue|Chat Service|
+                :Join Chat Channel;
+                
+                |Player|
+                :Send Messages;
+                
+                if (Guild Invitation?) then (yes)
+                    |#mediumpurple|Guild System|
+                    :Process Guild Invitation;
+                    
+                    |Player|
+                    if (Accept Invitation?) then (yes)
+                        |Guild System|
+                        :Add Player to Guild;
+                        :Update Guild Roster;
+                        :Grant Guild Benefits;
+                    endif
+                endif
+                
+            case (Trading)
+                |#lightcyan|Economy System|
+                :Open Trading Interface;
+                
+                |Player|
+                :Select Items to Trade;
+                :Set Trade Terms;
+                
+                if (Trade Partner Found?) then (yes)
+                    |Economy System|
+                    :Validate Trade Items;
+                    :Execute Trade;
+                    :Update Inventories;
+                    :Log Transaction;
+                endif
+                
+            case (Character Management)
+                |Player|
+                :Open Character Screen;
+                :Manage Equipment;
+                :Allocate Skill Points;
+                :Review Statistics;
+                
+            endswitch
+            
+        repeat while (Continue Playing?) is (yes)
+        
+        -&gt; no;
+    }
+    
+    |Player|
+    :Save Game Progress;
+    
+    |Game Server|
+    :Persist Character Data;
+    :Update Statistics;
+    :Log Session Data;
+    
+else (no)
+    |Authentication Service|
+    :Log Failed Attempt;
+    :Display Error Message;
+    stop
+endif
+
+|Player|
+:Logout;
+stop
+
+note right of &quot;Combat Engine&quot; : Advanced combat system with\nmultiple mechanics and strategies
+note bottom of &quot;Quest System&quot; : Dynamic quest generation\nand progress tracking
+note top of &quot;Guild System&quot; : Social features enabling\nplayer cooperation
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>3. 📞 Sequence Diagram</h3>
+<strong>Purpose</strong>: Shows how objects interact in a particular sequence over time  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>API design and documentation</li>
+<li>Interaction modeling between system components</li>
+<li>Protocol definition</li>
+<li>Debugging system interactions</li>
+</ul>
+
+<p>!<a href="Dynamisch/Seq_Diagram.png">Sequence Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Lifelines</strong>: Objects participating in the interaction</li>
+<li><strong>Messages</strong>: Communications between objects</li>
+<li><strong>Activation</strong>: When objects are actively processing</li>
+<li><strong>Time Ordering</strong>: Vertical arrangement shows sequence</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Focus on key interactions</strong>: Don't show every possible message</li>
+<li><strong>Use consistent naming</strong>: Clear, descriptive message names</li>
+<li><strong>Show return values</strong>: Include important return messages</li>
+<li><strong>Group related interactions</strong>: Use frames for complex scenarios</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Sequence_Diagram
+title Enhanced MMO - Guild Raid Coordination Sequence
+
+skinparam participant {
+    BackgroundColor #f8f9fa
+    BorderColor #333
+    FontSize 12
+}
+
+skinparam sequence {
+    ArrowColor #2c3e50
+    LifeLineBorderColor #2c3e50
+    LifeLineBackgroundColor #ecf0f1
+}
+
+actor &quot;Guild Leader&quot; as Leader
+participant &quot;Game Client&quot; as Client
+participant &quot;Guild Service&quot; as GuildSvc
+participant &quot;Raid Manager&quot; as RaidMgr
+participant &quot;Notification Service&quot; as NotifSvc
+participant &quot;Chat Service&quot; as ChatSvc
+participant &quot;Player Database&quot; as PlayerDB
+participant &quot;Game Database&quot; as GameDB
+collections &quot;Guild Members&quot; as Members
+
+== Raid Initialization ==
+
+Leader -&gt; Client : Initiates Raid Creation
+activate Client
+
+Client -&gt; GuildSvc : createRaid(raidType, scheduledTime, maxParticipants)
+activate GuildSvc
+
+GuildSvc -&gt; PlayerDB : validateGuildLeaderPermissions(playerId)
+activate PlayerDB
+PlayerDB --&gt; GuildSvc : permissionResult
+deactivate PlayerDB
+
+alt permission granted
+    GuildSvc -&gt; GameDB : createRaidInstance(raidDetails)
+    activate GameDB
+    GameDB --&gt; GuildSvc : raidId
+    deactivate GameDB
+    
+    GuildSvc -&gt; RaidMgr : registerRaid(raidId, raidConfig)
+    activate RaidMgr
+    RaidMgr --&gt; GuildSvc : registrationConfirmed
+    deactivate RaidMgr
+    
+    GuildSvc --&gt; Client : raidCreated(raidId, raidDetails)
+    
+else permission denied
+    GuildSvc --&gt; Client : error(&quot;Insufficient permissions&quot;)
+    note right : Only guild leaders can\ncreate raids
+end
+
+deactivate GuildSvc
+
+== Member Notification ==
+
+Client -&gt; NotifSvc : sendRaidInvitation(guildId, raidId)
+activate NotifSvc
+
+NotifSvc -&gt; PlayerDB : getActiveGuildMembers(guildId)
+activate PlayerDB
+PlayerDB --&gt; NotifSvc : memberList
+deactivate PlayerDB
+
+loop for each guild member
+    NotifSvc -&gt; Members : raidInvitation(raidDetails, rsvpDeadline)
+    activate Members
+    
+    alt member accepts
+        Members --&gt; NotifSvc : acceptRaidInvitation(raidId, playerId)
+        NotifSvc -&gt; RaidMgr : addParticipant(raidId, playerId)
+        activate RaidMgr
+        RaidMgr -&gt; GameDB : updateRaidParticipants(raidId, playerId)
+        activate GameDB
+        GameDB --&gt; RaidMgr : participantAdded
+        deactivate GameDB
+        RaidMgr --&gt; NotifSvc : participantConfirmed
+        deactivate RaidMgr
+        
+    else member declines
+        Members --&gt; NotifSvc : declineRaidInvitation(raidId, playerId)
+        NotifSvc -&gt; RaidMgr : logDecline(raidId, playerId)
+        
+    else no response
+        note over Members : Automatic decline after\nRSVP deadline
+    end
+    
+    deactivate Members
+end
+
+NotifSvc --&gt; Client : invitationsSent(sentCount, acceptedCount)
+deactivate NotifSvc
+
+== Pre-Raid Preparation ==
+
+note over Client, GameDB : 30 minutes before raid start time
+
+RaidMgr -&gt; NotifSvc : sendRaidReminder(raidId)
+activate RaidMgr
+activate NotifSvc
+
+NotifSvc -&gt; Members : raidStartingSoon(raidId, meetingPoint)
+activate Members
+Members --&gt; NotifSvc : acknowledgment
+deactivate Members
+
+deactivate NotifSvc
+
+RaidMgr -&gt; GameDB : validateRaidRequirements(raidId)
+activate GameDB
+GameDB --&gt; RaidMgr : requirementCheck(minParticipants, equipmentCheck)
+deactivate GameDB
+
+alt requirements met
+    RaidMgr -&gt; ChatSvc : createRaidChatChannel(raidId, participantList)
+    activate ChatSvc
+    ChatSvc --&gt; RaidMgr : chatChannelId
+    deactivate ChatSvc
+    
+    RaidMgr -&gt; Members : raidChannelCreated(chatChannelId, raidInstructions)
+    activate Members
+    
+else requirements not met
+    RaidMgr -&gt; NotifSvc : cancelRaid(raidId, reason)
+    activate NotifSvc
+    NotifSvc -&gt; Members : raidCancelled(reason)
+    deactivate NotifSvc
+    note right : Insufficient participants\nor equipment requirements
+end
+
+== Raid Execution ==
+
+note over Client, GameDB : At scheduled raid time
+
+Leader -&gt; Client : startRaid(raidId)
+Client -&gt; RaidMgr : initiateRaidStart(raidId)
+
+RaidMgr -&gt; GameDB : lockRaidParticipants(raidId)
+activate GameDB
+GameDB --&gt; RaidMgr : participantsLocked
+deactivate GameDB
+
+RaidMgr -&gt; Members : teleportToRaidZone(raidInstanceId)
+Members --&gt; RaidMgr : playersReady
+
+loop raid encounter phases
+    RaidMgr -&gt; Members : startEncounter(encounterId, mechanics)
+    activate Members
+    
+    Members -&gt; RaidMgr : playerActions(skillUse, positioning)
+    RaidMgr -&gt; GameDB : updateRaidProgress(raidId, encounterResult)
+    activate GameDB
+    GameDB --&gt; RaidMgr : progressSaved
+    deactivate GameDB
+    
+    alt encounter successful
+        RaidMgr -&gt; Members : encounterCompleted(rewards, nextEncounter)
+    else encounter failed
+        RaidMgr -&gt; Members : encounterFailed(respawnOptions)
+        note right : Players can retry or\nabandon the raid
+    end
+    
+    deactivate Members
+end
+
+== Raid Completion ==
+
+RaidMgr -&gt; GameDB : finalizeRaidResults(raidId, completion)
+activate GameDB
+GameDB --&gt; RaidMgr : resultsStored
+deactivate GameDB
+
+RaidMgr -&gt; Members : distributeLoot(raidRewards, contributionRatings)
+activate Members
+Members --&gt; RaidMgr : lootDistributed
+deactivate Members
+
+RaidMgr -&gt; NotifSvc : logRaidCompletion(raidId, statistics)
+activate NotifSvc
+NotifSvc -&gt; GameDB : updateGuildStatistics(guildId, raidSuccess)
+activate GameDB
+deactivate GameDB
+deactivate NotifSvc
+
+RaidMgr --&gt; Client : raidCompleted(finalResults, achievements)
+deactivate RaidMgr
+
+Client --&gt; Leader : displayRaidSummary(results)
+deactivate Client
+deactivate Members
+
+note over Leader, GameDB : Raid coordination complete\nGuild reputation and member\nstatistics updated
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>4. 🔄 State Diagram</h3>
+<strong>Purpose</strong>: Describes the states and transitions of an object throughout its lifecycle  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Finite state machine design</li>
+<li>Object lifecycle modeling</li>
+<li>Behavior specification</li>
+<li>System state management</li>
+</ul>
+
+<p>!<a href="Dynamisch/State_Diagram.png">State Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>States</strong>: Conditions or situations of an object</li>
+<li><strong>Transitions</strong>: Changes between states</li>
+<li><strong>Events</strong>: Triggers that cause transitions</li>
+<li><strong>Guards</strong>: Conditions that must be true for transitions</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Identify key states</strong>: Focus on meaningful object conditions</li>
+<li><strong>Define clear transitions</strong>: Specify what triggers state changes</li>
+<li><strong>Handle all events</strong>: Include transitions for all possible events</li>
+<li><strong>Use guards wisely</strong>: Add conditions only when necessary</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Character_State_Diagram
+title Enhanced MMO Character State Machine
+
+[*] --&gt; Offline : Character Created
+
+state Offline {
+    [*] --&gt; Disconnected
+    Disconnected : Character exists but\nplayer is not logged in
+    Disconnected : - Data persisted in database
+    Disconnected : - No active game session
+    
+    Disconnected --&gt; [*] : Character Deleted
+}
+
+Offline --&gt; LoginScreen : Player Logs In
+LoginScreen : Authenticating player credentials
+LoginScreen : and loading character data
+
+LoginScreen --&gt; Offline : Login Failed
+LoginScreen --&gt; CharacterSelect : Login Successful
+
+state CharacterSelect {
+    [*] --&gt; SelectingCharacter
+    SelectingCharacter : Player choosing from\navailable characters
+    SelectingCharacter --&gt; CreatingCharacter : Create New Character
+    CreatingCharacter : Customizing appearance\nand initial attributes
+    CreatingCharacter --&gt; SelectingCharacter : Character Created
+}
+
+CharacterSelect --&gt; InGame : Character Selected
+
+state InGame {
+    [*] --&gt; Spawning
+    
+    Spawning : Loading world data and\nplacing character in world
+    Spawning --&gt; Idle : Spawn Complete
+    
+    state Active {
+        [*] --&gt; Idle
+        
+        Idle : Character standing still\nwaiting for player input
+        Idle : - Health/Mana regenerating
+        Idle : - Can receive messages
+        
+        Idle --&gt; Moving : Move Command
+        Idle --&gt; Casting : Cast Spell
+        Idle --&gt; Attacking : Attack Command
+        Idle --&gt; Trading : Open Trade
+        Idle --&gt; Crafting : Start Crafting
+        
+        Moving : Character traveling\nthrough the world
+        Moving : - Position updating
+        Moving : - Triggering area events
+        Moving --&gt; Idle : Stop Moving
+        Moving --&gt; Combat : Encounter Enemy
+        
+        Casting : Performing spell or skill
+        Casting : - Mana consumption
+        Casting : - Animation playing
+        Casting --&gt; Idle : Spell Complete
+        Casting --&gt; Interrupted : Damage Taken / Cancel
+        
+        Attacking : Engaging in combat
+        Attacking : - Damage calculations
+        Attacking : - Animation sequences
+        Attacking --&gt; Combat : Enter Combat Mode
+        
+        Trading : Exchanging items with\nother players or NPCs
+        Trading : - Item validation
+        Trading : - Economic transactions
+        Trading --&gt; Idle : Trade Complete
+        Trading --&gt; Idle : Trade Cancelled
+        
+        Crafting : Creating items from\nraw materials
+        Crafting : - Resource consumption
+        Crafting : - Skill checks
+        Crafting --&gt; Idle : Crafting Complete
+        Crafting --&gt; Idle : Crafting Failed
+        
+        Interrupted : Spell/action cancelled
+        Interrupted --&gt; Idle : Recovery Complete
+    }
+    
+    state Combat {
+        [*] --&gt; Engaging
+        
+        Engaging : Initiating combat with\nenemy or other player
+        Engaging --&gt; Fighting : Combat Started
+        
+        Fighting : Active combat state
+        Fighting : - Health/Mana tracking
+        Fighting : - Skill cooldowns active
+        Fighting : - Combat mechanics enabled
+        
+        Fighting --&gt; Victory : Enemy Defeated
+        Fighting --&gt; Defeat : Character Defeated
+        Fighting --&gt; Fleeing : Escape Attempt
+        Fighting --&gt; Fighting : Continue Combat
+        
+        Victory : Combat won successfully
+        Victory : - Experience gained
+        Victory : - Loot obtained
+        Victory --&gt; Idle : Return to Normal
+        
+        Defeat : Character has been defeated
+        Defeat : - Health reduced to 0
+        Defeat : - Death penalties applied
+        Defeat --&gt; Dead : Death Confirmed
+        
+        Fleeing : Attempting to escape combat
+        Fleeing --&gt; Idle : Escape Successful
+        Fleeing --&gt; Fighting : Escape Failed [enemy catches up]
+    }
+    
+    state StatusEffects {
+        [*] --&gt; Normal
+        
+        Normal : No status effects active
+        Normal --&gt; Poisoned : Poison Applied
+        Normal --&gt; Stunned : Stun Applied
+        Normal --&gt; Buffed : Buff Applied
+        Normal --&gt; Cursed : Curse Applied
+        
+        Poisoned : Taking damage over time
+        Poisoned : - Health decreasing
+        Poisoned : - Green visual effect
+        Poisoned --&gt; Normal : Poison Expires / Cured
+        Poisoned --&gt; Dead : Health Reaches 0
+        
+        Stunned : Cannot perform actions
+        Stunned : - Movement disabled
+        Stunned : - Skills disabled
+        Stunned --&gt; Normal : Stun Expires / Removed
+        
+        Buffed : Enhanced abilities active
+        Buffed : - Improved stats
+        Buffed : - Special effects
+        Buffed --&gt; Normal : Buff Expires / Dispelled
+        
+        Cursed : Negative effects active
+        Cursed : - Reduced stats
+        Cursed : - Penalty effects
+        Cursed --&gt; Normal : Curse Removed / Expires
+    }
+    
+    state Dead {
+        [*] --&gt; DeathScreen
+        
+        DeathScreen : Character has died
+        DeathScreen : - Death statistics shown
+        DeathScreen : - Resurrection options available
+        
+        DeathScreen --&gt; Resurrecting : Choose Resurrection
+        DeathScreen --&gt; Offline : Quit Game
+        
+        Resurrecting : Being brought back to life
+        Resurrecting : - Animation playing
+        Resurrecting : - Stats being restored
+        Resurrecting --&gt; Idle : Resurrection Complete
+    }
+    
+    Active --&gt; Combat : Enter Combat
+    Combat --&gt; Active : Exit Combat
+    Active --&gt; StatusEffects : Status Effect Applied
+    StatusEffects --&gt; Active : All Effects Cleared
+    Active --&gt; Dead : Health Reaches 0
+    Dead --&gt; Active : Resurrected
+    StatusEffects --&gt; Dead : Death from Status Effect
+}
+
+InGame --&gt; CharacterSelect : Switch Character
+InGame --&gt; Offline : Logout
+
+&#x27; Concurrent regions shown with dashed lines
+Active ||-- StatusEffects
+
+&#x27; Event labels on transitions
+Offline --&gt; LoginScreen : playerLogin(credentials)
+LoginScreen --&gt; InGame : characterSelected(characterId)
+Idle --&gt; Moving : moveCommand(direction)
+Moving --&gt; Idle : stopMoving()
+Fighting --&gt; Victory : enemyDefeated()
+Fighting --&gt; Defeat : characterHealth &lt;= 0
+Poisoned --&gt; Dead : health &lt;= 0 [poison damage]
+DeathScreen --&gt; Resurrecting : resurrect() [player choice]
+
+note right of Combat : Combat state includes\ncomplex sub-states for\ndifferent combat phases
+
+note bottom of StatusEffects : Multiple status effects\ncan be active simultaneously\n(composite state)
+
+note top of InGame : Main gameplay state with\nmultiple concurrent regions\nfor different aspects
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h3>5. ⏱️ Timing Diagram</h3>
+<strong>Purpose</strong>: Visualizes the behavior of objects over time, focusing on timing constraints  
+<strong>Primary Use Cases</strong>:
+<ul>
+<li>Real-time system design</li>
+<li>Performance analysis</li>
+<li>Protocol timing verification</li>
+<li>System synchronization</li>
+</ul>
+
+<p>!<a href="Dynamisch/Time_diagram.png">Timing Diagram</a></p>
+
+<h4>Key Elements</h4>
+<ul>
+<li><strong>Lifelines</strong>: Objects being observed over time</li>
+<li><strong>States</strong>: Different conditions of objects</li>
+<li><strong>Time Constraints</strong>: Timing requirements and durations</li>
+<li><strong>Events</strong>: Points where state changes occur</li>
+</ul>
+
+<h4>Best Practices</h4>
+<ul>
+<li><strong>Focus on timing</strong>: Emphasize temporal relationships</li>
+<li><strong>Show constraints</strong>: Include timing requirements</li>
+<li><strong>Use realistic timescales</strong>: Reflect actual system timing</li>
+<li><strong>Highlight critical paths</strong>: Show time-sensitive sequences</li>
+</ul>
+
+<details>
+<summary>📄 Enhanced PlantUML Example</summary>
+
+<pre><code>
+@startuml Enhanced_MMO_Timing_Diagram
+title Enhanced MMO Real-time Combat Timing Analysis
+
+robust &quot;Player Input&quot; as Input
+robust &quot;Network Latency&quot; as Network  
+robust &quot;Server Processing&quot; as Server
+robust &quot;Combat State&quot; as Combat
+robust &quot;Animation System&quot; as Animation
+robust &quot;Audio System&quot; as Audio
+robust &quot;UI Feedback&quot; as UI
+
+scale 50 as 100 pixels
+
+&#x27; Initial states at time 0
+@0
+Input is Idle
+Network is Stable
+Server is Ready
+Combat is Waiting
+Animation is Idle
+Audio is Silent
+UI is Normal
+
+&#x27; Player initiates attack at 50ms
+@50
+Input is AttackPressed
+note top of Input : Player presses\nattack button
+
+&#x27; Network transmission (average 30ms latency)
+@80
+Network is Transmitting
+Input is Released
+
+&#x27; Server receives and processes attack
+@110
+Network is Stable
+Server is Processing
+note right of Server : Validating attack:\n- Range check\n- Cooldown check\n- Mana cost
+
+&#x27; Server completes processing and sends response
+@150
+Server is Ready
+Combat is Attacking
+Network is Transmitting
+
+&#x27; Client receives combat confirmation
+@180
+Network is Stable
+Animation is Playing
+Audio is PlayingEffect
+UI is ShowingDamage
+
+note bottom of Animation : Attack animation\nstarts playing\n(duration: 800ms)
+
+&#x27; Animation reaches impact frame
+@400
+Combat is ImpactFrame
+Audio is PlayingImpact
+UI is ShowingCritical
+
+note right of Combat : Critical hit frame\nDamage calculation peak
+
+&#x27; Animation continues
+@600
+Combat is Recovery
+Audio is PlayingEffect
+
+&#x27; Animation completes
+@980
+Animation is Idle
+Combat is Waiting
+Audio is Silent
+UI is Normal
+
+&#x27; Cooldown period
+@1480
+Input is Idle
+
+note top of Input : Attack cooldown\ncomplete (500ms)
+
+&#x27; Enemy counter-attack sequence
+@1500
+Server is Processing
+Combat is EnemyAttacking
+
+@1530
+Network is Transmitting
+
+@1560
+Network is Stable
+Animation is PlayingHit
+Audio is PlayingDamage
+UI is ShowingDamageReceived
+
+note bottom of UI : Player takes damage\nHealth bar updates
+
+@1860
+Animation is Idle
+Audio is Silent
+UI is Normal
+Combat is Waiting
+
+&#x27; Performance constraints
+@0 &lt;-&gt; @180 : {Network Response &lt; 200ms}
+@50 &lt;-&gt; @150 : {Server Processing &lt; 100ms}  
+@180 &lt;-&gt; @980 : {Animation Duration = 800ms}
+@980 &lt;-&gt; @1480 : {Attack Cooldown = 500ms}
+
+&#x27; Critical timing annotations
+highlight 50 to 180 #lightblue : Input to Feedback Delay
+highlight 150 to 400 #lightgreen : Server to Impact Timing
+highlight 400 to 600 #lightyellow : Critical Hit Window
+highlight 1500 to 1560 #lightcoral : Enemy Response Time
+
+note bottom : Performance Requirements:\n- Input lag &lt; 200ms total\n- Server processing &lt; 100ms\n- Animation sync ±50ms\n- Audio sync ±20ms
+
+@enduml
+</code></pre>
+
+</details>
+
+<p>---</p>
+
+<h2>🎯 Advanced UML Modeling Techniques</h2>
+
+<h3>🔄 Pattern Integration</h3>
+<p>Many UML diagrams work together to provide complete system documentation:</p>
+
+<ul>
+<li><strong>Use Case + Activity</strong>: Use cases define what the system does, activities show how</li>
+<li><strong>Class + Sequence</strong>: Classes define structure, sequences show interactions</li>
+<li><strong>Component + Deployment</strong>: Components show logical organization, deployment shows physical</li>
+<li><strong>State + Timing</strong>: States define object behavior, timing shows temporal constraints</li>
+</ul>
+
+<h3>📊 Modeling Best Practices</h3>
+
+<h4>1. <strong>Progressive Refinement</strong></h4>
+<ul>
+<li>Start with high-level diagrams (use case, component)</li>
+<li>Add detail gradually (class, sequence)</li>
+<li>Refine based on feedback and requirements</li>
+</ul>
+
+<h4>2. <strong>Audience-Appropriate Detail</strong></h4>
+<ul>
+<li><strong>Stakeholders</strong>: Use case and activity diagrams</li>
+<li><strong>Architects</strong>: Component and deployment diagrams  </li>
+<li><strong>Developers</strong>: Class and sequence diagrams</li>
+<li><strong>Testers</strong>: State and activity diagrams</li>
+</ul>
+
+<h4>3. <strong>Consistency Across Diagrams</strong></h4>
+<ul>
+<li>Use same naming conventions</li>
+<li>Maintain consistent abstractions</li>
+<li>Cross-reference between diagrams</li>
+<li>Validate diagram compatibility</li>
+</ul>
+
+<h4>4. <strong>Tool Integration</strong></h4>
+<ul>
+<li>Use tools that support diagram linking</li>
+<li>Maintain traceability between models</li>
+<li>Generate code from diagrams where possible</li>
+<li>Keep diagrams and code synchronized</li>
+</ul>
+
+<h3>🛠️ UML Tools and Technologies</h3>
+
+<h4><strong>Popular UML Tools</strong></h4>
+<ul>
+<li><strong>PlantUML</strong>: Text-based, version control friendly</li>
+<li><strong>Enterprise Architect</strong>: Professional modeling suite</li>
+<li><strong>Lucidchart</strong>: Web-based collaborative modeling</li>
+<li><strong>Draw.io</strong>: Free web-based diagramming</li>
+<li><strong>Visual Paradigm</strong>: Comprehensive modeling platform</li>
+</ul>
+
+<h4><strong>Integration Approaches</strong></h4>
+<ul>
+<li><strong>Documentation-Driven</strong>: UML guides implementation</li>
+<li><strong>Code-First</strong>: Generate diagrams from code</li>
+<li><strong>Round-Trip</strong>: Synchronize models and code</li>
+<li><strong>Living Documentation</strong>: Auto-update from code changes</li>
+</ul>
+
+<p>---</p>
+
+<h2>📚 Summary and Next Steps</h2>
+
+<h3>🎯 Key Takeaways</h3>
+
+<p>1. <strong>Static Diagrams</strong> model system structure and organization</p>
+<p>2. <strong>Dynamic Diagrams</strong> model system behavior and interactions  </p>
+<p>3. <strong>Progressive Detail</strong> allows different stakeholder needs</p>
+<p>4. <strong>Consistency</strong> across diagrams ensures coherent documentation</p>
+<p>5. <strong>Tool Support</strong> enhances productivity and maintenance</p>
+
+<h3>🚀 Practical Application</h3>
+
+<ul>
+<li><strong>Start Small</strong>: Begin with use case and class diagrams</li>
+<li><strong>Iterate Often</strong>: Refine diagrams based on feedback</li>
+<li><strong>Maintain Currency</strong>: Keep diagrams updated with system changes</li>
+<li><strong>Focus on Value</strong>: Create diagrams that solve real communication needs</li>
+<li><strong>Integrate with Development</strong>: Make UML part of your development workflow</li>
+</ul>
+
+<h3>📖 Further Learning</h3>
+
+<ul>
+<li><strong>UML 2.5 Specification</strong>: Official OMG documentation</li>
+<li><strong>Design Patterns</strong>: Apply UML to document pattern implementations</li>
+<li><strong>Domain-Driven Design</strong>: Use UML for domain modeling</li>
+<li><strong>Architecture Documentation</strong>: Document system architecture with UML</li>
+</ul>
+
+<p>---</p>
+
+<em>This comprehensive guide provides the foundation for effective software modeling using UML. The consistent MMO game context demonstrates how different diagram types complement each other to create complete system documentation.</em>
+
+<pre><code>
+@startuml MMO_DeploymentDiagram
+title MMO Deployment Diagram (Expanded)
+
+node &quot;Player Client&quot; {
+	[Game UI]
+	[Updater]
+}
+
+node &quot;Load Balancer&quot; {
+}
+
+node &quot;Web Server&quot; {
+	[Auth Service]
+	[Payment Gateway]
+}
+
+node &quot;Game Server Cluster&quot; {
+	node &quot;Game Server 1&quot; {
+		[World Service]
+	}
+}
+@enduml
+</code></pre>
+
+</details>
+
+<h3>3. Class Diagram</h3>
+<strong>Purpose:</strong> Describes the structure of a system by showing its classes, attributes, and relationships.  
+<strong>Use Cases:</strong> Object-oriented design, database schema design.
+
+<p>!<a href="Statisch/Klasse_Diagram.png">Class Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml MMO_ClassDiagram
+title MMO Class Diagram (Expanded)
+
+class Player {
+  +username: string
+  +level: int
+  +login()
+  +logout()
+  +selectCharacter()
+}
+
+class Character {
+  +name: string
+  +classType: string
+  +hp: int
+  +xp: int
+  +attack()
+  +defend()
+  +useSkill(skill: Skill)
+}
+@enduml
+</code></pre>
+
+</details>
+
+<h3>4. Object Diagram</h3>
+<strong>Purpose:</strong> Represents instances of classes and their relationships at a specific point in time.  
+<strong>Use Cases:</strong> Debugging, example scenarios.
+
+<p>!<a href="Statisch/Object_Diagram.png">Object Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml MMO_ObjectDiagram
+title MMO Object Diagram (Expanded)
+
+object player1 as &quot;Player: Zed101&quot; {
+  username = &quot;Zed101&quot;
+  level = 42
+}
+object archer1 as &quot;Archer: Elora&quot; {
+  name = &quot;Elora&quot;
+  classType = &quot;Archer&quot;
+  hp = 120
+  xp = 5000
+}
+object bard1 as &quot;Bard: Lyra&quot; {
+  name = &quot;Lyra&quot;
+  classType = &quot;Bard&quot;
+  hp = 100
+  xp = 4200
+}
+@enduml
+</code></pre>
+
+</details>
+
+<h3>5. Packages Diagram</h3>
+<strong>Purpose:</strong> Shows how classes and interfaces are grouped into packages.  
+<strong>Use Cases:</strong> Modular design, dependency management.
+
+<p>!<a href="Statisch/Packages_Diagram.png">Packages Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml MMO_PackagesDiagram
+title MMO Packages Diagram (Expanded)
+
+package &quot;UI&quot; {
+  class LoginScreen
+  class CharacterSelect
+  class GameHUD
+}
+
+package &quot;Logic&quot; {
+  class PlayerManager
+  class CombatManager
+  class QuestManager
+}
+
+package &quot;Network&quot; {
+  class NetworkManager
+  class PacketHandler
+}
+@enduml
+</code></pre>
+
+</details>
+<p>---</p>
+<h2>🔄 Dynamic Diagrams</h2>
+
+<h3>1. Activity Diagram</h3>
+<strong>Purpose:</strong> Models the workflow of a system or process.  
+<strong>Use Cases:</strong> Business process modeling, algorithm design.
+
+<p>!<a href="Dynamisch/Activity_Diagram.png">Activity Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml Refined_Archer_Activity_Diagram
+
+|Player|
+start
+:Log In;
+:Select Character;
+
+partition Exploration {
+    repeat
+        :Explore World;
+
+        if (Encounter Monster?) then (yes)
+            :Combat (Attack / Defend / Flee);
+            if (Victory?) then (yes)
+                :Loot &amp; Gain XP;
+                :Check Level Up;
+                if (Level Up?) then (yes)
+@enduml
+</code></pre>
+
+</details>
+
+<h3>2. Sequence Diagram</h3>
+<strong>Purpose:</strong> Shows how objects interact in a particular sequence.  
+<strong>Use Cases:</strong> API design, interaction modeling.
+
+<p>!<a href="Dynamisch/Seq_Diagram.png">Sequence Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml mmo_purchase
+skinparam participant {
+  BackgroundColor #f9f9f9
+  BorderColor #333
+  FontSize 12
+}
+skinparam sequence {
+  ArrowColor #225588
+  LifeLineBorderColor #225588
+  LifeLineBackgroundColor #ddeeff
+}
+
+actor User
+participant &quot;MMO Website&quot; as MMO
+participant &quot;PayPal&quot; as PayPal
+participant &quot;Game Server&quot; as Server
+@enduml
+</code></pre>
+
+</details>
+
+<h3>3. State Diagram</h3>
+<strong>Purpose:</strong> Describes the states and transitions of an object.  
+<strong>Use Cases:</strong> Finite state machines, lifecycle modeling.
+
+<p>!<a href="Dynamisch/State_Diagram.png">State Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml Archer_State_Diagram
+[*] --&gt; Idle : spawn
+
+Idle --&gt; Exploring : start exploring
+Exploring --&gt; Encountering : encounter monster
+Encountering --&gt; Attacking : choose to attack
+Encountering --&gt; Defending : gets attacked
+
+Attacking --&gt; Fighting : attack successful
+Defending --&gt; Fighting : defense successful
+Fighting --&gt; Exploring : victory
+Fighting --&gt; Down : defeated
+
+Down --&gt; Idle : Bard heals
+Down --&gt; [*] : perma-death
+@enduml
+</code></pre>
+
+</details>
+
+<h3>4. Use Case Diagram</h3>
+<strong>Purpose:</strong> Represents the functional requirements of a system.  
+<strong>Use Cases:</strong> Requirement analysis, stakeholder communication.
+
+<p>!<a href="Dynamisch/UC_Diagram.png">Use Case Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml MMO_UC_Diagram
+left to right direction
+
+actor Player
+actor Archer
+actor Bard
+@enduml
+</code></pre>
+
+</details>
+
+<h3>5. Time Diagram</h3>
+<strong>Purpose:</strong> Visualizes the behavior of objects over time.  
+<strong>Use Cases:</strong> Real-time systems, performance analysis.
+
+<p>!<a href="Dynamisch/Time_diagram.png">Time Diagram</a></p>
+
+<details>
+<summary>PlantUML Code</summary>
+
+<pre><code>
+@startuml
+robust &quot;Archer&quot; as A
+
+@0
+A is Idle
+
+@20
+A is Exploring
+
+@35
+A is Encountering
+
+@45
+A is Attacking
+
+@60
+A is Fighting
+
+@80
+A is Exploring
+@enduml
+</code></pre>
+
+</details>
+<p>---</p>
+
+<p>> All diagrams are generated from their corresponding PlantUML files for consistency and easy updates.</p>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>

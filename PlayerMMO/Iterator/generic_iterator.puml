@@ -1,0 +1,88 @@
+@startuml Generic_Iterator_Pattern
+
+title Generic Iterator Pattern
+
+interface Iterator<T> {
+    +HasNext(): bool
+    +Next(): T
+    +Reset(): void
+    +Current: T
+}
+
+interface Aggregate<T> {
+    +CreateIterator(): Iterator<T>
+    +Add(item: T): void
+    +Remove(item: T): void
+    +Count: int
+}
+
+class ConcreteIterator<T> {
+    -collection: ConcreteAggregate<T>
+    -currentIndex: int
+    +ConcreteIterator(collection: ConcreteAggregate<T>)
+    +HasNext(): bool
+    +Next(): T
+    +Reset(): void
+    +Current: T
+}
+
+class ConcreteAggregate<T> {
+    -items: List<T>
+    +CreateIterator(): Iterator<T>
+    +Add(item: T): void
+    +Remove(item: T): void
+    +Count: int
+    +GetItem(index: int): T
+}
+
+class ReverseIterator<T> {
+    -collection: ConcreteAggregate<T>
+    -currentIndex: int
+    +ReverseIterator(collection: ConcreteAggregate<T>)
+    +HasNext(): bool
+    +Next(): T
+    +Reset(): void
+    +Current: T
+}
+
+class Client {
+    +IterateCollection(): void
+    +UseMultipleIterators(): void
+}
+
+ConcreteIterator ..|> Iterator
+ReverseIterator ..|> Iterator
+ConcreteAggregate ..|> Aggregate
+ConcreteAggregate --> ConcreteIterator : creates
+ConcreteAggregate --> ReverseIterator : creates
+Client --> Aggregate : uses
+Client --> Iterator : uses
+
+note right of Iterator
+  Iterator interface provides
+  uniform way to traverse
+  any collection without
+  exposing internal structure
+end note
+
+note bottom of ConcreteAggregate
+  Aggregate creates different
+  types of iterators:
+  - Forward iteration
+  - Reverse iteration
+  - Filtered iteration
+  All implement same interface
+end note
+
+note left of Client
+  Client can traverse collection
+  without knowing implementation:
+  
+  var it = collection.CreateIterator();
+  while (it.HasNext()) {
+    var item = it.Next();
+    // process item
+  }
+end note
+
+@enduml

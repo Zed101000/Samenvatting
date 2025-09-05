@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://zed101000.github.io/Samenvatting/sitemap.xml
+
+# Disallow development files
+Disallow: /PlayerMMO/
+Disallow: /Puml/
+Disallow: /PDFs/
+Disallow: /*.py
+Disallow: /*.ps1
+Disallow: /*.bat
+Disallow: /.git/
+
+# Allow documentation
+Allow: /docs/
+Allow: /assets/
+Allow: /index.html
+Allow: /404.html

@@ -1,9 +1,80 @@
-@startuml
-interface Strategy {
-  +Algorithm()
+@startuml Strategy_Pattern
+
+title Strategy Pattern - Combat Strategies
+
+interface ICombatStrategy {
+    +ExecuteStrategy(attacker: IPlayer, target: IMonster): void
+    +GetStrategyName(): string
 }
-class ConcreteStrategyA
-class ConcreteStrategyB
-Strategy <|.. ConcreteStrategyA
-Strategy <|.. ConcreteStrategyB
+
+class AggressiveStrategy {
+    +ExecuteStrategy(attacker: IPlayer, target: IMonster): void
+    +GetStrategyName(): string
+}
+
+class DefensiveStrategy {
+    +ExecuteStrategy(attacker: IPlayer, target: IMonster): void
+    +GetStrategyName(): string
+}
+
+class BalancedStrategy {
+    +ExecuteStrategy(attacker: IPlayer, target: IMonster): void
+    +GetStrategyName(): string
+}
+
+class MagicalStrategy {
+    +ExecuteStrategy(attacker: IPlayer, target: IMonster): void
+    +GetStrategyName(): string
+}
+
+class CombatContext {
+    -_strategy: ICombatStrategy
+    -_player: IPlayer
+    +CombatContext(player: IPlayer, strategy: ICombatStrategy)
+    +SetStrategy(strategy: ICombatStrategy): void
+    +ExecuteCombat(target: IMonster): void
+    +GetCurrentStrategy(): ICombatStrategy
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+    +Defend(): void
+}
+
+interface IMonster {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+AggressiveStrategy ..|> ICombatStrategy
+DefensiveStrategy ..|> ICombatStrategy
+BalancedStrategy ..|> ICombatStrategy
+MagicalStrategy ..|> ICombatStrategy
+CombatContext --> ICombatStrategy : uses
+CombatContext --> IPlayer : controls
+ICombatStrategy --> IPlayer : modifies
+ICombatStrategy --> IMonster : affects
+
+note right of CombatContext
+  Context can switch strategies
+  at runtime to adapt combat
+  style to different situations
+end note
+
+note bottom of ICombatStrategy
+  Different strategies:
+  - Aggressive: High damage, high cost
+  - Defensive: Lower damage, defense boost
+  - Balanced: Moderate damage/cost
+  - Magical: High damage, ignores defense
+end note
+
 @enduml

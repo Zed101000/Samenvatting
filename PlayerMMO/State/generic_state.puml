@@ -1,0 +1,74 @@
+@startuml Generic_State_Pattern
+
+title Generic State Pattern
+
+interface State {
+    +Handle(context: Context): void
+    +DoAction(): void
+}
+
+class ConcreteStateA {
+    +Handle(context: Context): void
+    +DoAction(): void
+}
+
+class ConcreteStateB {
+    +Handle(context: Context): void
+    +DoAction(): void
+}
+
+class ConcreteStateC {
+    +Handle(context: Context): void
+    +DoAction(): void
+}
+
+class Context {
+    -currentState: State
+    +Context(initialState: State)
+    +SetState(state: State): void
+    +Request(): void
+    +GetState(): State
+}
+
+class Client {
+    +UseContext(): void
+}
+
+ConcreteStateA ..|> State
+ConcreteStateB ..|> State
+ConcreteStateC ..|> State
+Context --> State : delegates to
+Client --> Context : uses
+
+ConcreteStateA ..> ConcreteStateB : transitions to
+ConcreteStateB ..> ConcreteStateC : transitions to
+ConcreteStateC ..> ConcreteStateA : transitions to
+ConcreteStateB ..> ConcreteStateA : transitions to
+
+note right of State
+  State interface defines
+  methods that all concrete
+  states must implement
+end note
+
+note right of Context
+  Context maintains reference
+  to current state and delegates
+  requests to state object.
+  State changes are managed here
+end note
+
+note bottom of ConcreteStateA
+  Each concrete state implements
+  behavior specific to that state.
+  States can trigger transitions
+  by calling context.SetState()
+end note
+
+note left of Client
+  Client works through Context
+  interface. State changes are
+  transparent to client
+end note
+
+@enduml

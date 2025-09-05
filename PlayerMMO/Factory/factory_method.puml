@@ -1,10 +1,79 @@
-@startuml
-abstract class Creator {
-  +FactoryMethod(): Product
+@startuml Factory_Method_Pattern
+
+title Factory Method Pattern - Player Creation
+
+abstract class PlayerFactory {
+    +CreatePlayer(name: string): IPlayer {abstract}
+    +CreatePlayerWithStats(name: string): IPlayer
+    #LogCreation(playerType: string, name: string): void
 }
-class ConcreteCreator {
-  +FactoryMethod(): Product
+
+class WarriorFactory {
+    +CreatePlayer(name: string): IPlayer
 }
-Creator <|-- ConcreteCreator
-Product <|-- ConcreteProduct
+
+class MageFactory {
+    +CreatePlayer(name: string): IPlayer
+}
+
+class RogueFactory {
+    +CreatePlayer(name: string): IPlayer
+}
+
+class PaladinFactory {
+    +CreatePlayer(name: string): IPlayer
+}
+
+class PlayerFactoryManager {
+    -_factories: Dictionary<string, PlayerFactory>
+    +CreatePlayer(className: string, playerName: string): IPlayer
+    +RegisterFactory(className: string, factory: PlayerFactory): void
+    +GetAvailableClasses(): List<string>
+    +ShowAvailableClasses(): void
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Level: int
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+class BasePlayer {
+    +BasePlayer(name: string, mana: int, defense: int, attackPower: int, health: int, level: int)
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+WarriorFactory --|> PlayerFactory
+MageFactory --|> PlayerFactory
+RogueFactory --|> PlayerFactory
+PaladinFactory --|> PlayerFactory
+PlayerFactoryManager --> PlayerFactory : manages
+PlayerFactory --> IPlayer : creates
+BasePlayer ..|> IPlayer
+PlayerFactory --> BasePlayer : instantiates
+
+note right of PlayerFactoryManager
+  Manager provides unified
+  interface for creating
+  different player types
+  by class name
+end note
+
+note bottom of PlayerFactory
+  Each factory creates players
+  with different stat distributions:
+  - Warrior: High health/defense
+  - Mage: High mana/attack
+  - Rogue: Balanced/high attack
+  - Paladin: High defense/mana
+end note
+
 @enduml

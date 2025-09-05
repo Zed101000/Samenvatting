@@ -1,0 +1,77 @@
+@startuml Generic_Decorator_Pattern
+
+title Generic Decorator Pattern
+
+interface Component {
+    +Operation(): void
+}
+
+class ConcreteComponent {
+    +Operation(): void
+}
+
+abstract class Decorator {
+    #component: Component
+    +Decorator(component: Component)
+    +Operation(): void
+}
+
+class ConcreteDecoratorA {
+    +Operation(): void
+    +AddedBehaviorA(): void
+}
+
+class ConcreteDecoratorB {
+    -addedState: string
+    +Operation(): void
+    +AddedBehaviorB(): void
+}
+
+class Client {
+    +UseComponent(component: Component): void
+}
+
+ConcreteComponent ..|> Component
+Decorator ..|> Component
+ConcreteDecoratorA --|> Decorator
+ConcreteDecoratorB --|> Decorator
+Decorator --> Component : wraps
+Client --> Component : uses
+
+note right of Component
+  Component defines interface
+  for objects that can have
+  responsibilities added
+  dynamically
+end note
+
+note bottom of ConcreteComponent
+  ConcreteComponent defines
+  base object to which
+  additional responsibilities
+  can be attached
+end note
+
+note right of Decorator
+  Decorator maintains reference
+  to Component and forwards
+  requests to it:
+  
+  Operation() {
+    component.Operation();
+  }
+end note
+
+note left of ConcreteDecoratorA
+  Concrete decorators add
+  responsibilities:
+  
+  Operation() {
+    base.Operation();  // Call wrapped component
+    AddedBehaviorA();  // Add new behavior
+  }
+  
+  Can be chained: new DecoratorB(new DecoratorA(component))
+end note
+
+@enduml

@@ -1,0 +1,70 @@
+@startuml Generic_Composite_Pattern
+
+title Generic Composite Pattern
+
+interface Component {
+    +Operation(): void
+    +Add(component: Component): void
+    +Remove(component: Component): void
+    +GetChild(index: int): Component
+}
+
+class Leaf {
+    +Operation(): void
+    +Add(component: Component): void
+    +Remove(component: Component): void
+    +GetChild(index: int): Component
+}
+
+class Composite {
+    -children: List<Component>
+    +Operation(): void
+    +Add(component: Component): void
+    +Remove(component: Component): void
+    +GetChild(index: int): Component
+}
+
+class Client {
+    +UseComponent(component: Component): void
+}
+
+Leaf ..|> Component
+Composite ..|> Component
+Composite --> Component : contains
+Client --> Component : uses
+
+note right of Component
+  Component defines interface
+  for all objects in composition.
+  Declares methods for both
+  leaf and composite objects
+end note
+
+note bottom of Leaf
+  Leaf represents end objects
+  with no children. Defines
+  behavior for primitive objects.
+  
+  Add/Remove operations may
+  throw exceptions or do nothing
+end note
+
+note right of Composite
+  Composite stores child components
+  and implements child-related
+  operations:
+  
+  Operation() {
+    foreach(child in children) {
+      child.Operation();
+    }
+  }
+end note
+
+note left of Client
+  Client treats individual objects
+  and compositions uniformly
+  through Component interface
+end note
+
+@enduml

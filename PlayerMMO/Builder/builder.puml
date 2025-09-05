@@ -1,34 +1,76 @@
-@startuml BuilderPattern
-skinparam legendFontSize 12
+@startuml Builder_Pattern
 
-class Product
+title Builder Pattern - Player Creation
 
-interface ICharacterAppearanceBuilder {
-  +BuildNose()
-  +BuildEyes()
-  +BuildMouth()
-  +GetResult(): CharacterAppearance
+interface IPlayerBuilder {
+    +SetName(name: string): IPlayerBuilder
+    +SetHealth(health: int): IPlayerBuilder
+    +SetMana(mana: int): IPlayerBuilder
+    +SetAttackPower(attackPower: int): IPlayerBuilder
+    +SetDefense(defense: int): IPlayerBuilder
+    +SetLevel(level: int): IPlayerBuilder
+    +Build(): IPlayer
+    +Reset(): void
 }
 
-class ConcreteBuilder {
-  +BuildPartA()
-  +BuildPartB()
-  +GetResult(): CharacterAppearance
+class PlayerBuilder {
+    -_name: string
+    -_health: int
+    -_mana: int
+    -_attackPower: int
+    -_defense: int
+    -_level: int
+    +SetName(name: string): IPlayerBuilder
+    +SetHealth(health: int): IPlayerBuilder
+    +SetMana(mana: int): IPlayerBuilder
+    +SetAttackPower(attackPower: int): IPlayerBuilder
+    +SetDefense(defense: int): IPlayerBuilder
+    +SetLevel(level: int): IPlayerBuilder
+    +Build(): IPlayer
+    +Reset(): void
 }
-ICharacterAppearance    Builder <|.. ConcreteBuilder
 
-class Director {
-  +Construct(): Product
+class GamePlayerDirector {
+    -_builder: IPlayerBuilder
+    +GamePlayerDirector(builder: IPlayerBuilder)
+    +CreateWarrior(): IPlayer
+    +CreateMage(): IPlayer
+    +CreateRogue(): IPlayer
 }
-class Client {
-  +DoSomething()
-}
-Director --> ICharacterAppearanceBuilder
-ConcreteBuilder --> CharacterAppearance
-Client --> Director : uses
 
-legend left
-  <|.. = interface realization
-  -->  = usage
-end legend
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Level: int
+    +Play(): void
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+class BasePlayer {
+    +BasePlayer(name: string, mana: int, defense: int, attackPower: int, health: int, level: int)
+    +Play(): void
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+PlayerBuilder ..|> IPlayerBuilder
+GamePlayerDirector --> IPlayerBuilder : uses
+IPlayerBuilder --> IPlayer : creates
+BasePlayer ..|> IPlayer
+PlayerBuilder --> BasePlayer : creates
+
+note right of GamePlayerDirector
+  Director creates different
+  player configurations:
+  - Warrior (high health/attack)
+  - Mage (high mana/low defense)
+  - Rogue (balanced stats)
+end note
+
 @enduml

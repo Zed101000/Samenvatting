@@ -5,43 +5,63 @@ using GameBase.DefaultClasses;
 namespace AbstractFactory {
     class Program {
         static void Main(string[] args) {
-            LevelFactory caveFactory = new GameFactoryCave();
-            LevelFactory dungeonFactory = new GameFactoryDungeon();
+            Console.WriteLine("=== Abstract Factory Pattern Demo ===\n");
 
-            int rows = 5;
-            int cols = 5;
+            // Create a player
+            IPlayer player = new BasePlayer("Adventure Hero", 60, 12, 18, 120, 3);
+            
+            Console.WriteLine("Starting adventure with player:");
+            Console.WriteLine($"Player: {player}\n");
 
-            string[,] caveMap = caveFactory.CreateCaveMap(rows, cols);
-            IMonster[,] caveEnemies = caveFactory.CreateCaveEnemies(rows, cols);
+            // Create different environment factories
+            IGameEnvironmentFactory caveFactory = new CaveEnvironmentFactory();
+            IGameEnvironmentFactory dungeonFactory = new DungeonEnvironmentFactory();
 
-            string[,] dungeonMap = dungeonFactory.CreateDungeonMap(rows, cols);
-            IMonster[,] dungeonEnemies = dungeonFactory.CreateDungeonEnemies(rows, cols);
+            // Create environment manager
+            GameEnvironmentManager environmentManager = new GameEnvironmentManager(caveFactory);
 
-            Console.WriteLine("Cave Level:");
-            PrintMap(caveMap);
-            PrintEnemies(caveEnemies);
+            // Create Cave environment
+            environmentManager.CreateGameEnvironment(player, 3);
+            
+            Console.WriteLine("\n" + new string('=', 60));
+            
+            // Switch to Dungeon environment
+            environmentManager.SetFactory(dungeonFactory);
+            
+            // Restore player health for next adventure
+            player.Health = 120;
+            player.Mana = 60;
+            
+            environmentManager.CreateGameEnvironment(player, 4);
 
-            Console.WriteLine("\nDungeon Level:");
-            PrintMap(dungeonMap);
-            PrintEnemies(dungeonEnemies);
-        }
-
-        static void PrintMap(string[,] map) {
-            for (int i = 0; i < map.GetLength(0); i++) {
-                for (int j = 0; j < map.GetLength(1); j++) {
-                    Console.Write(map[i, j] + " ");
-                }
-                Console.WriteLine();
+            Console.WriteLine("\n" + new string('=', 60));
+            
+            // Demonstrate direct factory usage
+            Console.WriteLine("\n=== Direct Factory Usage ===");
+            
+            Console.WriteLine("\nCreating Cave environment directly:");
+            ILevel caveLevel = caveFactory.CreateLevel();
+            caveLevel.DisplayInfo();
+            
+            IMonster[] caveEnemies = caveFactory.CreateEnemies(2);
+            Console.WriteLine("Cave enemies:");
+            foreach (var enemy in caveEnemies)
+            {
+                Console.WriteLine($"- {enemy.Name}");
             }
-        }
 
-        static void PrintEnemies(IMonster[,] enemies) {
-            for (int i = 0; i < enemies.GetLength(0); i++) {
-                for (int j = 0; j < enemies.GetLength(1); j++) {
-                    Console.Write((enemies[i, j]?.Name ?? "Empty") + " ");
-                }
-                Console.WriteLine();
+            Console.WriteLine("\nCreating Dungeon environment directly:");
+            ILevel dungeonLevel = dungeonFactory.CreateLevel();
+            dungeonLevel.DisplayInfo();
+            
+            IMonster[] dungeonEnemies = dungeonFactory.CreateEnemies(2);
+            Console.WriteLine("Dungeon enemies:");
+            foreach (var enemy in dungeonEnemies)
+            {
+                Console.WriteLine($"- {enemy.Name}");
             }
+
+            Console.WriteLine("\n=== Demo Complete ===");
         }
     }
 }

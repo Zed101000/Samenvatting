@@ -1,9 +1,0 @@
-@startuml StrategyPattern
-interface Strategy {
-  +Algorithm()
-}
-class ConcreteStrategyA
-class ConcreteStrategyB
-Strategy <|.. ConcreteStrategyA
-Strategy <|.. ConcreteStrategyB
-@enduml

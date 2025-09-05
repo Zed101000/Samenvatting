@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\pattern\\gamefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\pattern\\gamefactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\observer\\pattern\\gameeventsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|solutionrelative:observer\\pattern\\gameeventsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\pattern\\concretelevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6E8684E-E510-434B-A279-0297DE0930F7}|AbstractFactory\\AbstractFactory.csproj|solutionrelative:abstractfactory\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|c:\\users\\zedkn\\desktop\\samenvatting\\playermmo\\observer\\generic_observer.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{9E40FED0-6A3F-45B9-A537-D0AF0EE63D09}|Observer\\Observer.csproj|solutionrelative:observer\\generic_observer.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameFactory.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\GameFactory.cs",
-              "RelativeDocumentMoniker": "AbstractFactory\\Pattern\\GameFactory.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\GameFactory.cs",
-              "RelativeToolTip": "AbstractFactory\\Pattern\\GameFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T22:02:35.217Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
-              "RelativeDocumentMoniker": "AbstractFactory\\Program.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Program.cs",
-              "RelativeToolTip": "AbstractFactory\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T22:00:17.101Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ConcreteLevel.cs",
-              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "RelativeDocumentMoniker": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "RelativeToolTip": "AbstractFactory\\Pattern\\ConcreteLevel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAApAAAAAAAAAA==",
+              "Title": "generic_observer.png",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\generic_observer.png",
+              "RelativeDocumentMoniker": "Observer\\generic_observer.png",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\generic_observer.png",
+              "RelativeToolTip": "Observer\\generic_observer.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-09-05T00:34:58.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameEventSystem.cs",
+              "DocumentMoniker": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\Pattern\\GameEventSystem.cs",
+              "RelativeDocumentMoniker": "Observer\\Pattern\\GameEventSystem.cs",
+              "ToolTip": "C:\\Users\\ZedKn\\Desktop\\Samenvatting\\PlayerMMO\\Observer\\Pattern\\GameEventSystem.cs",
+              "RelativeToolTip": "Observer\\Pattern\\GameEventSystem.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T21:59:55.733Z",
+              "WhenOpened": "2025-09-05T00:34:53.107Z",
               "EditorCaption": ""
             }
           ]

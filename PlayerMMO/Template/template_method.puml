@@ -1,8 +1,105 @@
-@startuml
-abstract class AbstractClass {
-  +TemplateMethod()
-  +PrimitiveOperation()
+@startuml Template_Method_Pattern
+
+title Template Method Pattern - Game Level System
+
+abstract class GameLevelTemplate {
+    #_player: IPlayer
+    #_enemies: List<IMonster>
+    +GameLevelTemplate(player: IPlayer)
+    +PlayLevel(): void {final}
+    #GetLevelName(): string {abstract}
+    #InitializeLevel(): void {abstract}
+    #SpawnEnemies(): void {abstract}
+    #ShowLevelIntro(): void {abstract}
+    #ExecuteLevelLoop(): void {abstract}
+    #IsLevelComplete(): bool {abstract}
+    #FinishLevel(): void {virtual}
+    #GiveReward(): void {virtual}
+    #Battle(enemy: IMonster): void
 }
-class ConcreteClass
-AbstractClass <|-- ConcreteClass
+
+class DungeonLevel {
+    -_currentEnemyIndex: int
+    +DungeonLevel(player: IPlayer)
+    #GetLevelName(): string
+    #InitializeLevel(): void
+    #SpawnEnemies(): void
+    #ShowLevelIntro(): void
+    #ExecuteLevelLoop(): void
+    #IsLevelComplete(): bool
+    #GiveReward(): void
+}
+
+class ForestLevel {
+    -_enemiesDefeated: int
+    -_totalEnemies: int
+    +ForestLevel(player: IPlayer)
+    #GetLevelName(): string
+    #InitializeLevel(): void
+    #SpawnEnemies(): void
+    #ShowLevelIntro(): void
+    #ExecuteLevelLoop(): void
+    #IsLevelComplete(): bool
+    #GiveReward(): void
+}
+
+class CaveLevel {
+    -_turnsInCave: int
+    -_maxTurns: int
+    -_treasureFound: bool
+    +CaveLevel(player: IPlayer)
+    #GetLevelName(): string
+    #InitializeLevel(): void
+    #SpawnEnemies(): void
+    #ShowLevelIntro(): void
+    #ExecuteLevelLoop(): void
+    #IsLevelComplete(): bool
+    #FinishLevel(): void
+    #GiveReward(): void
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Level: int
+    +Attack(): void
+    +Defend(): void
+}
+
+interface IMonster {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+DungeonLevel --|> GameLevelTemplate
+ForestLevel --|> GameLevelTemplate
+CaveLevel --|> GameLevelTemplate
+GameLevelTemplate --> IPlayer : uses
+GameLevelTemplate --> IMonster : battles
+
+note right of GameLevelTemplate
+  Template method PlayLevel()
+  defines the algorithm skeleton:
+  1. Initialize level
+  2. Spawn enemies
+  3. Show intro
+  4. Execute level loop
+  5. Finish level
+  
+  Subclasses implement specifics
+end note
+
+note bottom of GameLevelTemplate
+  Hook methods (FinishLevel,
+  GiveReward) have default
+  implementations but can
+  be overridden by subclasses
+end note
+
 @enduml

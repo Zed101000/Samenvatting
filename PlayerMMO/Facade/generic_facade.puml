@@ -1,0 +1,71 @@
+@startuml Generic_Facade_Pattern
+
+title Generic Facade Pattern
+
+class Facade {
+    -subsystem1: SubsystemA
+    -subsystem2: SubsystemB
+    -subsystem3: SubsystemC
+    +Facade()
+    +SimpleOperation(): void
+    +ComplexOperation(): void
+}
+
+class SubsystemA {
+    +OperationA1(): void
+    +OperationA2(): void
+}
+
+class SubsystemB {
+    +OperationB1(): void
+    +OperationB2(): void
+}
+
+class SubsystemC {
+    +OperationC1(): void
+    +OperationC2(): void
+}
+
+class Client {
+    +UseSimpleInterface(): void
+}
+
+Facade --> SubsystemA : uses
+Facade --> SubsystemB : uses
+Facade --> SubsystemC : uses
+Client --> Facade : uses
+
+note right of Facade
+  Facade provides simple interface
+  to complex subsystem:
+  
+  SimpleOperation() {
+    subsystem1.OperationA1();
+    subsystem2.OperationB1();
+  }
+  
+  ComplexOperation() {
+    subsystem1.OperationA1();
+    subsystem1.OperationA2();
+    subsystem2.OperationB2();
+    subsystem3.OperationC1();
+  }
+end note
+
+note bottom of SubsystemA
+  Subsystems contain complex
+  business logic and handle
+  work assigned by Facade.
+  
+  Subsystems are unaware
+  of Facade's existence
+end note
+
+note left of Client
+  Client uses simple Facade
+  interface instead of
+  dealing with subsystem
+  complexity directly
+end note
+
+@enduml

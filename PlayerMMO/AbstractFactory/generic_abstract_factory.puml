@@ -1,0 +1,79 @@
+@startuml Generic_Abstract_Factory_Pattern
+
+title Generic Abstract Factory Pattern
+
+interface AbstractFactory {
+    +CreateProductA(): AbstractProductA
+    +CreateProductB(): AbstractProductB
+}
+
+class ConcreteFactory1 {
+    +CreateProductA(): AbstractProductA
+    +CreateProductB(): AbstractProductB
+}
+
+class ConcreteFactory2 {
+    +CreateProductA(): AbstractProductA
+    +CreateProductB(): AbstractProductB
+}
+
+interface AbstractProductA {
+    +OperationA(): void
+}
+
+interface AbstractProductB {
+    +OperationB(): void
+}
+
+class ProductA1 {
+    +OperationA(): void
+}
+
+class ProductA2 {
+    +OperationA(): void
+}
+
+class ProductB1 {
+    +OperationB(): void
+}
+
+class ProductB2 {
+    +OperationB(): void
+}
+
+class Client {
+    -factory: AbstractFactory
+    +Client(factory: AbstractFactory)
+    +UseProducts(): void
+}
+
+ConcreteFactory1 ..|> AbstractFactory
+ConcreteFactory2 ..|> AbstractFactory
+ProductA1 ..|> AbstractProductA
+ProductA2 ..|> AbstractProductA
+ProductB1 ..|> AbstractProductB
+ProductB2 ..|> AbstractProductB
+
+ConcreteFactory1 --> ProductA1 : creates
+ConcreteFactory1 --> ProductB1 : creates
+ConcreteFactory2 --> ProductA2 : creates
+ConcreteFactory2 --> ProductB2 : creates
+
+Client --> AbstractFactory : uses
+Client --> AbstractProductA : uses
+Client --> AbstractProductB : uses
+
+note right of AbstractFactory
+  Abstract factory defines
+  interface for creating
+  families of related products
+end note
+
+note bottom of Client
+  Client works with products
+  through abstract interfaces,
+  ensuring compatibility
+  within product families
+end note
+
+@enduml

@@ -1,36 +1,103 @@
-@startuml AbstractFactoryPattern
+@startuml Abstract_Factory_Pattern
 
-title Abstract Factory Pattern for Levels and Enemies
+title Abstract Factory Pattern - Game Environment Creation
 
-interface LevelFactory {
-    + CreateCave(GameMapFactory mapFactory, GameEnemyMapFactory enemyFactory): ICave
-    + CreateDungeon(GameMapFactory mapFactory, GameEnemyMapFactory enemyFactory): IDungeon
+interface IGameEnvironmentFactory {
+    +CreateLevel(): ILevel
+    +CreateEnemies(count: int): IMonster[]
+    +GetEnvironmentName(): string
 }
 
-class GameMapFactory {
-    + CreateCaveMap(int rows, int cols): string[,]
-    + CreateDungeonMap(int rows, int cols): string[,]
+interface ILevel {
+    +Name: string
+    +Description: string
+    +Initialize(): void
+    +DisplayInfo(): void
 }
 
-class GameEnemyMapFactory {
-    + CreateCaveEnemies(int rows, int cols): IMonster[,]
-    + CreateDungeonEnemies(int rows, int cols): IMonster[,]
+class CaveEnvironmentFactory {
+    +CreateLevel(): ILevel
+    +CreateEnemies(count: int): IMonster[]
+    +GetEnvironmentName(): string
 }
 
-interface ICave {
-    + string[,] CaveMap { get; }
-    + IMonster[,] CaveEnemiesMap { get; }
+class DungeonEnvironmentFactory {
+    +CreateLevel(): ILevel
+    +CreateEnemies(count: int): IMonster[]
+    +GetEnvironmentName(): string
 }
 
-interface IDungeon {
-    + string[,] DungeonMap { get; }
-    + IMonster[,] DungeonEnemiesMap { get; }
+class CaveLevel {
+    +Name: string
+    +Description: string
+    +Initialize(): void
+    +DisplayInfo(): void
 }
 
-GameMapFactory ..> CaveMap : creates
-GameMapFactory ..> DungeonMap : creates
-GameEnemyMapFactory ..> CaveEnemies : creates
-GameEnemyMapFactory ..> DungeonEnemies : creates
+class DungeonLevel {
+    +Name: string
+    +Description: string
+    +Initialize(): void
+    +DisplayInfo(): void
+}
 
+class GameEnvironmentManager {
+    -_factory: IGameEnvironmentFactory
+    +GameEnvironmentManager(factory: IGameEnvironmentFactory)
+    +SetFactory(factory: IGameEnvironmentFactory): void
+    +CreateGameEnvironment(player: IPlayer, enemyCount: int): void
+    -SimulateBattle(player: IPlayer, enemy: IMonster): void
+}
+
+interface IMonster {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+class Monster {
+    +Monster(name: string, defense: int, attackPower: int, health: int, level: int)
+    +Attack(): void
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+CaveEnvironmentFactory ..|> IGameEnvironmentFactory
+DungeonEnvironmentFactory ..|> IGameEnvironmentFactory
+CaveLevel ..|> ILevel
+DungeonLevel ..|> ILevel
+Monster ..|> IMonster
+
+CaveEnvironmentFactory --> CaveLevel : creates
+CaveEnvironmentFactory --> Monster : creates
+DungeonEnvironmentFactory --> DungeonLevel : creates
+DungeonEnvironmentFactory --> Monster : creates
+
+GameEnvironmentManager --> IGameEnvironmentFactory : uses
+GameEnvironmentManager --> ILevel : manages
+GameEnvironmentManager --> IMonster : manages
+GameEnvironmentManager --> IPlayer : interacts
+
+note right of IGameEnvironmentFactory
+  Abstract factory creates
+  families of related objects:
+  - Cave: Crystal-themed level and cave creatures
+  - Dungeon: Dark-themed level and undead creatures
+end note
+
+note bottom of GameEnvironmentManager
+  Client uses abstract factory
+  without knowing concrete
+  implementations, ensuring
+  consistent object families
+end note
 
 @enduml

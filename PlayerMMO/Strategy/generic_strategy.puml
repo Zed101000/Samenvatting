@@ -1,0 +1,70 @@
+@startuml Generic_Strategy_Pattern
+
+title Generic Strategy Pattern
+
+interface Strategy {
+    +Execute(data: string): string
+}
+
+class ConcreteStrategyA {
+    +Execute(data: string): string
+}
+
+class ConcreteStrategyB {
+    +Execute(data: string): string
+}
+
+class ConcreteStrategyC {
+    +Execute(data: string): string
+}
+
+class Context {
+    -strategy: Strategy
+    +Context(strategy: Strategy)
+    +SetStrategy(strategy: Strategy): void
+    +ExecuteStrategy(data: string): string
+    +DoSomeBusinessLogic(): void
+}
+
+class Client {
+    +UseContext(): void
+    +SwitchStrategies(): void
+}
+
+ConcreteStrategyA ..|> Strategy
+ConcreteStrategyB ..|> Strategy
+ConcreteStrategyC ..|> Strategy
+Context --> Strategy : uses
+Client --> Context : uses
+Client --> ConcreteStrategyA : creates
+Client --> ConcreteStrategyB : creates
+Client --> ConcreteStrategyC : creates
+
+note right of Strategy
+  Strategy interface defines
+  algorithm family. All strategies
+  implement same interface
+end note
+
+note right of Context
+  Context uses strategy interface
+  to call algorithm. Can switch
+  strategies at runtime
+end note
+
+note bottom of ConcreteStrategyA
+  Each concrete strategy
+  implements different algorithm
+  for the same problem:
+  - StrategyA: Quick & simple
+  - StrategyB: Robust & slow
+  - StrategyC: Balanced approach
+end note
+
+note left of Client
+  Client can change strategies
+  dynamically based on conditions:
+  context.SetStrategy(new StrategyB())
+end note
+
+@enduml

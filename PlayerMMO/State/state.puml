@@ -1,9 +1,105 @@
-@startuml
-interface State {
-  +Handle()
+@startuml State_Pattern
+
+title State Pattern - Player Combat States
+
+interface IPlayerState {
+    +Attack(context: PlayerContext): void
+    +Defend(context: PlayerContext): void
+    +Heal(context: PlayerContext): void
+    +Play(context: PlayerContext): void
+    +CheckStateTransition(context: PlayerContext): void
 }
-class Context {
-  +Request()
+
+class PlayerContext {
+    -_currentState: IPlayerState
+    -_player: IPlayer
+    +PlayerContext(player: IPlayer)
+    +SetState(state: IPlayerState): void
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+    +Play(): void
+    +GetHealthPercentage(): double
+    +HasLowMana(): bool
+    +Player: IPlayer
+    +CurrentState: IPlayerState
 }
-Context --> State
+
+class HealthyState {
+    +Attack(context: PlayerContext): void
+    +Defend(context: PlayerContext): void
+    +Heal(context: PlayerContext): void
+    +Play(context: PlayerContext): void
+    +CheckStateTransition(context: PlayerContext): void
+}
+
+class InjuredState {
+    +Attack(context: PlayerContext): void
+    +Defend(context: PlayerContext): void
+    +Heal(context: PlayerContext): void
+    +Play(context: PlayerContext): void
+    +CheckStateTransition(context: PlayerContext): void
+}
+
+class CriticalState {
+    +Attack(context: PlayerContext): void
+    +Defend(context: PlayerContext): void
+    +Heal(context: PlayerContext): void
+    +Play(context: PlayerContext): void
+    +CheckStateTransition(context: PlayerContext): void
+}
+
+class ExhaustedState {
+    +Attack(context: PlayerContext): void
+    +Defend(context: PlayerContext): void
+    +Heal(context: PlayerContext): void
+    +Play(context: PlayerContext): void
+    +CheckStateTransition(context: PlayerContext): void
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+HealthyState ..|> IPlayerState
+InjuredState ..|> IPlayerState
+CriticalState ..|> IPlayerState
+ExhaustedState ..|> IPlayerState
+PlayerContext --> IPlayerState : delegates to
+PlayerContext --> IPlayer : wraps
+PlayerContext : SetState()
+
+HealthyState ..> InjuredState : transitions
+HealthyState ..> ExhaustedState : transitions
+InjuredState ..> HealthyState : transitions
+InjuredState ..> CriticalState : transitions
+InjuredState ..> ExhaustedState : transitions
+CriticalState ..> InjuredState : transitions
+ExhaustedState ..> HealthyState : transitions
+ExhaustedState ..> InjuredState : transitions
+ExhaustedState ..> CriticalState : transitions
+
+note right of PlayerContext
+  Context delegates behavior
+  to current state and handles
+  state transitions based on
+  player condition
+end note
+
+note bottom of IPlayerState
+  States modify player behavior
+  based on health and mana:
+  - Healthy: Full power
+  - Injured: Reduced effectiveness
+  - Critical: Minimal capability
+  - Exhausted: Low mana effects
+end note
+
 @enduml

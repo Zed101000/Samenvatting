@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Proxy</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>Proxy Pattern Summary</h1>
+
+<h2>📖 Overview</h2>
+<p>The Proxy pattern provides a placeholder or surrogate for another object to control access to it, allowing you to perform additional actions before or after forwarding the request.</p>
+
+<h2>🎯 Purpose</h2>
+<ul>
+<li>Control access to another object</li>
+<li>Add additional behavior when accessing an object</li>
+<li>Provide placeholder for expensive-to-create objects</li>
+<li>Implement lazy initialization, access control, caching, or logging</li>
+</ul>
+
+<h2>📋 Generic Implementation Guidelines</h2>
+
+<h3>Standard Structure</h3>
+<p>1. <strong>Subject Interface</strong></p>
+<pre><code>
+   interface ISubject {
+       void Request();
+   }
+</code></pre>
+
+<p>2. <strong>Real Subject</strong></p>
+<pre><code>
+   class RealSubject : ISubject {
+       public void Request() {
+           Console.WriteLine(&quot;RealSubject: Handling request.&quot;);
+       }
+   }
+</code></pre>
+
+<p>3. <strong>Proxy</strong></p>
+<pre><code>
+   class Proxy : ISubject {
+       private RealSubject realSubject;
+       
+       public void Request() {
+           // Control access and add behavior
+           if (CheckAccess()) {
+               CreateRealSubject(); // Lazy initialization
+               LogAccess();
+               realSubject.Request();
+               LogCompletion();
+           }
+       }
+       
+       private bool CheckAccess() {
+           Console.WriteLine(&quot;Proxy: Checking access prior to firing a real request.&quot;);
+           return true; // Access control logic
+       }
+       
+       private void CreateRealSubject() {
+           if (realSubject == null) {
+               realSubject = new RealSubject();
+           }
+       }
+       
+       private void LogAccess() {
+           Console.WriteLine(&quot;Proxy: Logging the time of request.&quot;);
+       }
+       
+       private void LogCompletion() {
+           Console.WriteLine(&quot;Proxy: Logging completion of request.&quot;);
+       }
+   }
+</code></pre>
+
+<p>4. <strong>Client Usage</strong></p>
+<pre><code>
+   // Client works with proxy as if it were the real subject
+   ISubject proxy = new Proxy();
+   proxy.Request(); // Proxy controls access to real subject
+</code></pre>
+
+<h3>Proxy Types</h3>
+<ul>
+<li><strong>Virtual Proxy</strong>: Lazy initialization of expensive objects</li>
+<li><strong>Protection Proxy</strong>: Access control and permissions</li>
+<li><strong>Remote Proxy</strong>: Access to remote objects</li>
+<li><strong>Caching Proxy</strong>: Cache results for expensive operations</li>
+</ul>
+
+<h3>When to Use</h3>
+<ul>
+<li>Need to control access to an object</li>
+<li>Want to add behavior without changing the original object</li>
+<li>Need lazy initialization for expensive objects</li>
+<li>Want to implement caching, logging, or access control</li>
+</ul>
+
+<h2>🏗️ Implementation in PlayerMMO</h2>
+
+<h3>Key Components</h3>
+<ul>
+<li><strong>IGameResource</strong>: Interface for game resources</li>
+<li><strong>GameResource</strong>: Expensive-to-load game resource (textures, sounds, levels)</li>
+<li><strong>GameResourceProxy</strong>: Controls access and provides lazy loading</li>
+<li><strong>Access control</strong>: Permission checking and resource management</li>
+<li><strong>Caching system</strong>: Avoids reloading expensive resources</li>
+</ul>
+
+<h3>Code Structure</h3>
+<pre><code>
+PlayerMMO/Proxy/
+├── ProxyPattern/
+│   ├── IGameResource.cs
+│   ├── GameResource.cs
+│   ├── GameResourceProxy.cs
+│   └── ResourceManager.cs
+├── Program.cs
+└── proxy.puml
+</code></pre>
+
+<h2>🎮 Game Integration</h2>
+<ul>
+<li><strong>BaseGame Classes Used</strong>: IPlayer, IMonster</li>
+<li><strong>Game Context</strong>: Resource loading and access control system</li>
+<li><strong>Demo Features</strong>: Lazy loading, permission checking, caching, logging</li>
+</ul>
+
+<h3>Actual Implementation Mapping</h3>
+<p>| Generic Component | PlayerMMO Implementation | Purpose |</p>
+<p>|------------------|-------------------------|---------|</p>
+<p>| ISubject | IGameResource | Game resource interface |</p>
+<p>| RealSubject | GameResource | Actual game resource |</p>
+<p>| Proxy | GameResourceProxy | Resource access controller |</p>
+<p>| Request() | Load(), GetData() | Resource operations |</p>
+<p>| CheckAccess() | ValidatePermissions() | Access control |</p>
+<p>| LogAccess() | LogResourceAccess() | Usage tracking |</p>
+<p>| Client | Program.cs demo | Game using resources through proxy |</p>
+
+<h3>Real Usage Example</h3>
+<pre><code>
+// Game resources are expensive to load
+Console.WriteLine(&quot;=== Game Resource Loading with Proxy ===&quot;);
+
+// Create proxies for different resource types
+var textureProxy = new GameResourceProxy(&quot;boss_texture.png&quot;, &quot;Texture&quot;, 100);
+var audioProxy = new GameResourceProxy(&quot;epic_music.wav&quot;, &quot;Audio&quot;, 50);
+var levelProxy = new GameResourceProxy(&quot;level5_data.json&quot;, &quot;Level&quot;, 200);
+
+// Resources not loaded yet - proxies created instantly
+Console.WriteLine(&quot;Proxies created - no actual loading yet&quot;);
+
+var player = new BasePlayer(&quot;Hero&quot;);
+var monster = new BaseMonster(&quot;Boss&quot;, 5);
+
+// First access triggers loading with permission check
+Console.WriteLine(&quot;\n=== First Resource Access ===&quot;);
+var textureData = textureProxy.GetData(player); // Loads and caches
+Console.WriteLine($&quot;Texture data: {textureData}&quot;);
+
+// Second access uses cached data
+Console.WriteLine(&quot;\n=== Cached Access ===&quot;);
+textureData = textureProxy.GetData(player); // From cache
+Console.WriteLine($&quot;Cached texture data: {textureData}&quot;);
+
+// Access control demonstration
+Console.WriteLine(&quot;\n=== Access Control ===&quot;);
+var lowLevelPlayer = new BasePlayer(&quot;Newbie&quot;);
+try {
+    var levelData = levelProxy.GetData(lowLevelPlayer); // Should be denied
+} catch (UnauthorizedAccessException ex) {
+    Console.WriteLine($&quot;Access denied: {ex.Message}&quot;);
+}
+
+// High-level player can access
+var highLevelPlayer = new BasePlayer(&quot;Hero&quot;);
+highLevelPlayer.Level = 5;
+var levelData = levelProxy.GetData(highLevelPlayer); // Allowed
+Console.WriteLine($&quot;Level data: {levelData}&quot;);
+
+// Benefits demonstrated:
+// - Resources only loaded when needed (lazy loading)
+// - Automatic caching prevents reloading
+// - Permission system controls access
+// - Logging tracks resource usage
+// - Client code doesn&#x27;t change whether using proxy or real resource
+
+// Resource management through proxy
+Console.WriteLine(&quot;\n=== Resource Management ===&quot;);
+var resourceManager = new ResourceManager();
+
+// Load resources through manager (uses proxies internally)
+resourceManager.LoadResource(&quot;player_sprites.png&quot;, player);
+resourceManager.LoadResource(&quot;sound_effects.wav&quot;, player);
+
+// Batch operations
+var resources = new[] {
+    &quot;texture1.png&quot;, &quot;texture2.png&quot;, &quot;sound1.wav&quot;, &quot;level1.json&quot;
+};
+
+foreach (var resource in resources) {
+    try {
+        resourceManager.LoadResource(resource, player);
+        Console.WriteLine($&quot;✓ Loaded: {resource}&quot;);
+    } catch (Exception ex) {
+        Console.WriteLine($&quot;✗ Failed: {resource} - {ex.Message}&quot;);
+    }
+}
+
+// Resource usage statistics
+Console.WriteLine(&quot;\n=== Usage Statistics ===&quot;);
+resourceManager.PrintUsageStatistics();
+
+// Memory management
+resourceManager.ClearCache(); // Proxy can manage memory
+Console.WriteLine(&quot;Cache cleared - resources will reload on next access&quot;);
+</code></pre>
+
+<h2>✨ Key Benefits</h2>
+<ul>
+<li><strong>Controlled Access</strong>: Manage how and when objects are accessed</li>
+<li><strong>Lazy Loading</strong>: Create expensive objects only when needed</li>
+<li><strong>Caching</strong>: Store results to improve performance</li>
+<li><strong>Transparent Usage</strong>: Client uses proxy same as real object</li>
+</ul>
+
+<h2>🔧 Advanced Proxy Features</h2>
+<pre><code>
+// Smart proxy with multiple capabilities
+public class SmartGameResourceProxy : IGameResource {
+    private GameResource realResource;
+    private readonly string resourcePath;
+    private readonly string resourceType;
+    private readonly int requiredLevel;
+    private DateTime lastAccessed;
+    private int accessCount;
+    private readonly Dictionary&lt;IPlayer, byte[]&gt; playerCache;
+    
+    public SmartGameResourceProxy(string path, string type, int level) {
+        resourcePath = path;
+        resourceType = type;
+        requiredLevel = level;
+        playerCache = new Dictionary&lt;IPlayer, byte[]&gt;();
+    }
+    
+    public byte[] GetData(IPlayer player) {
+        // Access control
+        if (!ValidateAccess(player)) {
+            throw new UnauthorizedAccessException($&quot;Player level {player.Level} insufficient for {resourceType}&quot;);
+        }
+        
+        // Player-specific caching
+        if (playerCache.ContainsKey(player)) {
+            Console.WriteLine($&quot;📋 Returning cached data for {player.Name}&quot;);
+            UpdateStats();
+            return playerCache[player];
+        }
+        
+        // Lazy loading
+        if (realResource == null) {
+            Console.WriteLine($&quot;⏳ Loading {resourceType} resource: {resourcePath}&quot;);
+            realResource = new GameResource(resourcePath, resourceType, requiredLevel);
+        }
+        
+        // Get data and cache per player
+        var data = realResource.GetData(player);
+        playerCache[player] = data;
+        
+        UpdateStats();
+        return data;
+    }
+    
+    private void UpdateStats() {
+        lastAccessed = DateTime.Now;
+        accessCount++;
+    }
+    
+    // Resource monitoring
+    public ResourceStats GetStats() {
+        return new ResourceStats {
+            Path = resourcePath,
+            Type = resourceType,
+            AccessCount = accessCount,
+            LastAccessed = lastAccessed,
+            IsLoaded = realResource != null,
+            CachedPlayers = playerCache.Count
+        };
+    }
+    
+    // Memory management
+    public void ClearPlayerCache(IPlayer player) {
+        playerCache.Remove(player);
+    }
+    
+    public void ClearAllCache() {
+        playerCache.Clear();
+    }
+    
+    // Resource lifecycle
+    public void Unload() {
+        realResource = null;
+        playerCache.Clear();
+        Console.WriteLine($&quot;🗑️ Unloaded {resourceType}: {resourcePath}&quot;);
+    }
+}
+
+// Proxy with async loading
+public class AsyncGameResourceProxy : IGameResource {
+    private Task&lt;GameResource&gt; loadingTask;
+    private readonly object lockObject = new object();
+    
+    public async Task&lt;byte[]&gt; GetDataAsync(IPlayer player) {
+        lock (lockObject) {
+            if (loadingTask == null) {
+                loadingTask = LoadResourceAsync();
+            }
+        }
+        
+        var resource = await loadingTask;
+        return resource.GetData(player);
+    }
+    
+    private async Task&lt;GameResource&gt; LoadResourceAsync() {
+        Console.WriteLine(&quot;🔄 Starting async resource load...&quot;);
+        await Task.Delay(1000); // Simulate loading time
+        Console.WriteLine(&quot;✅ Async resource load complete&quot;);
+        return new GameResource(resourcePath, resourceType, requiredLevel);
+    }
+}
+
+// Chain of responsibility proxy
+public class SecurityGameResourceProxy : IGameResource {
+    private readonly IGameResource target;
+    private readonly List&lt;ISecurityCheck&gt; securityChecks;
+    
+    public SecurityGameResourceProxy(IGameResource target) {
+        this.target = target;
+        securityChecks = new List&lt;ISecurityCheck&gt; {
+            new LevelSecurityCheck(),
+            new TimeBasedSecurityCheck(),
+            new LocationSecurityCheck()
+        };
+    }
+    
+    public byte[] GetData(IPlayer player) {
+        // Run through security chain
+        foreach (var check in securityChecks) {
+            if (!check.Validate(player, resourcePath)) {
+                throw new SecurityException($&quot;Security check failed: {check.GetType().Name}&quot;);
+            }
+        }
+        
+        return target.GetData(player);
+    }
+}
+
+// Factory for different proxy types
+public static class ProxyFactory {
+    public static IGameResource CreateProxy(string path, string type, ProxyType proxyType) {
+        var baseResource = new GameResource(path, type, 1);
+        
+        return proxyType switch {
+            ProxyType.Simple =&gt; new GameResourceProxy(path, type, 1),
+            ProxyType.Smart =&gt; new SmartGameResourceProxy(path, type, 1),
+            ProxyType.Async =&gt; new AsyncGameResourceProxy(path, type, 1),
+            ProxyType.Security =&gt; new SecurityGameResourceProxy(baseResource),
+            _ =&gt; throw new ArgumentException(&quot;Unknown proxy type&quot;)
+        };
+    }
+}
+
+public enum ProxyType {
+    Simple,
+    Smart,
+    Async,
+    Security
+}
+</code></pre>
+
+<h2>🔗 Related Patterns</h2>
+<ul>
+<li><strong>Adapter</strong>: Both act as intermediaries but for different purposes</li>
+<li><strong>Decorator</strong>: Both wrap objects but Proxy controls access while Decorator adds behavior</li>
+<li><strong>Facade</strong>: Both provide interface but Facade simplifies while Proxy controls</li>
+<li><strong>Strategy</strong>: Proxy can use different strategies for access control</li>
+</ul>
+
+<h2>📊 UML Diagrams</h2>
+
+<h3>Generic Pattern Structure</h3>
+<p>!<a href="../Proxy/generic_proxy.png">Generic Proxy UML</a></p>
+
+<h3>PlayerMMO Implementation</h3>
+<p>!<a href="../Proxy/proxy.png">Proxy UML</a></p>
+
+<p>---</p>
+<a href="../Summaries/README.md">← Back to Main Pattern Summary</a>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>

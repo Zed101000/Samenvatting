@@ -1,0 +1,54 @@
+@startuml Generic_Singleton_Pattern
+
+title Generic Singleton Pattern
+
+class Singleton {
+    -instance: Singleton {static}
+    -lockObject: object {static, readonly}
+    
+    -Singleton()
+    +Instance: Singleton {static}
+    +SomeBusinessLogic(): void
+    +GetData(): string
+    +SetData(data: string): void
+}
+
+class Client1 {
+    +UsesSingleton(): void
+}
+
+class Client2 {
+    +AlsoUsesSingleton(): void
+}
+
+Client1 --> Singleton : uses
+Client2 --> Singleton : uses
+Singleton : -instance = null
+
+note right of Singleton
+  Private constructor prevents
+  direct instantiation.
+  
+  Static Instance property
+  provides global access point
+  with thread-safe lazy initialization
+end note
+
+note bottom of Singleton
+  Double-checked locking pattern:
+  if (instance == null) {
+    lock (lockObject) {
+      if (instance == null) {
+        instance = new Singleton();
+      }
+    }
+  }
+end note
+
+note left of Client1
+  All clients get the same
+  instance through
+  Singleton.Instance property
+end note
+
+@enduml

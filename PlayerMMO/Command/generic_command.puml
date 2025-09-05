@@ -1,0 +1,75 @@
+@startuml Generic_Command_Pattern
+
+title Generic Command Pattern
+
+interface Command {
+    +Execute(): void
+    +Undo(): void
+}
+
+class ConcreteCommand {
+    -receiver: Receiver
+    -state: string
+    +ConcreteCommand(receiver: Receiver, state: string)
+    +Execute(): void
+    +Undo(): void
+}
+
+class MacroCommand {
+    -commands: List<Command>
+    +Add(command: Command): void
+    +Execute(): void
+    +Undo(): void
+}
+
+class Invoker {
+    -history: Stack<Command>
+    +ExecuteCommand(command: Command): void
+    +UndoLastCommand(): void
+    +RedoCommand(): void
+}
+
+class Receiver {
+    +Action(state: string): void
+    +UndoAction(state: string): void
+}
+
+class Client {
+    +CreateAndExecuteCommands(): void
+}
+
+ConcreteCommand ..|> Command
+MacroCommand ..|> Command
+Invoker --> Command : executes
+ConcreteCommand --> Receiver : calls
+MacroCommand --> Command : contains
+Client --> Invoker : uses
+Client --> ConcreteCommand : creates
+Client --> Receiver : creates
+
+note right of Command
+  Command interface defines
+  Execute() and Undo() methods.
+  Encapsulates request as object
+end note
+
+note bottom of ConcreteCommand
+  Stores receiver and parameters
+  needed to perform action.
+  Execute() calls receiver's action.
+  Undo() reverses the action
+end note
+
+note right of Invoker
+  Invoker stores command history
+  for undo/redo functionality.
+  Doesn't know command details
+end note
+
+note left of Receiver
+  Receiver knows how to perform
+  operations and their reversals.
+  Can be any object
+end note
+
+@enduml

@@ -1,0 +1,85 @@
+@startuml Generic_Observer_Pattern
+
+title Generic Observer Pattern
+
+interface Subject {
+    +Attach(observer: Observer): void
+    +Detach(observer: Observer): void
+    +Notify(): void
+}
+
+interface Observer {
+    +Update(subject: Subject): void
+}
+
+class ConcreteSubject {
+    -observers: List<Observer>
+    -state: string
+    +Attach(observer: Observer): void
+    +Detach(observer: Observer): void
+    +Notify(): void
+    +GetState(): string
+    +SetState(state: string): void
+}
+
+class ConcreteObserverA {
+    +Update(subject: Subject): void
+}
+
+class ConcreteObserverB {
+    +Update(subject: Subject): void
+}
+
+class Client {
+    +SetupObserverPattern(): void
+}
+
+ConcreteSubject ..|> Subject
+ConcreteObserverA ..|> Observer
+ConcreteObserverB ..|> Observer
+ConcreteSubject --> Observer : notifies
+Client --> ConcreteSubject : uses
+Client --> ConcreteObserverA : creates
+Client --> ConcreteObserverB : creates
+
+note right of Subject
+  Subject maintains list of
+  observers and notifies them
+  of state changes
+end note
+
+note bottom of ConcreteSubject
+  ConcreteSubject stores state
+  and notifies observers:
+  
+  SetState(newState) {
+    state = newState;
+    Notify();
+  }
+  
+  Notify() {
+    foreach(observer in observers) {
+      observer.Update(this);
+    }
+  }
+end note
+
+note right of Observer
+  Observer defines update
+  interface for objects that
+  should be notified of
+  subject changes
+end note
+
+note left of ConcreteObserverA
+  Concrete observers implement
+  Update() to react to subject
+  state changes:
+  
+  Update(subject) {
+    var newState = subject.GetState();
+    // React to state change
+  }
+end note
+
+@enduml

@@ -1,10 +1,87 @@
-@startuml
-interface Command {
-  +Execute()
+@startuml Command_Pattern
+
+title Command Pattern - Game Action System
+
+interface ICommand {
+    +Execute(): void
+    +Undo(): void
 }
-class ConcreteCommand
-class Invoker {
-  +SetCommand(Command)
+
+class AttackCommand {
+    -_player: IPlayer
+    -_target: IMonster
+    -_previousPlayerHealth: int
+    -_previousTargetHealth: int
+    +AttackCommand(player: IPlayer, target: IMonster)
+    +Execute(): void
+    +Undo(): void
 }
-Invoker --> Command
+
+class HealCommand {
+    -_player: IPlayer
+    -_previousHealth: int
+    -_healAmount: int
+    +HealCommand(player: IPlayer, healAmount: int)
+    +Execute(): void
+    +Undo(): void
+}
+
+class DefendCommand {
+    -_player: IPlayer
+    -_previousDefense: int
+    -_defenseBoost: int
+    +DefendCommand(player: IPlayer, defenseBoost: int)
+    +Execute(): void
+    +Undo(): void
+}
+
+class GameInvoker {
+    -_commandHistory: Stack<ICommand>
+    +ExecuteCommand(command: ICommand): void
+    +UndoLastCommand(): void
+    +UndoMultipleCommands(count: int): void
+    +ClearHistory(): void
+    +GetHistoryCount(): int
+}
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+    +Defend(): void
+    +Heal(): void
+}
+
+interface IMonster {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+AttackCommand ..|> ICommand
+HealCommand ..|> ICommand
+DefendCommand ..|> ICommand
+GameInvoker --> ICommand : executes
+AttackCommand --> IPlayer : modifies
+AttackCommand --> IMonster : modifies
+HealCommand --> IPlayer : modifies
+DefendCommand --> IPlayer : modifies
+
+note right of GameInvoker
+  Invoker maintains command history
+  allowing undo operations and
+  macro command execution
+end note
+
+note bottom of ICommand
+  All commands implement
+  Execute() and Undo() for
+  reversible operations
+end note
+
 @enduml

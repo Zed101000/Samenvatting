@@ -1,0 +1,64 @@
+@startuml Generic_Factory_Method_Pattern
+
+title Generic Factory Method Pattern
+
+abstract class Creator {
+    +FactoryMethod(): Product {abstract}
+    +SomeOperation(): void
+}
+
+class ConcreteCreatorA {
+    +FactoryMethod(): Product
+}
+
+class ConcreteCreatorB {
+    +FactoryMethod(): Product
+}
+
+interface Product {
+    +Operation(): void
+}
+
+class ConcreteProductA {
+    +Operation(): void
+}
+
+class ConcreteProductB {
+    +Operation(): void
+}
+
+class Client {
+    +UseCreator(creator: Creator): void
+}
+
+ConcreteCreatorA --|> Creator
+ConcreteCreatorB --|> Creator
+ConcreteProductA ..|> Product
+ConcreteProductB ..|> Product
+
+ConcreteCreatorA --> ConcreteProductA : creates
+ConcreteCreatorB --> ConcreteProductB : creates
+Creator --> Product : uses
+Client --> Creator : uses
+
+note right of Creator
+  Creator defines factory method
+  that returns Product object.
+  May provide default implementation
+  or call factory method in other operations
+end note
+
+note bottom of ConcreteCreatorA
+  Concrete creators override
+  factory method to return
+  specific product instances
+end note
+
+note right of Client
+  Client works with Creator
+  through abstract interface,
+  doesn't know which concrete
+  product will be created
+end note
+
+@enduml

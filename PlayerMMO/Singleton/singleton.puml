@@ -1,6 +1,68 @@
-@startuml
-class Singleton {
-  -instance: Singleton
-  +GetInstance(): Singleton
+@startuml Singleton_Pattern
+
+title Singleton Pattern - Game Manager
+
+class GameManager {
+    -_instance: GameManager {static}
+    -_lock: object {static, readonly}
+    -_activePlayers: List<IPlayer>
+    -_activeMonsters: List<IMonster>
+    -_currentLevel: int
+    -_totalScore: int
+    -_gameState: string
+    
+    -GameManager()
+    +Instance: GameManager {static}
+    +RegisterPlayer(player: IPlayer): void
+    +RegisterMonster(monster: IMonster): void
+    +StartGame(): void
+    +EndGame(): void
+    +NextLevel(): void
+    +AddScore(points: int): void
+    +ShowGameStatus(): void
+    +ProcessCombat(player: IPlayer, monster: IMonster): void
+    +GetCurrentLevel(): int
+    +GetTotalScore(): int
+    +GetGameState(): string
+    +GetActivePlayers(): List<IPlayer>
+    +GetActiveMonsters(): List<IMonster>
 }
+
+interface IPlayer {
+    +Name: string
+    +Health: int
+    +Mana: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+    +Defend(): void
+}
+
+interface IMonster {
+    +Name: string
+    +Health: int
+    +AttackPower: int
+    +Defense: int
+    +Attack(): void
+}
+
+GameManager --> IPlayer : manages
+GameManager --> IMonster : manages
+GameManager : -_instance = null
+
+note right of GameManager
+  Thread-safe singleton using
+  double-checked locking pattern.
+  Manages global game state
+  including players, monsters,
+  score, and level progression.
+end note
+
+note bottom of GameManager
+  Private constructor prevents
+  direct instantiation.
+  Instance property provides
+  global access point.
+end note
+
 @enduml

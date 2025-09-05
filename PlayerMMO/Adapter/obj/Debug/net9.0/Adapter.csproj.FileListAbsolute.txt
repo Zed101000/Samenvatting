@@ -24,3 +24,4 @@ C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\Adapter\bin\Debug\net9.0\Decorator
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\Adapter\bin\Debug\net9.0\Decorator.exe
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\Adapter\bin\Debug\net9.0\Decorator.dll
 C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\Adapter\bin\Debug\net9.0\Decorator.pdb
+C:\Users\ZedKn\Desktop\Samenvatting\PlayerMMO\Adapter\obj\Debug\net9.0\Adapter.sourcelink.json

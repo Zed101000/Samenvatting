@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builder - PlayerMMO Documentation</title>
+    
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #34495e;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 90%;
+        }
+        
+        pre {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 12px;
+        }
+        
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .document-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="document-header">
+        <h1>PlayerMMO Design Patterns</h1>
+        <h2>Builder</h2>
+        <p><strong>Generated:</strong> September 05, 2025 at 02:37:33</p>
+    </div>
+    
+    <div class="content">
+        <h1>Builder Pattern Summary</h1>
+
+<h2>📖 Overview</h2>
+<p>The Builder pattern separates the construction of complex objects from their representation, allowing the same construction process to create different representations through a fluent interface.</p>
+
+<h2>🎯 Purpose</h2>
+<ul>
+<li>Construct complex objects step by step</li>
+<li>Create different representations of the same object</li>
+<li>Provide a fluent interface for object creation</li>
+<li>Hide complex construction logic</li>
+</ul>
+
+<h2>📋 Generic Implementation Guidelines</h2>
+
+<h3>Standard Structure</h3>
+<p>1. <strong>Builder Interface</strong></p>
+<pre><code>
+   interface IBuilder {
+       IBuilder SetPropertyA(string value);
+       IBuilder SetPropertyB(int value);
+       IProduct Build();
+       void Reset();
+   }
+</code></pre>
+
+<p>2. <strong>Concrete Builder</strong></p>
+<pre><code>
+   class ConcreteBuilder : IBuilder {
+       private Product product = new Product();
+       
+       public IBuilder SetPropertyA(string value) {
+           product.PropertyA = value;
+           return this;
+       }
+       
+       public IProduct Build() {
+           var result = product;
+           Reset();
+           return result;
+       }
+   }
+</code></pre>
+
+<p>3. <strong>Director (Optional)</strong></p>
+<pre><code>
+   class Director {
+       private IBuilder builder;
+       
+       public IProduct CreateStandardProduct() {
+           return builder.SetPropertyA(&quot;default&quot;)
+                         .SetPropertyB(100)
+                         .Build();
+       }
+   }
+</code></pre>
+
+<p>4. <strong>Client Usage</strong></p>
+<pre><code>
+   var builder = new ConcreteBuilder();
+   var product = builder.SetPropertyA(&quot;custom&quot;)
+                        .SetPropertyB(200)
+                        .Build();
+</code></pre>
+
+<h3>When to Use</h3>
+<ul>
+<li>Object construction is complex with many parameters</li>
+<li>Need different representations of the same object</li>
+<li>Want to isolate construction code from representation</li>
+<li>Construction process must allow different representations</li>
+</ul>
+
+<h2>🏗️ Implementation in PlayerMMO</h2>
+
+<h3>Key Components</h3>
+<ul>
+<li><strong>IPlayerBuilder</strong>: Builder interface with fluent methods</li>
+<li><strong>PlayerBuilder</strong>: Concrete builder implementation</li>
+<li><strong>GamePlayerDirector</strong>: Director with preset configurations</li>
+<li><strong>BasePlayer</strong>: Product being built</li>
+</ul>
+
+<h3>Code Structure</h3>
+<pre><code>
+PlayerMMO/Builder/
+├── Pattern/
+│   ├── IPlayerBuilder.cs
+│   ├── PlayerBuilder.cs
+│   └── GamePlayerDirector.cs
+├── Program.cs
+└── builder.puml
+</code></pre>
+
+<h2>🎮 Game Integration</h2>
+<ul>
+<li><strong>BaseGame Classes Used</strong>: IPlayer, BasePlayer</li>
+<li><strong>Game Context</strong>: Creating players with different stat configurations</li>
+<li><strong>Demo Features</strong>: Director presets (Warrior, Mage, Rogue), custom builder usage</li>
+</ul>
+
+<h3>Actual Implementation Mapping</h3>
+<p>| Generic Component | PlayerMMO Implementation | Purpose |</p>
+<p>|------------------|-------------------------|---------|</p>
+<p>| IBuilder | IPlayerBuilder | Player building interface |</p>
+<p>| ConcreteBuilder | PlayerBuilder | Concrete player builder |</p>
+<p>| Director | GamePlayerDirector | Provides preset configurations |</p>
+<p>| Product | BasePlayer (IPlayer) | The player being built |</p>
+<p>| SetPropertyA() | SetName(), SetHealth(), etc. | Fluent configuration methods |</p>
+<p>| Build() | Build() | Creates final player object |</p>
+
+<h3>Real Usage Example</h3>
+<pre><code>
+// Using Director for presets
+var director = new GamePlayerDirector(new PlayerBuilder());
+var warrior = director.CreateWarrior();  // Preset: High health/attack, low mana
+var mage = director.CreateMage();        // Preset: High mana/attack, low health
+var rogue = director.CreateRogue();      // Preset: Balanced stats
+
+// Using Builder directly for custom builds
+var customPlayer = new PlayerBuilder()
+    .SetName(&quot;Custom Hero&quot;)
+    .SetHealth(200)        // High survivability
+    .SetMana(100)          // Moderate magical ability
+    .SetAttackPower(25)    // High damage
+    .SetDefense(20)        // Good protection
+    .SetLevel(10)          // Experienced
+    .Build();
+
+// Builder automatically validates and creates BasePlayer instance
+</code></pre>
+
+<h2>✨ Key Benefits</h2>
+<ul>
+<li><strong>Fluent Interface</strong>: Chainable method calls for readability</li>
+<li><strong>Flexibility</strong>: Easy to add new player configurations</li>
+<li><strong>Reusability</strong>: Same builder can create different player types</li>
+<li><strong>Validation</strong>: Centralized validation in the Build() method</li>
+</ul>
+
+<h2>🔧 Fluent API Example</h2>
+<pre><code>
+var player = builder
+    .SetName(&quot;Custom Hero&quot;)
+    .SetHealth(200)
+    .SetMana(100)
+    .SetAttackPower(25)
+    .SetDefense(20)
+    .SetLevel(10)
+    .Build();
+</code></pre>
+
+<h2>🔗 Related Patterns</h2>
+<ul>
+<li><strong>Factory Method</strong>: Builder can use factories for component creation</li>
+<li><strong>Composite</strong>: Often used to build composite structures</li>
+<li><strong>Abstract Factory</strong>: Both deal with object creation but different approaches</li>
+</ul>
+
+<h2>📊 UML Diagrams</h2>
+
+<h3>Generic Pattern Structure</h3>
+<p>!<a href="../Builder/generic_builder.png">Generic Builder UML</a></p>
+
+<h3>PlayerMMO Implementation</h3>
+<p>!<a href="../Builder/builder.png">Builder UML</a></p>
+
+<p>---</p>
+<a href="../Summaries/README.md">← Back to Main Pattern Summary</a>
+
+    </div>
+    
+    <div class="document-footer">
+        <p><em>Generated from PlayerMMO Design Patterns Documentation</em></p>
+        <p>© 2025 PlayerMMO Project</p>
+    </div>
+</body>
+</html>
