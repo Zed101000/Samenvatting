@@ -69,32 +69,41 @@
                 Let's get you back to exploring our design patterns documentation.
             </p>
             <div class="error-links">
-                <a href="/" class="btn btn-primary">Return Home</a>
-                <a href="/patterns/" class="btn btn-secondary">Browse Patterns</a>
-                <a href="/uml-modeling.html" class="btn btn-secondary">UML Guide</a>
+                <a href="./" class="btn btn-primary">Return Home</a>
+                <a href="./patterns/" class="btn btn-secondary">Browse Patterns</a>
+                <a href="./uml-modeling.html" class="btn btn-secondary">UML Guide</a>
             </div>
         </div>
     </div>
     
     <script>
-        // Redirect common paths
+        // Handle URL redirects, especially old /docs/ paths
         const path = window.location.pathname;
+        const hash = window.location.hash;
         
-        // Common redirects
+        // If URL contains /docs/, redirect to the correct path
+        if (path.includes('/docs/')) {
+            const newPath = path.replace('/docs/', '/');
+            window.location.href = newPath + hash;
+            return;
+        }
+        
+        // Common redirects  
         const redirects = {
-            '/patterns': '/patterns/',
-            '/uml': '/uml-modeling.html',
-            '/documentation': '/#documentation',
-            '/design-patterns': '/#patterns'
+            '/patterns': './patterns/',
+            '/uml': './uml-modeling.html',
+            '/documentation': './#documentation',
+            '/design-patterns': './#patterns'
         };
         
         if (redirects[path]) {
             window.location.href = redirects[path];
+            return;
         }
         
-        // Auto-redirect after 10 seconds
+        // Auto-redirect to home after 10 seconds
         setTimeout(() => {
-            window.location.href = '/';
+            window.location.href = './';
         }, 10000);
     </script>
 </body>
