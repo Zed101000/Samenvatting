@@ -25,11 +25,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Build site
+    - name: Verify files exist
       run: |
-        # Verify docs directory exists and list contents
+        echo "📁 Checking docs directory structure:"
         ls -la docs/
-        echo "✅ Site ready for deployment"
+        echo ""
+        echo "📄 Checking patterns directory:"
+        ls -la docs/patterns/
+        echo ""
+        echo "🔍 Verifying specific files:"
+        test -f docs/index.html && echo "✅ index.html exists" || echo "❌ index.html missing"
+        test -f docs/patterns/state.html && echo "✅ state.html exists" || echo "❌ state.html missing"
+        test -f docs/patterns/template-method.html && echo "✅ template-method.html exists" || echo "❌ template-method.html missing"
         
     - name: Setup Pages
       uses: actions/configure-pages@v4
@@ -41,5 +48,4 @@ jobs:
         
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
       uses: actions/deploy-pages@v4
