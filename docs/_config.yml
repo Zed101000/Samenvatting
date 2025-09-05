@@ -1,0 +1,94 @@
+# GitHub Pages configuration for PlayerMMO Design Patterns Documentation
+
+# Site settings
+title: "PlayerMMO Design Patterns"
+description: "Comprehensive documentation for PlayerMMO design patterns implementation and UML modeling guide"
+url: "https://zed101000.github.io"
+baseurl: "/Samenvatting"
+author: "PlayerMMO Project"
+
+# GitHub Pages settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Include/Exclude files
+include:
+  - "_pages"
+  - "docs"
+  - "assets"
+  - "README.md"
+
+exclude:
+  - "PlayerMMO/"
+  - "Puml/"
+  - "PDFs/"
+  - "tools/"
+  - "docs-source/"
+  - "Modelling/"
+  - "*.py"
+  - "*.ps1"
+  - "*.bat"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor/"
+  - ".git/"
+  - ".gitignore"
+
+# Collections (optional)
+collections:
+  patterns:
+    output: true
+    permalink: /:collection/:name/
+
+# SEO and social
+social:
+  name: PlayerMMO Project
+  links:
+    - https://github.com/Zed101000/Samenvatting
+
+# Analytics (optional - replace with your tracking ID)
+# google_analytics: UA-XXXXXXXX-X
+
+# Navigation menu
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Documentation"
+    url: "/#documentation"
+  - title: "Design Patterns"
+    url: "/#patterns"
+  - title: "UML Modeling"
+    url: "/docs/uml-modeling.html"
+  - title: "Download"
+    url: "/#download"
+
+# Default layout for different content types
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: "_patterns"
+      type: "patterns"
+    values:
+      layout: "pattern"
+
+# Site features
+features:
+  - search: true
+  - comments: false
+  - analytics: false
+  - dark_mode: true

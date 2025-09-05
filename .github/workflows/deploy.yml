@@ -27,20 +27,9 @@ jobs:
       
     - name: Build site
       run: |
-        # Ensure docs directory exists and copy main site files
-        mkdir -p docs
-        
-        # Copy main website files to docs if they exist in root
-        if [ -f index.html ]; then
-          cp index.html docs/
-        fi
-        if [ -d assets ]; then
-          cp -r assets docs/
-        fi
-        
-        # List what we're deploying
-        echo "Files to deploy:"
+        # Verify docs directory exists and list contents
         ls -la docs/
+        echo "✅ Site ready for deployment"
         
     - name: Setup Pages
       uses: actions/configure-pages@v4

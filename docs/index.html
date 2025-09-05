@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayerMMO Design Patterns Documentation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <meta name="description" content="Comprehensive documentation for PlayerMMO design patterns implementation and UML modeling guide">
+    <meta name="keywords" content="design patterns, UML, C#, software engineering, PlayerMMO, programming">
+    <meta name="author" content="PlayerMMO Project">
+</head>
+<body>
+    <header class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">PlayerMMO Design Patterns</h1>
+                <p class="hero-subtitle">Comprehensive Documentation & Implementation Guide</p>
+                <p class="hero-description">
+                    Explore 15 essential design patterns with real-world C# implementations, 
+                    UML diagrams, and complete documentation for modern software development.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#documentation" class="btn btn-primary">Explore Documentation</a>
+                    <a href="#patterns" class="btn btn-secondary">Browse Patterns</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav" id="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="#home">PlayerMMO</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#patterns">Design Patterns</a></li>
+                    <li><a href="#uml">UML Modeling</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Documentation Overview Section -->
+        <section id="documentation" class="section">
+            <div class="container">
+                <h2 class="section-title">Documentation Overview</h2>
+                <div class="documentation-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">📋</div>
+                        <h3>Project Overview</h3>
+                        <p>Complete introduction to the PlayerMMO project, its architecture, and design philosophy.</p>
+                        <a href="main.html" class="btn btn-outline">Read Overview</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">🎮</div>
+                        <h3>PlayerMMO System</h3>
+                        <p>Deep dive into the PlayerMMO system architecture with visual diagrams and component explanations.</p>
+                        <a href="playermmo.html" class="btn btn-outline">Explore System</a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">📐</div>
+                        <h3>UML Modeling Guide</h3>
+                        <p>Comprehensive guide to UML modeling with 10 diagram types, examples, and best practices.</p>
+                        <a href="uml-modeling.html" class="btn btn-outline">Learn UML</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Patterns Section -->
+        <section id="patterns" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Design Patterns</h2>
+                <p class="section-description">
+                    Explore 15 essential design patterns organized by category, each with detailed explanations, 
+                    C# implementations, and UML diagrams.
+                </p>
+
+                <!-- Pattern Categories -->
+                <div class="pattern-categories">
+                    <div class="category-card creational">
+                        <div class="category-header">
+                            <div class="category-icon">🏗️</div>
+                            <h3>Creational Patterns</h3>
+                            <span class="pattern-count">4 Patterns</span>
+                        </div>
+                        <p class="category-description">
+                            Focus on object creation mechanisms, trying to create objects in a manner suitable to the situation.
+                        </p>
+                        <div class="pattern-list">
+                            <a href="patterns/abstract-factory.html" class="pattern-link">Abstract Factory</a>
+                            <a href="patterns/builder.html" class="pattern-link">Builder</a>
+                            <a href="patterns/factory-method.html" class="pattern-link">Factory Method</a>
+                            <a href="patterns/singleton.html" class="pattern-link">Singleton</a>
+                        </div>
+                        <a href="patterns/creational-overview.html" class="btn btn-category">View All Creational</a>
+                    </div>
+
+                    <div class="category-card behavioral">
+                        <div class="category-header">
+                            <div class="category-icon">🎭</div>
+                            <h3>Behavioral Patterns</h3>
+                            <span class="pattern-count">6 Patterns</span>
+                        </div>
+                        <p class="category-description">
+                            Focus on communication between objects and the assignment of responsibilities between objects.
+                        </p>
+                        <div class="pattern-list">
+                            <a href="patterns/command.html" class="pattern-link">Command</a>
+                            <a href="patterns/iterator.html" class="pattern-link">Iterator</a>
+                            <a href="patterns/observer.html" class="pattern-link">Observer</a>
+                            <a href="patterns/state.html" class="pattern-link">State</a>
+                            <a href="patterns/strategy.html" class="pattern-link">Strategy</a>
+                            <a href="patterns/template-method.html" class="pattern-link">Template Method</a>
+                        </div>
+                        <a href="patterns/behavioral-overview.html" class="btn btn-category">View All Behavioral</a>
+                    </div>
+
+                    <div class="category-card structural">
+                        <div class="category-header">
+                            <div class="category-icon">🔧</div>
+                            <h3>Structural Patterns</h3>
+                            <span class="pattern-count">5 Patterns</span>
+                        </div>
+                        <p class="category-description">
+                            Deal with object composition, creating relationships between objects to form larger structures.
+                        </p>
+                        <div class="pattern-list">
+                            <a href="patterns/adapter.html" class="pattern-link">Adapter</a>
+                            <a href="patterns/composite.html" class="pattern-link">Composite</a>
+                            <a href="patterns/decorator.html" class="pattern-link">Decorator</a>
+                            <a href="patterns/facade.html" class="pattern-link">Facade</a>
+                            <a href="patterns/proxy.html" class="pattern-link">Proxy</a>
+                        </div>
+                        <a href="patterns/structural-overview.html" class="btn btn-category">View All Structural</a>
+                    </div>
+                </div>
+
+                <!-- Quick Access Pattern Grid -->
+                <div class="quick-patterns">
+                    <h3>Quick Access to All Patterns</h3>
+                    <div class="pattern-grid">
+                        <!-- Creational -->
+                        <a href="patterns/abstract-factory.html" class="pattern-tile creational-tile">
+                            <span class="pattern-name">Abstract Factory</span>
+                            <span class="pattern-category">Creational</span>
+                        </a>
+                        <a href="patterns/builder.html" class="pattern-tile creational-tile">
+                            <span class="pattern-name">Builder</span>
+                            <span class="pattern-category">Creational</span>
+                        </a>
+                        <a href="patterns/factory-method.html" class="pattern-tile creational-tile">
+                            <span class="pattern-name">Factory Method</span>
+                            <span class="pattern-category">Creational</span>
+                        </a>
+                        <a href="patterns/singleton.html" class="pattern-tile creational-tile">
+                            <span class="pattern-name">Singleton</span>
+                            <span class="pattern-category">Creational</span>
+                        </a>
+
+                        <!-- Behavioral -->
+                        <a href="patterns/command.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">Command</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+                        <a href="patterns/iterator.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">Iterator</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+                        <a href="patterns/observer.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">Observer</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+                        <a href="patterns/state.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">State</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+                        <a href="patterns/strategy.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">Strategy</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+                        <a href="patterns/template-method.html" class="pattern-tile behavioral-tile">
+                            <span class="pattern-name">Template Method</span>
+                            <span class="pattern-category">Behavioral</span>
+                        </a>
+
+                        <!-- Structural -->
+                        <a href="patterns/adapter.html" class="pattern-tile structural-tile">
+                            <span class="pattern-name">Adapter</span>
+                            <span class="pattern-category">Structural</span>
+                        </a>
+                        <a href="patterns/composite.html" class="pattern-tile structural-tile">
+                            <span class="pattern-name">Composite</span>
+                            <span class="pattern-category">Structural</span>
+                        </a>
+                        <a href="patterns/decorator.html" class="pattern-tile structural-tile">
+                            <span class="pattern-name">Decorator</span>
+                            <span class="pattern-category">Structural</span>
+                        </a>
+                        <a href="patterns/facade.html" class="pattern-tile structural-tile">
+                            <span class="pattern-name">Facade</span>
+                            <span class="pattern-category">Structural</span>
+                        </a>
+                        <a href="patterns/proxy.html" class="pattern-tile structural-tile">
+                            <span class="pattern-name">Proxy</span>
+                            <span class="pattern-category">Structural</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UML Section -->
+        <section id="uml" class="section">
+            <div class="container">
+                <h2 class="section-title">UML Modeling</h2>
+                <div class="uml-content">
+                    <div class="uml-intro">
+                        <h3>Comprehensive UML Guide</h3>
+                        <p>
+                            Master UML modeling with our complete guide covering 10 diagram types, 
+                            from basic class diagrams to complex sequence and state diagrams.
+                        </p>
+                        <a href="uml-modeling.html" class="btn btn-primary">Explore UML Guide</a>
+                    </div>
+                    <div class="uml-features">
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <span class="feature-icon">📊</span>
+                                <span>Static Diagrams: Class, Object, Component, Deployment, Package</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🔄</span>
+                                <span>Dynamic Diagrams: Use Case, Activity, Sequence, State, Timing</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">🎯</span>
+                                <span>Best Practices and Advanced Techniques</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon">💡</span>
+                                <span>Real-world Examples and Case Studies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Download Documentation</h2>
+                <div class="download-options">
+                    <div class="download-card">
+                        <div class="download-icon">📄</div>
+                        <h3>Complete Documentation</h3>
+                        <p>Download all documentation as a single PDF package for offline reading.</p>
+                        <a href="downloads/PlayerMMO-Complete-Documentation.pdf" class="btn btn-download" download>
+                            Download PDF Package
+                        </a>
+                    </div>
+                    <div class="download-card">
+                        <div class="download-icon">💾</div>
+                        <h3>Source Code</h3>
+                        <p>Access the complete C# source code and PlantUML diagrams on GitHub.</p>
+                        <a href="https://github.com/Zed101000/Samenvatting" class="btn btn-download" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                    <div class="download-card">
+                        <div class="download-icon">🔧</div>
+                        <h3>Implementation Files</h3>
+                        <p>Download ready-to-use pattern implementations for your own projects.</p>
+                        <a href="downloads/PlayerMMO-Pattern-Implementations.zip" class="btn btn-download" download>
+                            Download Implementations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PlayerMMO Project</h4>
+                    <p>Comprehensive design patterns documentation and implementation guide.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Zed101000/Samenvatting" target="_blank" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="main.html">Project Overview</a></li>
+                        <li><a href="playermmo.html">PlayerMMO System</a></li>
+                        <li><a href="uml-modeling.html">UML Modeling</a></li>
+                        <li><a href="patterns/">Design Patterns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Patterns</h4>
+                    <ul>
+                        <li><a href="patterns/creational-overview.html">Creational Patterns</a></li>
+                        <li><a href="patterns/behavioral-overview.html">Behavioral Patterns</a></li>
+                        <li><a href="patterns/structural-overview.html">Structural Patterns</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#download">Download PDF</a></li>
+                        <li><a href="https://github.com/Zed101000/Samenvatting" target="_blank">Source Code</a></li>
+                        <li><a href="mailto:contact@example.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PlayerMMO Project. Documentation generated with ❤️ for the software engineering community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
